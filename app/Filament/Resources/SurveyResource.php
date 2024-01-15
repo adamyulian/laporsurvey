@@ -92,10 +92,10 @@ class SurveyResource extends Resource
                             ->disabled(),
                         ]),
                 formsection::make('Form Survey')
-                    ->columns(5)
+                    ->columns(6)
                     ->schema([
                         Radio::make('status')
-                            ->columnSpan(5)
+                            ->columnSpan(6)
                             ->label('Apakah Aset sedang digunakan/dimanfaatkan?')
                             ->boolean()
                             ->inline()
@@ -103,16 +103,23 @@ class SurveyResource extends Resource
                             ->live(),
                         Forms\Components\Select::make('nama')
                             ->native(false)
+                            ->multiple()
                             ->options([
                                 'Rumah Ibadah' => 'Rumah Ibadah',
                                 'Bisnis/Komersial' => 'Bisnis/Komersial',
                                 'Fasilitas Umum' => 'Fasilitas Umum',
                                 'Kantor' => 'Kantor',
                                 'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
-                                'Taman' => 'Taman'
+                                'Taman' => 'Taman',
+                                'Rumah Tinggal' => 'Rumah Tinggal',
+                                'Sekolah' => 'Sekolah',
+                                'Balai RT/RW' => 'Balai RT/RW',
+                                'Gedung Serbaguna' => 'Gedung Serbaguna',
+                                'Tanah Kosong' => 'Tanah Kosong',
+                                'Lainnya' => 'Lainnya'
                             ])
                             ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(2)
+                            ->columnSpan(3)
                             ->label('Nama Penggunaan/Pemanfaatan'),
                         Forms\Components\Textarea::make('detail')
                             ->label('Detail Penggunaan/Pemanfaatan')
@@ -122,22 +129,22 @@ class SurveyResource extends Resource
                         Forms\Components\FileUpload::make('foto')
                             ->label('Foto Bukti Penggunaan/Pemanfaatan')
                             ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(5)
+                            ->columnSpan(6)
                             ->multiple()
                             ->maxFiles(5)
                             ->label('Foto Bukti Penggunaan/Pemanfaatan')
                             ->downloadable(),
                         Forms\Components\TextInput::make('nama_pic')
-                            ->label('Nama Penanggung Jawab')
+                            ->label('Nama Pengelola')
                             ->hidden(fn (Get $get) => $get('status') !== '1')
                             ->columnSpan(3)
                             ->maxLength(255),
                         Forms\Components\TextInput::make('no_hp_pic')
-                            ->label('Nomor Telepon/Whatsapp Penanggung Jawab')
+                            ->label('Nomor Telepon/Whatsapp Pengelola')
                             ->tel()
                             ->numeric()
                             ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(2)
+                            ->columnSpan(3)
                             ->maxLength(255),
                         Forms\Components\Select::make('hubungan_hukum')
                             ->options([
@@ -151,7 +158,7 @@ class SurveyResource extends Resource
                             ->native(false),
                         Forms\Components\FileUpload::make('dokumen_hub_hukum')
                             ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
-                            ->columnSpan(2), 
+                            ->columnSpan(3), 
                     ]),
             ]);
     }

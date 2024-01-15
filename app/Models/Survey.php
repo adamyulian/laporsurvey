@@ -14,6 +14,7 @@ class Survey extends Model
 
     protected $casts = [
         'foto' => 'array',
+        'nama' => 'array'
     ];
 
     protected $fillable = [
