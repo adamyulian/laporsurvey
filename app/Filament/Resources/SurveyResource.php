@@ -147,7 +147,8 @@ class SurveyResource extends Resource
                             ])
                             ->hidden(fn (Get $get) => $get('status') !== '1')
                             ->live()
-                            ->columnSpan(3),
+                            ->columnSpan(3)
+                            ->native(false),
                         Forms\Components\FileUpload::make('dokumen_hub_hukum')
                             ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
                             ->columnSpan(2), 
