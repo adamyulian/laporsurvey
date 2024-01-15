@@ -10,6 +10,7 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Rules\AttendanceRadius;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Radio;
@@ -17,14 +18,19 @@ use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Toggle;
 use Filament\Support\Enums\FontWeight;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\Group;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
+use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use App\Filament\Resources\SurveyResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Cheesegrits\FilamentGoogleMaps\Commands\Geocode;
+use Cheesegrits\FilamentGoogleMaps\Fields\WidgetMap;
+use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Filament\Forms\Components\Section as formsection;
 use App\Filament\Resources\SurveyResource\RelationManagers;
 
@@ -45,6 +51,7 @@ class SurveyResource extends Resource
         return $form
             ->schema([
                 formsection::make('Informasi Target Survey')
+                    ->collapsible()
                     ->columns(4)
                     ->schema([
                         Forms\Components\Select::make('target_id')
@@ -54,18 +61,28 @@ class SurveyResource extends Resource
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
                                 $teamname = Auth::user()->team->name;
-                                $query->where('surveyor', $teamname)->where('user_id', null);}
+                                $query->where('surveyor', $teamname)
+                                ->where('user_id', 0)
+                                ;}
                             )
                         ->getOptionLabelFromRecordUsing(fn (Target $record) => "{$record->register} {$record->nama} {$record->alamat}")
                         ->searchable(['register', 'nama', 'alamat'])
                         ->live(onBlur:true)
-                        ->afterStateUpdated(function (string $state, Forms\Set $set) {
+                        ->lazy()
+                        ->afterStateUpdated(function (string $state, callable $get, Forms\Set $set) {
                             $set('name', Target::find($state)->nama);
                             $set('luas', Target::find($state)->luas);
                             $set('tahun_perolehan', Target::find($state)->tahun_perolehan);
                             $set('penggunaan', Target::find($state)->penggunaan);
                             $set('alamat', Target::find($state)->alamat);
-                            $set('asal', Target::find($state)->asal);
+                            $set('target_id1', Target::find($state)->id);
+                            $set('latitude', floatval(Target::find($state)->lat));
+                            $set('longitude', floatval(Target::find($state)->lng));
+                            $set('location_target', 
+                            [
+                                'lat' => floatval(Target::find($state)->lat),
+                                'lng' => floatval(Target::find($state)->lng)
+                            ]);
                             // $set('hargaunit', CostComponent::find($state)->hargaunit);
                             // $set('brand', CostComponent::find($state)->brand->nama);
                         }),
@@ -91,6 +108,56 @@ class SurveyResource extends Resource
                             ->columnSpan(2)
                             ->disabled(),
                         ]),
+                formsection::make('Location')
+                            // ->hidden(fn (Get $get) => $get('target_id') !== 1)
+                            ->schema([
+                                Map::make('location_target')
+                                    ->columnSpan(2)
+                                    ->autocomplete('target_loc') // field on form to use as Places geocompletion field
+                                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
+                                    ->defaultZoom(15) // Set the initial zoom level to 500
+                                    ->reactive()
+                                    ->live()
+                                    ->lazy()
+                                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                        $set('latitude', $state['lat']);
+                                        $set('longitude', $state['lng']);
+                                    }),
+                                Map::make('location')
+                                    ->columnSpan(2)
+                                    ->rules([new AttendanceRadius(floatval('latitude') , floatval('longitude'), 100)])
+                                    ->label('Your Location')
+                                    ->geolocate() // adds a button to request device location and set map marker accordingly
+                                    ->geolocateOnLoad(true, 'always')// Enable geolocation on load for every form
+                                    ->draggable(false) // Disable dragging to move the marker
+                                    ->clickable(false) // Disable clicking to move the marker
+                                    ->defaultZoom(15) // Set the initial zoom level to 500
+                                    ->autocomplete('note') // field on form to use as Places geocompletion field
+                                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
+                                    ->reactive()
+                                    ->live()
+                                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                        $set('lat', $state['lat']);
+                                        $set('lng', $state['lng']);}),
+                                Forms\Components\TextInput::make('latitude'),
+                                Forms\Components\TextInput::make('longitude'),
+                                TextInput::make('lat')
+                                    ->label('Latitude')
+                                    ->numeric()
+                                    ->columnSpan(1),
+                                TextInput::make('lng')
+                                    ->label('Longitude')
+                                    ->numeric()
+                                    ->columnSpan(1),
+                                TextInput::make('target_loc')
+                                    ->label('Target Address')
+                                    ->columnSpan(2),
+                                TextInput::make('note')
+                                    ->label('Your Address')
+                                    ->columnSpan(2),
+                                ])
+                                ->collapsible()
+                                ->columns(4),
                 formsection::make('Form Survey')
                     ->columns(6)
                     ->schema([
