@@ -54,7 +54,7 @@ class SurveyResource extends Resource
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
                                 $teamname = Auth::user()->team->name;
-                                $query->where('surveyor', $teamname);}
+                                $query->where('surveyor', $teamname)->where('user_id', null);}
                             )
                         ->getOptionLabelFromRecordUsing(fn (Target $record) => "{$record->register} {$record->nama} {$record->alamat}")
                         ->searchable(['register', 'nama', 'alamat'])
@@ -149,10 +149,8 @@ class SurveyResource extends Resource
                             ->live()
                             ->columnSpan(3),
                         Forms\Components\FileUpload::make('dokumen_hub_hukum')
-                            
                             ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
-                            ->columnSpan(2),
-                        
+                            ->columnSpan(2), 
                     ]),
             ]);
     }

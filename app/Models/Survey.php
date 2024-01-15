@@ -34,11 +34,13 @@ class Survey extends Model
         static::creating(function($model) {
             $model->user_id = Auth::user()->id;
             $model->team_id = Auth::user()->team->id;
+            $cekRegister = Target::where('id', $model->target_id)->first();
+            $cekRegister->update([
+                'user_id' => $model->user_id
+            ]);
         });
     }
 
-    
-    
     public function Target()
     {
         return $this->belongsTo(related:Target::class);

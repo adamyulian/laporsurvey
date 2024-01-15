@@ -46,6 +46,14 @@ class UserResource extends Resource
                         name: 'Team', 
                         titleAttribute: 'name',
                     ),
+                Forms\Components\Select::make('role')
+                    ->label('Role')
+                    ->native(false)
+                    ->options([
+                        'admin' =>'Admin',
+                        'ketua' => 'Ketua',
+                        'surveyor' => 'Surveyor'
+                    ])
             ]);
     }
 
@@ -72,7 +80,9 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('team.name')
                     ->label('Team')
-                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('role')
+                    ->label('Role')
                     ->sortable(),
             ])
             ->filters([
