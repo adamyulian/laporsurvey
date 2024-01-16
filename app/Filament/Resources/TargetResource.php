@@ -71,18 +71,18 @@ class TargetResource extends Resource
                 })
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('register')
+                    ->description(fn (Target $record): string => $record->register)
+                    ->limit(15)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('luas')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tahun_perolehan')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
+                    ->suffix(' M2')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('penggunaan')
+                    ->description(fn (Target $record): string => $record->alamat)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('asal')
+                    ->description(fn (Target $record): string => $record->tahun_perolehan)
+                    ->label('Asal dan Tahun Perolehan')
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('surveyor')
                 //     ->searchable(),

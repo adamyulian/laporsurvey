@@ -249,7 +249,7 @@ class SurveyResource extends Resource
                     ->label('Digunakan/Dimanfaatkan')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('nama')
-                    ->label('digunakan sebagai')
+                    ->label('Digunakan sebagai')
                     ->searchable(),
                 // Tables\Columns\ImageColumn::make('foto')
                 //     ->searchable(),

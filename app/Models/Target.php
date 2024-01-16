@@ -19,9 +19,9 @@ class Target extends Model
            'asal',
            'surveyor',
            'user_id',
-            'lat',
-            'lng', 
-            'location_target',
+           'lat',
+           'lng', 
+           'location_target',
         ];
     
         protected $appends = [
