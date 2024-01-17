@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Filament\Widgets;
+
+use App\Filament\Resources\SurveyResource;
+use Filament\Tables;
+use App\Models\Survey;
+use Filament\Tables\Table;
+use Filament\Widgets\TableWidget as BaseWidget;
+
+class LatestSurveys extends BaseWidget
+{
+    protected static ?int $sort = 4;
+    
+    protected int | string | array $columnSpan = 'full';
+
+    public function table(Table $table): Table
+    {
+        return $table
+            ->query(SurveyResource::getEloquentQuery())
+            ->defaultPaginationPageOption(option:5)
+            ->defaultSort(column:'created_at', direction:'desc')
+            ->columns([
+                Tables\Columns\TextColumn::make('target.nama')
+                ->description(fn (Survey $record): string => $record->target->register)
+                ->limit(25)
+                ->sortable(),
+            Tables\Columns\IconColumn::make('status')
+                ->alignCenter()
+                ->label('Digunakan/Dimanfaatkan')
+                ->boolean(),
+            Tables\Columns\TextColumn::make('nama')
+                ->label('Digunakan sebagai')
+                ->searchable(),
+            Tables\Columns\TextColumn::make('hubungan_hukum')
+                ->label('Hub. Hukum')
+                ->badge()
+                ->color(fn (string $state): string => match ($state) {
+                    'belum' => 'danger',
+                    'sudah_habis' => 'warning',
+                    'ada' => 'success',})
+                ->searchable(),
+            ]);
+    }
+}

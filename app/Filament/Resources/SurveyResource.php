@@ -33,6 +33,10 @@ use Cheesegrits\FilamentGoogleMaps\Fields\WidgetMap;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Filament\Forms\Components\Section as formsection;
 use App\Filament\Resources\SurveyResource\RelationManagers;
+use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
+use Closure;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
+use App\Helpers\LocationHelpers;
 
 class SurveyResource extends Resource
 {
@@ -48,6 +52,7 @@ class SurveyResource extends Resource
 
     public static function form(Form $form): Form
     {
+
         return $form
             ->schema([
                 formsection::make('Informasi Target Survey')
@@ -76,8 +81,20 @@ class SurveyResource extends Resource
                             $set('penggunaan', Target::find($state)->penggunaan);
                             $set('alamat', Target::find($state)->alamat);
                             $set('target_id1', Target::find($state)->id);
-                            $set('latitude', floatval(Target::find($state)->lat));
-                            $set('longitude', floatval(Target::find($state)->lng));
+                            $set('latitude',Target::find($state)->lat);
+                            $set('longitude',Target::find($state)->lng);
+
+                            
+                            // $lat = Target::find($state)->lat;
+                            // $lng = Target::find($state)->lng;
+                            // $dynamicLatitude = Target::find($state)->lat;
+                            // $dynamicLongitude =  Target::find($state)->lng;
+                            // $dynamicRadius = 200;
+                    
+                            // // Update the MapLocation rule with the dynamic latitude, longitude, and radius
+                            // $mapLocationRule = new AttendanceRadius($dynamicLatitude, $dynamicLongitude, $dynamicRadius);
+                            // $set('mapLocationRule', new AttendanceRadius(Target::find($state)->lat, Target::find($state)->lng , 200));
+                            
                             $set('location_target', 
                             [
                                 'lat' => floatval(Target::find($state)->lat),
@@ -87,19 +104,19 @@ class SurveyResource extends Resource
                             // $set('brand', CostComponent::find($state)->brand->nama);
                         }),
                         Forms\Components\TextInput::make('name')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->label('Nama')
                             ->disabled(),
                         Forms\Components\TextInput::make('luas')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->suffix('M2')
                             ->numeric()
                             ->disabled(),
                         Forms\Components\TextInput::make('tahun_perolehan')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->disabled(),
                         Forms\Components\TextInput::make('penggunaan')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->disabled(),
                         Forms\Components\TextInput::make('alamat')
                             ->columnSpan(2)
@@ -110,6 +127,7 @@ class SurveyResource extends Resource
                         ]),
                 formsection::make('Location')
                             // ->hidden(fn (Get $get) => $get('target_id') !== 1)
+                            
                             ->schema([
                                 Map::make('location_target')
                                     ->columnSpan(2)
@@ -118,14 +136,54 @@ class SurveyResource extends Resource
                                     ->defaultZoom(15) // Set the initial zoom level to 500
                                     ->reactive()
                                     ->live()
-                                    ->lazy()
-                                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                        $set('latitude', $state['lat']);
-                                        $set('longitude', $state['lng']);
-                                    }),
+                                    ->lazy(),
+                                  
                                 Map::make('location')
                                     ->columnSpan(2)
-                                    ->rules([new AttendanceRadius(floatval('latitude') , floatval('longitude'), 100)])
+                                    // ->rules([new AttendanceRadius(function(Get $get) {Target::find($get('target_id'))->lat;},
+                                    //     function (Get $get) { 
+                                    //         return Target::find($get('target_id'))->lng;
+                                    //     },
+                                    //     100
+                                    // )])
+                                    // ->rules([new AttendanceRadius(Target::find(fn (Get $get) => $get('target_id'))->lat,'target.lng',
+                                    //     100
+                                    // )])
+                                    ->rules([
+                                        fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                                            // The allowed location (latitude and longitude).
+                                            $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
+                                            // dd($allowedLocation);
+                                
+                                            // The radius in meters.
+                                            $radius = 100;
+                                
+                                            // Convert the value (user's location) to an array [latitude, longitude].
+                                            // $userLocation = explode(',', $value);
+                                            $userLocation = [$get('lat'), $get('lng')];
+                                
+                                            // Calculate the distance between user and allowed location.
+                                            $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
+                                
+                                            // Check if the user is within the specified radius.
+                                            if ($distance > $radius) {
+                                                $fail("The selected location is not within the allowed radius.");
+                                            }
+                                        },
+                                    ])
+                                    // ->rules([new AttendanceRadius()])
+                                    // ->rules([new AttendanceRadius($lat, $lng, 100)])
+                                    // ->rules([function (Get $get) : float {
+                                    //     return $get('mapLocationRule');
+                                    // }])
+                                    // ->rules([new AttendanceRadius(-7.258800907556006, 112.74702950299672, 100)])
+                                    // ->rules([new AttendanceRadius(
+                                    //     function (Get $get){ floatval($get('latitude'));},
+                                    //     function (Get $get){ floatval($get('longitude'));},
+                                    //     100)])
+                                    // ->rules([new AttendanceRadius($dynamicLatitude, $dynamicLongitude,100)])
+                                    // ->rules('mapLocationRule')
+                                    // ->rules([function (Get $get){} => new AttendanceRadius(floatval($get('latitude')),floatval($get('longitude')),100)])
                                     ->label('Your Location')
                                     ->geolocate() // adds a button to request device location and set map marker accordingly
                                     ->geolocateOnLoad(true, 'always')// Enable geolocation on load for every form
@@ -139,8 +197,8 @@ class SurveyResource extends Resource
                                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                                         $set('lat', $state['lat']);
                                         $set('lng', $state['lng']);}),
-                                Forms\Components\TextInput::make('latitude'),
-                                Forms\Components\TextInput::make('longitude'),
+                                        Forms\Components\TextInput::make('latitude'),
+                                        Forms\Components\TextInput::make('longitude'),
                                 TextInput::make('lat')
                                     ->label('Latitude')
                                     ->numeric()
@@ -383,6 +441,8 @@ class SurveyResource extends Resource
                             ->dateTime(),
                         TextEntry::make('published_at')
                             ->dateTime(),
+                        TextEntry::make('lat'),
+                        TextEntry::make('lng')
                     ])
                 ])->columnSpan(1)
             ])->columns(5);

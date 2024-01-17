@@ -59,6 +59,7 @@ class AttendanceRadius implements ValidationRule
     {
         // Example Haversine formula implementation
         $earthRadius = 6371000; // Earth radius in meters
+        dd($this->allowedLatitude);
         $lat1 = deg2rad($this->allowedLatitude); // Reference latitude
         $lat2 = deg2rad($value['lat']);    // User's location latitude
         $lon1 = deg2rad($this->allowedLongitude); // Reference longitude
