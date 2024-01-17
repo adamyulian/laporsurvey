@@ -35,9 +35,10 @@ class StatsOverview extends BaseWidget
                 Stat::make('Total Survey', Survey::where('team_id', $teamId)->count()),
                 Stat::make('Sisa Target Survey', Target::where('surveyor', $teamName)->where('user_id',0)->count()),
             ];
-        } else {
-            // Handle the case where $user is not set (optional)
-            // ...
-        }
+        } 
+        // else {
+        //     // Handle the case where $user is not set (optional)
+        //     // ...
+        // }
     }
 }
