@@ -8,13 +8,15 @@ use Illuminate\Auth\Access\Response;
 
 class TeamPolicy
 {
-    // /**
-    //  * Determine whether the user can view any models.
-    //  */
-    // public function viewAny(User $user): bool
-    // {
-    //     //
-    // }
+    /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        
+            return $user->role === 'admin'; // Admins can view all component
+        
+    }
 
     // /**
     //  * Determine whether the user can view the model.

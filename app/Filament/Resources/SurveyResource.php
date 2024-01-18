@@ -131,6 +131,8 @@ class SurveyResource extends Resource
                             ->schema([
                                 Map::make('location_target')
                                     ->columnSpan(2)
+                                    ->draggable(false) // Disable dragging to move the marker
+                                    ->clickable(false) // Disable clicking to move the marker
                                     ->autocomplete('target_loc') // field on form to use as Places geocompletion field
                                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                                     ->defaultZoom(15) // Set the initial zoom level to 500
@@ -291,10 +293,10 @@ class SurveyResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            // ->modifyQueryUsing(function (Builder $query) {
-            //         $teamname = Auth::user()->team->name;
-            //         $query->where('user_id', $teamname);
-            //     })
+            ->modifyQueryUsing(function (Builder $query) {
+                    $teamId = Auth::user()->team->id;
+                    $query->where('team_id', $teamId);
+                })
             ->columns([
                 Tables\Columns\TextColumn::make('target.nama')
                     ->description(fn (Survey $record): string => $record->target->register)

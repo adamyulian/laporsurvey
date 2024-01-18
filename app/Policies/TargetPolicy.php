@@ -16,13 +16,18 @@ class TargetPolicy
     //     //
     // }
 
-    // /**
-    //  * Determine whether the user can view the model.
-    //  */
-    // public function view(User $user, Target $target): bool
-    // {
-    //     //
-    // }
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, Target $target): bool
+    {
+        if ($user->role === 'admin') {
+            return true; // Admins can view all component
+        }
+
+        // Non-admin users can only view their own component
+        return $user->team->id === $target->team_id;
+    }
 
     // /**
     //  * Determine whether the user can create models.
