@@ -261,6 +261,30 @@ class SurveyResource extends Resource
                             ->maxFiles(5)
                             ->label('Foto Bukti Penggunaan/Pemanfaatan')
                             ->downloadable(),
+                        Forms\Components\FileUpload::make('foto1')
+                            ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                            ->hidden(fn (Get $get) => $get('status') !== '1')
+                            ->columnSpan(3)
+                            ->label('Foto Jalan')
+                            ->downloadable(),
+                        Forms\Components\FileUpload::make('foto2')
+                            ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                            ->hidden(fn (Get $get) => $get('status') !== '1')
+                            ->columnSpan(3)
+                            ->label('Foto Bangunan dengan Jalan')
+                            ->downloadable(),
+                        Forms\Components\FileUpload::make('foto3')
+                            ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                            ->hidden(fn (Get $get) => $get('status') !== '1')
+                            ->columnSpan(3)
+                            ->label('Foto Bagian Depan')
+                            ->downloadable(),
+                        Forms\Components\FileUpload::make('foto4')
+                            ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                            ->hidden(fn (Get $get) => $get('status') !== '1')
+                            ->columnSpan(3)
+                            ->label('Foto Bagian Dalam')
+                            ->downloadable(),
                         Forms\Components\TextInput::make('nama_pic')
                             ->label('Nama Pengelola')
                             ->hidden(fn (Get $get) => $get('status') !== '1')

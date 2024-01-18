@@ -51,7 +51,11 @@ class Survey extends Model
             'dokumen_hub_hukum',
             'detail',
             'team_id',
-            'location'
+            'location',
+            'foto1',
+            'foto2',
+            'foto3',
+            'foto4',
     ];
     protected $appends = [
         'location',
