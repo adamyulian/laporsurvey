@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Target;
 use Illuminate\Support\Facades\Auth;
@@ -153,5 +154,9 @@ class Survey extends Model
     public function User()
     {
         return $this->belongsTo(related:User::class);
+    }
+    public function Team()
+    {
+        return $this->belongsTo(related:Team::class);
     }
 }

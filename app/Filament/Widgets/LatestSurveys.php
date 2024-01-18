@@ -40,6 +40,15 @@ class LatestSurveys extends BaseWidget
                     'sudah_habis' => 'warning',
                     'ada' => 'success',})
                 ->searchable(),
+            Tables\Columns\TextColumn::make('team.name')
+                ->label('Team')
+                ->badge()
+                ->color(fn (string $state): string => match ($state) {
+                    'Group 1' => 'danger',
+                    'Group 2' => 'warning',
+                    'Group 3' => 'success',
+                    'Group 4' => 'info',})
+                ->searchable(),
             ]);
     }
 }

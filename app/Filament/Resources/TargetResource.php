@@ -35,7 +35,26 @@ class TargetResource extends Resource
                 Forms\Components\TextInput::make('register')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('luas')
-                    ->maxLength(255),
+                    ->suffix('M2'),
+                Forms\Components\Select::make('nama')
+                    ->native(false)
+                    ->multiple()
+                    ->options([
+                        'Rumah Ibadah' => 'Rumah Ibadah',
+                        'Bisnis/Komersial' => 'Bisnis/Komersial',
+                        'Fasilitas Umum' => 'Fasilitas Umum',
+                                'Kantor' => 'Kantor',
+                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
+                                'Taman' => 'Taman',
+                                'Rumah Tinggal' => 'Rumah Tinggal',
+                                'Sekolah' => 'Sekolah',
+                                'Balai RT/RW' => 'Balai RT/RW',
+                                'Gedung Serbaguna' => 'Gedung Serbaguna',
+                                'Tanah Kosong' => 'Tanah Kosong',
+                                'Lainnya' => 'Lainnya'
+                    ])
+                        ->columnSpan(3)
+                        ->label('Nama Penggunaan/Pemanfaatan'),
                 Forms\Components\TextInput::make('tahun_perolehan')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('alamat')
