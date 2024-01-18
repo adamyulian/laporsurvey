@@ -62,6 +62,13 @@ class UserResource extends Resource
     {
         return $table
             ->modifyQueryUsing(function (Builder $query) {
+
+                if (Auth::user()->role === 'admin') {
+                    return $query;
+                }
+        
+                // Non-admin users can only view their own component
+                return 
                 $teamId = Auth::user()->team->id;
                 $query->where('team_id', $teamId);
             })
