@@ -10,6 +10,7 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
 class StatsOverview extends BaseWidget
 {
+    
     protected function getStats(): array
     {
         $userId = Auth::id();
@@ -20,10 +21,12 @@ class StatsOverview extends BaseWidget
             return [
                 Stat::make('Total Target', Target::count()),
                 Stat::make('Total Survey', Survey::count()),
+                Stat::make('Sisa Target Survey', Target::where('user_id',0)->count()),
                 Stat::make('Total Survey Group 1', Survey::where('team_id', 1)->count()),
                 Stat::make('Total Survey Group 2', Survey::where('team_id', 2)->count()),
                 Stat::make('Total Survey Group 3', Survey::where('team_id', 3)->count()),
                 Stat::make('Total Survey Group 4', Survey::where('team_id', 4)->count()),
+               
             ];
         } elseif ($user->role === 'ketua') {
             // Regular user gets data based on their ID
