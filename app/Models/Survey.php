@@ -55,6 +55,7 @@ class Survey extends Model
             'foto1',
             'foto2',
             'foto3',
+            'address',
             'foto4',
     ];
     protected $appends = [

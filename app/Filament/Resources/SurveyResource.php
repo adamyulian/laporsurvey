@@ -37,6 +37,7 @@ use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
 use Closure;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 use App\Helpers\LocationHelpers;
+use Filament\Forms\Components\Placeholder;
 
 class SurveyResource extends Resource
 {
@@ -61,6 +62,8 @@ class SurveyResource extends Resource
                     ->schema([
                         Forms\Components\Select::make('target_id')
                         ->columnSpan(4)
+                        ->label('Silakan memilih Register/Target Survey')
+                        ->preload()
                         ->relationship(
                             name: 'Target', 
                             titleAttribute: 'nama',
@@ -83,51 +86,43 @@ class SurveyResource extends Resource
                             $set('target_id1', Target::find($state)->id);
                             $set('latitude',Target::find($state)->lat);
                             $set('longitude',Target::find($state)->lng);
-
-                            
-                            // $lat = Target::find($state)->lat;
-                            // $lng = Target::find($state)->lng;
-                            // $dynamicLatitude = Target::find($state)->lat;
-                            // $dynamicLongitude =  Target::find($state)->lng;
-                            // $dynamicRadius = 200;
-                    
-                            // // Update the MapLocation rule with the dynamic latitude, longitude, and radius
-                            // $mapLocationRule = new AttendanceRadius($dynamicLatitude, $dynamicLongitude, $dynamicRadius);
-                            // $set('mapLocationRule', new AttendanceRadius(Target::find($state)->lat, Target::find($state)->lng , 200));
-                            
                             $set('location_target', 
                             [
                                 'lat' => floatval(Target::find($state)->lat),
                                 'lng' => floatval(Target::find($state)->lng)
                             ]);
-                            // $set('hargaunit', CostComponent::find($state)->hargaunit);
-                            // $set('brand', CostComponent::find($state)->brand->nama);
                         }),
-                        Forms\Components\TextInput::make('name')
-                            ->columnSpan(2)
-                            ->label('Nama')
-                            ->disabled(),
-                        Forms\Components\TextInput::make('luas')
-                            ->columnSpan(2)
-                            ->suffix('M2')
-                            ->numeric()
-                            ->disabled(),
-                        Forms\Components\TextInput::make('tahun_perolehan')
-                            ->columnSpan(2)
-                            ->disabled(),
-                        Forms\Components\TextInput::make('penggunaan')
-                            ->columnSpan(2)
-                            ->disabled(),
-                        Forms\Components\TextInput::make('alamat')
-                            ->columnSpan(2)
-                            ->disabled(),
-                        Forms\Components\TextInput::make('asal')
-                            ->columnSpan(2)
-                            ->disabled(),
-                        ]),
+                        formsection::make('Detail Information')
+                            ->collapsible()
+                            ->columns(4)
+                            ->collapsed(true)
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->columnSpan(2)
+                                    ->label('Nama')
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('luas')
+                                    ->columnSpan(2)
+                                    ->suffix('M2')
+                                    ->numeric()
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('tahun_perolehan')
+                                    ->columnSpan(2)
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('penggunaan')
+                                    ->columnSpan(2)
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('alamat')
+                                    ->columnSpan(2)
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('asal')
+                                    ->columnSpan(2)
+                                    ->disabled(),
+                                ]),
+                            ]),
                 formsection::make('Location')
-                            // ->hidden(fn (Get $get) => $get('target_id') !== 1)
-                            
+                            ->collapsible()
+                            ->collapsed(true)
                             ->schema([
                                 Map::make('location_target')
                                     ->columnSpan(2)
@@ -142,57 +137,37 @@ class SurveyResource extends Resource
                                   
                                 Map::make('location')
                                     ->columnSpan(2)
-                                    // ->rules([new AttendanceRadius(function(Get $get) {Target::find($get('target_id'))->lat;},
-                                    //     function (Get $get) { 
-                                    //         return Target::find($get('target_id'))->lng;
-                                    //     },
-                                    //     100
-                                    // )])
-                                    // ->rules([new AttendanceRadius(Target::find(fn (Get $get) => $get('target_id'))->lat,'target.lng',
-                                    //     100
-                                    // )])
-                                    ->rules([
-                                        fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
-                                            // The allowed location (latitude and longitude).
-                                            $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
-                                            // dd($allowedLocation);
-                                
-                                            // The radius in meters.
-                                            $radius = 100;
-                                
-                                            // Convert the value (user's location) to an array [latitude, longitude].
-                                            // $userLocation = explode(',', $value);
-                                            $userLocation = [$get('lat'), $get('lng')];
-                                
-                                            // Calculate the distance between user and allowed location.
-                                            $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
-                                
-                                            // Check if the user is within the specified radius.
-                                            if ($distance > $radius) {
-                                                $fail("The selected location is not within the allowed radius.");
-                                            }
-                                        },
-                                    ])
-                                    // ->rules([new AttendanceRadius()])
-                                    // ->rules([new AttendanceRadius($lat, $lng, 100)])
-                                    // ->rules([function (Get $get) : float {
-                                    //     return $get('mapLocationRule');
-                                    // }])
-                                    // ->rules([new AttendanceRadius(-7.258800907556006, 112.74702950299672, 100)])
-                                    // ->rules([new AttendanceRadius(
-                                    //     function (Get $get){ floatval($get('latitude'));},
-                                    //     function (Get $get){ floatval($get('longitude'));},
-                                    //     100)])
-                                    // ->rules([new AttendanceRadius($dynamicLatitude, $dynamicLongitude,100)])
-                                    // ->rules('mapLocationRule')
-                                    // ->rules([function (Get $get){} => new AttendanceRadius(floatval($get('latitude')),floatval($get('longitude')),100)])
+                                    // ->rules([
+                                        
+                                    //     fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                                    //             // The allowed location (latitude and longitude).
+                                    //             $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
+                                    //             // dd($allowedLocation);
+                                    
+                                    //             // The radius in meters.
+                                    //             $radius = 100;
+                                    
+                                    //             // Convert the value (user's location) to an array [latitude, longitude].
+                                    //             // $userLocation = explode(',', $value);
+                                    //             $userLocation = [$get('lat'), $get('lng')];
+                                    
+                                    //             // Calculate the distance between user and allowed location.
+                                    //             $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
+
+                                                                                  
+                                    //             // Check if the user is within the specified radius.
+                                    //             if ($distance > $radius) {
+                                    //                 $fail("The selected location is not within the allowed radius.");
+                                    //             }
+                                            
+                                    //     }])
                                     ->label('Your Location')
                                     ->geolocate() // adds a button to request device location and set map marker accordingly
                                     ->geolocateOnLoad(true, 'always')// Enable geolocation on load for every form
                                     ->draggable(false) // Disable dragging to move the marker
                                     ->clickable(false) // Disable clicking to move the marker
                                     ->defaultZoom(15) // Set the initial zoom level to 500
-                                    ->autocomplete('note') // field on form to use as Places geocompletion field
+                                    ->autocomplete('address') // field on form to use as Places geocompletion field
                                     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
                                     ->reactive()
                                     ->live()
@@ -203,21 +178,50 @@ class SurveyResource extends Resource
                                         Forms\Components\TextInput::make('longitude'),
                                 TextInput::make('lat')
                                     ->label('Latitude')
+                                    ->readOnly()
                                     ->numeric()
                                     ->columnSpan(1),
                                 TextInput::make('lng')
                                     ->label('Longitude')
+                                    ->readOnly()
                                     ->numeric()
                                     ->columnSpan(1),
                                 TextInput::make('target_loc')
                                     ->label('Target Address')
+                                    ->readOnly()
                                     ->columnSpan(2),
-                                TextInput::make('note')
+                                TextInput::make('address')
                                     ->label('Your Address')
+                                    ->readOnly()
                                     ->columnSpan(2),
+                                Placeholder::make('distance')
+                                        ->label('Jarak Target Lokasi dengan Lokasi Anda (dalam Meter)')
+                                        ->columnSpanFull()
+                                        ->content(
+                                            function ($get) {
+                                                if ($get('target_id') === null) {
+                                                    return 0;
+                                                }
+                                                $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
+                                                // dd($allowedLocation);
+                                    
+                                                // The radius in meters.
+                                                $radius = 100;
+                                    
+                                                // Convert the value (user's location) to an array [latitude, longitude].
+                                                // $userLocation = explode(',', $value);
+                                                $userLocation = [$get('lat'), $get('lng')];
+                                    
+                                                // Calculate the distance between user and allowed location.
+                                                $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
+
+                                                return  $distance;
+                                            }
+                                        ),
                                 ])
                                 ->collapsible()
                                 ->columns(4),
+                                
                 formsection::make('Form Survey')
                     ->columns(6)
                     ->schema([
@@ -468,7 +472,9 @@ class SurveyResource extends Resource
                         TextEntry::make('published_at')
                             ->dateTime(),
                         TextEntry::make('lat'),
-                        TextEntry::make('lng')
+                        TextEntry::make('lng'),
+                        TextEntry::make('address')
+                                ->label('Location Data Saved')
                     ])
                 ])->columnSpan(1)
             ])->columns(5);

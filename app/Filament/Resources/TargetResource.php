@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use App\Filament\Resources\TargetResource\Pages;
@@ -30,54 +31,60 @@ class TargetResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('register')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('luas')
-                    ->suffix('M2'),
-                Forms\Components\Select::make('nama')
-                    ->native(false)
-                    ->multiple()
-                    ->options([
-                        'Rumah Ibadah' => 'Rumah Ibadah',
-                        'Bisnis/Komersial' => 'Bisnis/Komersial',
-                        'Fasilitas Umum' => 'Fasilitas Umum',
-                                'Kantor' => 'Kantor',
-                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
-                                'Taman' => 'Taman',
-                                'Rumah Tinggal' => 'Rumah Tinggal',
-                                'Sekolah' => 'Sekolah',
-                                'Balai RT/RW' => 'Balai RT/RW',
-                                'Gedung Serbaguna' => 'Gedung Serbaguna',
-                                'Tanah Kosong' => 'Tanah Kosong',
-                                'Lainnya' => 'Lainnya'
-                    ])
-                        ->columnSpan(3)
-                        ->label('Nama Penggunaan/Pemanfaatan'),
-                Forms\Components\TextInput::make('tahun_perolehan')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('alamat')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('penggunaan')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('asal')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('surveyor')
-                    ->maxLength(255),
-                    Map::make('location_target')
-                    ->reactive()
-                    ->live()
-                    ->lazy()
-                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                        $set('latitude', $state['lat']);
-                        $set('longitude', $state['lng']);
-                    }),
-                    Forms\Components\TextInput::make('lat'),
-                    Forms\Components\TextInput::make('lng'),
-
-                // Forms\Components\TextInput::make('user_id')
-                //     ->numeric(),
+                Section::make('Detail Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('nama')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('register')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('luas')
+                        ->suffix('M2'),
+                    Forms\Components\Select::make('nama')
+                        ->native(false)
+                        ->multiple()
+                        ->options([
+                                    'Rumah Ibadah' => 'Rumah Ibadah',
+                                    'Bisnis/Komersial' => 'Bisnis/Komersial',
+                                    'Fasilitas Umum' => 'Fasilitas Umum',
+                                    'Kantor' => 'Kantor',
+                                    'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
+                                    'Taman' => 'Taman',
+                                    'Rumah Tinggal' => 'Rumah Tinggal',
+                                    'Sekolah' => 'Sekolah',
+                                    'Balai RT/RW' => 'Balai RT/RW',
+                                    'Gedung Serbaguna' => 'Gedung Serbaguna',
+                                    'Tanah Kosong' => 'Tanah Kosong',
+                                    'Lainnya' => 'Lainnya'
+                        ])
+                            ->label('Nama Penggunaan/Pemanfaatan'),
+                    Forms\Components\TextInput::make('tahun_perolehan')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('alamat')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('penggunaan')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('asal')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('surveyor')
+                        ->maxLength(255),
+                        
+                    ]),
+                    Section::make('Location')
+                        ->collapsible()
+                        ->collapsed(true)
+                        ->schema([
+                            Map::make('location_target')
+                            ->reactive()
+                            ->live()
+                            ->lazy()
+                            ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                $set('latitude', $state['lat']);
+                                $set('longitude', $state['lng']);
+                            }),
+                            Forms\Components\TextInput::make('lat'),
+                            Forms\Components\TextInput::make('lng'),
+                        ])
+                
             ]);
     }
 
