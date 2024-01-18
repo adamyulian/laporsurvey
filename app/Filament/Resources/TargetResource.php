@@ -92,6 +92,13 @@ class TargetResource extends Resource
     {
         return $table
             ->modifyQueryUsing(function (Builder $query) {
+
+                if (Auth::user()->role === 'admin') {
+                    return $query;
+                }
+        
+                // Non-admin users can only view their own component
+                return 
                     $teamname = Auth::user()->team->name;
                     $query->where('surveyor', $teamname);
                 })
