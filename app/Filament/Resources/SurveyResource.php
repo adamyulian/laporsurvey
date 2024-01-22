@@ -323,6 +323,9 @@ class SurveyResource extends Resource
                                 $query->where('team_id', $teamname)
                                 ;}
                         )
+                        ->native(false)
+                        ->multiple()
+                        ->columnSpanFull()
                     ]),
             ]);
     }
