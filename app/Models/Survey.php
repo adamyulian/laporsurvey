@@ -170,6 +170,6 @@ class Survey extends Model
 
     public function Surveyor()
     {
-        return $this->belongsToMany(related:Surveyor::class)->withPivot('survey_surveyor');
+        return $this->belongsToMany(related:Surveyor::class);
     }
 }
