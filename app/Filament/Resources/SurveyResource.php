@@ -320,7 +320,7 @@ class SurveyResource extends Resource
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
                                 $teamname = Auth::user()->team->id;
-                                $query->where('surveyor_id', $teamname)
+                                $query->where('team_id', $teamname)
                                 ;}
                         )
                     ]),
