@@ -15,7 +15,8 @@ class Survey extends Model
 
     protected $casts = [
         'foto' => 'array',
-        'nama' => 'array'
+        'nama' => 'array',
+        'surveyor' => 'array'
     ];
 
     public function calculateHaversineDistance($location1, $location2)
@@ -57,6 +58,7 @@ class Survey extends Model
             'foto3',
             'address',
             'foto4',
+            'surveyor_id'
     ];
     protected $appends = [
         'location',

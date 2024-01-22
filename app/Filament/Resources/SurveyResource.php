@@ -314,6 +314,15 @@ class SurveyResource extends Resource
                         Forms\Components\FileUpload::make('dokumen_hub_hukum')
                             ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
                             ->columnSpan(3), 
+                        Forms\Components\Select::make('surveyor_id')
+                        ->relationship(
+                            name: 'Surveyor',
+                            titleAttribute: 'nama',
+                            modifyQueryUsing: function (Builder $query) {
+                                $teamname = Auth::user()->team->id;
+                                $query->where('surveyor_id', $teamname)
+                                ;}
+                        )
                     ]),
             ]);
     }
