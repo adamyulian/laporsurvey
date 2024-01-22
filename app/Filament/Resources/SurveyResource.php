@@ -493,7 +493,9 @@ class SurveyResource extends Resource
                         TextEntry::make('lat'),
                         TextEntry::make('lng'),
                         TextEntry::make('address')
-                                ->label('Location Data Saved')
+                                ->label('Location Data Saved'),
+                        TextEntry::make('surveyor')
+                                ->label('Surveyor')
                     ])
                 ])->columnSpan(1)
             ])->columns(5);
