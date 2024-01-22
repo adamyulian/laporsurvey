@@ -314,7 +314,7 @@ class SurveyResource extends Resource
                         Forms\Components\FileUpload::make('dokumen_hub_hukum')
                             ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
                             ->columnSpan(3), 
-                        Forms\Components\Select::make('surveyor_id')
+                        Forms\Components\Select::make('surveyor')
                         ->relationship(
                             name: 'Surveyor',
                             titleAttribute: 'nama',
