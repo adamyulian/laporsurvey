@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Team;
 use App\Models\User;
 use App\Models\Target;
+use App\Models\Surveyor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -165,5 +166,10 @@ class Survey extends Model
     public function Team()
     {
         return $this->belongsTo(related:Team::class);
+    }
+
+    public function Surveyor()
+    {
+        return $this->belongsTo(related:Surveyor::class);
     }
 }
