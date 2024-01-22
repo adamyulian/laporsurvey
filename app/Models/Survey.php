@@ -45,7 +45,7 @@ class Survey extends Model
             'target_id',
             'user_id',
             'status',
-            'nama',
+            'guna',
             'foto',
             'nama_pic',
             'no_hp_pic',

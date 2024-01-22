@@ -232,7 +232,7 @@ class SurveyResource extends Resource
                             ->inline()
                             ->inlineLabel(false)
                             ->live(),
-                        Forms\Components\Select::make('nama')
+                        Forms\Components\Select::make('guna')
                             ->native(false)
                             ->multiple()
                             ->options([
@@ -346,7 +346,7 @@ class SurveyResource extends Resource
                     $query->where('team_id', $teamId);
                 })
             ->columns([
-                Tables\Columns\TextColumn::make('Target.nama')
+                Tables\Columns\TextColumn::make('target.nama')
                     ->description(fn (Survey $record): string => $record->target->register)
                     ->limit(25)
                     ->sortable(),
