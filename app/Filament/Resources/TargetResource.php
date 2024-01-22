@@ -33,13 +33,13 @@ class TargetResource extends Resource
             ->schema([
                 Section::make('Detail Information')
                     ->schema([
-                        Forms\Components\TextInput::make('nama')
+                    Forms\Components\TextInput::make('nama')
                         ->maxLength(255),
                     Forms\Components\TextInput::make('register')
                         ->maxLength(255),
                     Forms\Components\TextInput::make('luas')
                         ->suffix('M2'),
-                    Forms\Components\Select::make('nama')
+                    Forms\Components\Select::make('penggunaan')
                         ->native(false)
                         ->multiple()
                         ->options([
@@ -61,12 +61,17 @@ class TargetResource extends Resource
                         ->maxLength(255),
                     Forms\Components\TextInput::make('alamat')
                         ->maxLength(255),
-                    Forms\Components\TextInput::make('penggunaan')
-                        ->maxLength(255),
+                    // Forms\Components\TextInput::make('penggunaan')
+                    //     ->maxLength(255),
                     Forms\Components\TextInput::make('asal')
                         ->maxLength(255),
-                    Forms\Components\TextInput::make('surveyor')
-                        ->maxLength(255),
+                    Forms\Components\Select::make('surveyor')
+                        ->options([
+                            'Group 1' => 'Group 1',
+                            'Group 2' => 'Group 2',
+                            'Group 3' => 'Group 3',
+                            'Group 4' => 'Group 4'
+                        ]),
                         
                     ]),
                     Section::make('Location')
