@@ -326,6 +326,7 @@ class SurveyResource extends Resource
                         ->native(false)
                         ->multiple()
                         ->columnSpanFull()
+                        ->preload()
                     ]),
             ]);
     }
