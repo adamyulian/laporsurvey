@@ -19,15 +19,15 @@ class SurveyPolicy
     // /**
     //  * Determine whether the user can view the model.
     //  */
-    public function view(User $user, Survey $survey): bool
-    {
-        if ($user->role === 'admin') {
-            return true; // Admins can view all component
-        }
+    // public function view(User $user, Survey $survey): bool
+    // {
+    //     if ($user->role === 'admin') {
+    //         return true; // Admins can view all component
+    //     }
 
-        // Non-admin users can only view their own component
-        return $user->team->id === $survey->team_id;
-    }
+    //     // Non-admin users can only view their own component
+    //     return $user->team->id === $survey->team_id;
+    // }
 
     // /**
     //  * Determine whether the user can create models.
