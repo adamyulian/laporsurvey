@@ -316,7 +316,7 @@ class SurveyResource extends Resource
                             ->columnSpan(3), 
                         Forms\Components\Select::make('surveyor')
                         ->relationship(
-                            name: 'Surveyor',
+                            name: 'surveyor',
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
                                 $teamname = Auth::user()->team->id;
