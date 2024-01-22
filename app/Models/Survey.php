@@ -170,6 +170,6 @@ class Survey extends Model
 
     public function Surveyor()
     {
-        return $this->belongsTo(related:Surveyor::class);
+        return $this->belongsToMany(related:Surveyor::class);
     }
 }
