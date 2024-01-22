@@ -103,8 +103,8 @@ class TargetResource extends Resource
                     $query->where('surveyor', $teamname);
                 })
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
-                    ->description(fn (Target $record): string => $record->register)
+                Tables\Columns\TextColumn::make('register')
+                    ->description(fn (Target $record): string => $record->nama)
                     ->limit(15)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('luas')
