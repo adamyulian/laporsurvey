@@ -16,7 +16,7 @@ class Survey extends Model
 
     protected $casts = [
         'foto' => 'array',
-        'nama' => 'array',
+        'penggunaan' => 'array',
         'surveyor' => 'array'
     ];
 
