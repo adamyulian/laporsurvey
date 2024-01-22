@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Survey;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Surveyor extends Model
 {
@@ -17,5 +18,9 @@ class Surveyor extends Model
      public function Team()
     {
         return $this->belongsTo(related:Team::class);
+    }
+    public function Survey()
+    {
+        return $this->hasMany(related:Survey::class);
     }
 }
