@@ -90,6 +90,7 @@ class SurveyResource extends Resource
                             $set('penggunaan', Target::find($state)->penggunaan);
                             $set('alamat', Target::find($state)->alamat);
                             $set('target_id1', Target::find($state)->id);
+                            $set('sigis', Target::find($state)->sigis);
                             $set('latitude',Target::find($state)->lat);
                             $set('longitude',Target::find($state)->lng);
                             $set('location_target', 
@@ -124,6 +125,8 @@ class SurveyResource extends Resource
                                 Forms\Components\TextInput::make('asal')
                                     ->columnSpan(2)
                                     ->disabled(),
+                                Forms\Components\Placeholder::make('sigis')
+                                    ->columnSpanFull(),
                                 ]),
                             ]),
                 formsection::make('Location')
