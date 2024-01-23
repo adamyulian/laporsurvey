@@ -21,10 +21,11 @@ class LatestSurveys extends BaseWidget
             ->defaultPaginationPageOption(option:5)
             ->defaultSort(column:'created_at', direction:'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('target.nama')
-                ->description(fn (Survey $record): string => $record->target->register)
+            Tables\Columns\TextColumn::make('target.register')
+                ->description(fn (Survey $record): string => $record->target->nama)
                 ->limit(25)
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
             Tables\Columns\IconColumn::make('status')
                 ->alignCenter()
                 ->label('Digunakan/Dimanfaatkan')
@@ -48,6 +49,9 @@ class LatestSurveys extends BaseWidget
                     'Group 2' => 'warning',
                     'Group 3' => 'success',
                     'Group 4' => 'info',})
+                ->searchable(),
+            Tables\Columns\TextColumn::make('surveyor.nama')
+                ->label('Surveyor')
                 ->searchable(),
             ]);
     }

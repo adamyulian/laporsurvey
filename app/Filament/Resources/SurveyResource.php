@@ -391,6 +391,9 @@ class SurveyResource extends Resource
                         'sudah_habis' => 'warning',
                         'ada' => 'success',})
                     ->searchable(),
+                Tables\Columns\TextColumn::make('surveyor.nama')
+                    ->label('Surveyor')
+                    ->searchable(),
                 // Tables\Columns\ImageColumn::make('dokumen_hub_hukum')
                 //     ->label('Dok. Hukum')
                 //     ->searchable(),
