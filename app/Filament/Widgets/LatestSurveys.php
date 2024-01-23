@@ -29,7 +29,7 @@ class LatestSurveys extends BaseWidget
                 ->alignCenter()
                 ->label('Digunakan/Dimanfaatkan')
                 ->boolean(),
-            Tables\Columns\TextColumn::make('nama')
+            Tables\Columns\TextColumn::make('guna')
                 ->label('Digunakan sebagai')
                 ->searchable(),
             Tables\Columns\TextColumn::make('hubungan_hukum')
