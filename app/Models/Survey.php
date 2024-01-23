@@ -154,6 +154,16 @@ class Survey extends Model
                 'user_id' => $model->user_id
             ]);
         });
+        static::deleting(function ($model) {
+            // Assuming there is a 'target_id' attribute in the model
+            $target = Target::where('id', $model->target_id)->first();
+    
+            if ($target) {
+                $target->update([
+                    'user_id' => 0
+                ]);
+            }
+        });
     }
 
     public function Target()
