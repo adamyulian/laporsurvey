@@ -365,7 +365,7 @@ class SurveyResource extends Resource
                     ->alignCenter()
                     ->label('Digunakan/Dimanfaatkan')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('nama')
+                Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
                     ->searchable(),
                 // Tables\Columns\ImageColumn::make('foto')
@@ -464,16 +464,7 @@ class SurveyResource extends Resource
                                 ->columnSpan(2)
                                 ->label('Detail Penggunaan/Pemanfaatan'),
                             ImageEntry::make('foto')
-                                ->columnSpan(4)
-                                ->label('Foto Bukti Penggunaan/Pemanfaatan')
-                                ->height(100)
-                                ->ring(5)
-                                ->circular()
-                                ->overlap(5)
-                                ->limit(2)
-                                ->limitedRemainingText(isSeparate: true, size: 'lg')
-                                ->stacked()
-                                ->grow(false),
+                                ->label('Foto Bukti Penggunaan/Pemanfaatan'),
                             ImageEntry::make('foto1')
                                 ->label('Foto Jalan Akses'),
                             ImageEntry::make('foto2')
