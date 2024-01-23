@@ -22,6 +22,7 @@ class Target extends Model
            'lat',
            'lng', 
            'location_target',
+           'sigis'
         ];
     
         protected $appends = [

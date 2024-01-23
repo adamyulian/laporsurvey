@@ -472,6 +472,14 @@ class SurveyResource extends Resource
                                 ->limitedRemainingText(isSeparate: true, size: 'lg')
                                 ->stacked()
                                 ->grow(false),
+                            ImageEntry::make('foto1')
+                                ->label('Foto Jalan Akses'),
+                            ImageEntry::make('foto2')
+                                ->label('Foto Bangunan dan Jalan'),
+                            ImageEntry::make('foto3')
+                                ->label('Foto Depan Bangunan'),
+                            ImageEntry::make('foto4')
+                                ->label('Foto Dalam Bangunan'),
                             TextEntry::make('nama_pic')
                                 ->columnSpan(2)
                                 ->label('Nama Penanggung Jawab'),
