@@ -464,15 +464,20 @@ class SurveyResource extends Resource
                                 ->columnSpan(2)
                                 ->label('Detail Penggunaan/Pemanfaatan'),
                             ImageEntry::make('foto')
+                                ->columnSpan(2)
                                 ->label('Foto Bukti Penggunaan/Pemanfaatan'),
                             ImageEntry::make('foto1')
+                                ->columnSpan(2)
                                 ->label('Foto Jalan Akses'),
                             ImageEntry::make('foto2')
+                                ->columnSpan(2)
                                 ->label('Foto Bangunan dan Jalan'),
                             ImageEntry::make('foto3')
+                            ->columnSpan(2)
                                 ->label('Foto Depan Bangunan'),
                             ImageEntry::make('foto4')
-                                ->label('Foto Dalam Bangunan'),
+                            ->columnSpan(2)    
+                            ->label('Foto Dalam Bangunan'),
                             TextEntry::make('nama_pic')
                                 ->columnSpan(2)
                                 ->label('Nama Penanggung Jawab'),
