@@ -21,8 +21,8 @@ class LatestSurveys extends BaseWidget
             ->defaultPaginationPageOption(option:5)
             ->defaultSort(column:'created_at', direction:'desc')
             ->columns([
-            Tables\Columns\TextColumn::make('target.register')
-                ->description(fn (Survey $record): string => $record->target->nama)
+            Tables\Columns\TextColumn::make('target.nama')
+                ->description(fn (Survey $record): string => $record->target->register)
                 ->limit(25)
                 ->sortable()
                 ->searchable(),
