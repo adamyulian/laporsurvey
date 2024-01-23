@@ -458,7 +458,7 @@ class SurveyResource extends Resource
                                 ->boolean()
                                 ->trueIcon('heroicon-o-check-badge')
                                 ->falseIcon('heroicon-o-x-mark'),
-                            TextEntry::make('nama')
+                            TextEntry::make('guna')
                                 ->columnSpan(2)
                                 ->label('Nama Penggunaan/Pemanfaatan'),
                             TextEntry::make('detail')
