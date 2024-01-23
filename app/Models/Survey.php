@@ -15,9 +15,9 @@ class Survey extends Model
     use HasFactory;
 
     protected $casts = [
-        // 'foto' => 'array',
+        'foto' => 'array',
         'nama' => 'array',
-        // 'surveyor' => 'array'
+        'surveyor' => 'array'
     ];
 
     public function calculateHaversineDistance($location1, $location2)
