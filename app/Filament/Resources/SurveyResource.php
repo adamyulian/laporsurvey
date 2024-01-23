@@ -125,9 +125,9 @@ class SurveyResource extends Resource
                                 Forms\Components\TextInput::make('asal')
                                     ->columnSpan(2)
                                     ->disabled(),
-                                Forms\Components\FileUpload::make('sigis')
-                                    ->disabled()
-                                    ->columnSpanFull(),
+                                // Forms\Components\FileUpload::make('sigis')
+                                //     ->disabled()
+                                //     ->columnSpanFull(),
                                 ]),
                             ]),
                 formsection::make('Location')
