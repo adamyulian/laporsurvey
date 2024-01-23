@@ -68,6 +68,12 @@ class SurveyResource extends Resource
                             name: 'Target', 
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
+                                if (Auth::user()->role === 'admin') {
+                                    return $query;
+                                }
+                        
+                                // Non-admin users can only view their own component
+                                return 
                                 $teamname = Auth::user()->team->name;
                                 $query->where('surveyor', $teamname)
                                 ->where('user_id', 0)
@@ -247,6 +253,7 @@ class SurveyResource extends Resource
                                 'Balai RT/RW' => 'Balai RT/RW',
                                 'Gedung Serbaguna' => 'Gedung Serbaguna',
                                 'Tanah Kosong' => 'Tanah Kosong',
+                                'Jalan' => 'Jalan',
                                 'Lainnya' => 'Lainnya'
                             ])
                             ->hidden(fn (Get $get) => $get('status') !== '1')
