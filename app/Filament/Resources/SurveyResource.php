@@ -328,8 +328,15 @@ class SurveyResource extends Resource
                             name: 'surveyor',
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
-                                $teamname = Auth::user()->team->id;
-                                $query->where('team_id', $teamname)
+                                if (Auth::user()->role === 'admin') {
+                                    return $query;
+                                }
+                        
+                                // Non-admin users can only view their own component
+                                // return 
+                                $teamname = Auth::user()->team->name;
+                                $query->where('surveyor', $teamname)
+                                ->where('user_id', 0)
                                 ;}
                         )
                         ->native(false)
