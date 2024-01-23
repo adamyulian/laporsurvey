@@ -355,10 +355,11 @@ class SurveyResource extends Resource
                     $query->where('team_id', $teamId);
                 })
             ->columns([
-                Tables\Columns\TextColumn::make('target.nama')
-                    ->description(fn (Survey $record): string => $record->target->register)
+                Tables\Columns\TextColumn::make('target.register')
+                    ->description(fn (Survey $record): string => $record->target->nama)
                     ->limit(25)
-                    ->sortable(),
+                    ->sortable()
+                    ->searchable(),
                 // Tables\Columns\TextColumn::make('user.name')
                 //     ->sortable(),
                 Tables\Columns\IconColumn::make('status')
