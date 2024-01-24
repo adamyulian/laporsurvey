@@ -400,7 +400,6 @@ class SurveyResource extends Resource
                     ->listWithLineBreaks()
                     ->bulleted()
                     ->limitList(3)
-                    ->expandableLimitedList()
                     ->label('Surveyor')
                     ->searchable(),
                 // Tables\Columns\ImageColumn::make('dokumen_hub_hukum')
