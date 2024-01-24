@@ -61,6 +61,7 @@ class SurveyResource extends Resource
                     ->columns(4)
                     ->schema([
                         Forms\Components\Select::make('target_id')
+                        ->required()
                         ->columnSpan(4)
                         ->label('Silakan memilih Register/Target Survey')
                         ->preload()
@@ -236,6 +237,7 @@ class SurveyResource extends Resource
                     ->columns(6)
                     ->schema([
                         Radio::make('status')
+                            ->required()
                             ->columnSpan(6)
                             ->label('Apakah Aset sedang digunakan/dimanfaatkan?')
                             ->boolean()
@@ -363,8 +365,8 @@ class SurveyResource extends Resource
                 })
             ->defaultSort(column:'created_at', direction:'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('target.nama')
-                    // ->description(fn (Survey $record): string => $record->target->register)
+                Tables\Columns\TextColumn::make('target.register')
+                    ->description(fn (Survey $record): string => $record->target->nama)
                     ->limit(25)
                     ->sortable()
                     ->searchable(),
@@ -395,6 +397,10 @@ class SurveyResource extends Resource
                         'ada' => 'success',})
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surveyor.nama')
+                    ->listWithLineBreaks()
+                    ->bulleted()
+                    ->limitList(3)
+                    ->expandableLimitedList()
                     ->label('Surveyor')
                     ->searchable(),
                 // Tables\Columns\ImageColumn::make('dokumen_hub_hukum')
