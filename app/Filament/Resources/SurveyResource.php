@@ -258,6 +258,8 @@ class SurveyResource extends Resource
                                 'Gedung Serbaguna' => 'Gedung Serbaguna',
                                 'Tanah Kosong' => 'Tanah Kosong',
                                 'Jalan' => 'Jalan',
+                                'Sawah/Kebun' => 'Sawah/Kebun',
+                                'Tambak' => 'Tambak',
                                 'Lainnya' => 'Lainnya'
                             ])
                             ->hidden(fn (Get $get) => $get('status') !== '1')
@@ -359,6 +361,7 @@ class SurveyResource extends Resource
                     $teamId = Auth::user()->team->id;
                     $query->where('team_id', $teamId);
                 })
+            ->defaultSort(column:'created_at', direction:'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('target.nama')
                     ->description(fn (Survey $record): string => $record->target->register)
@@ -398,9 +401,10 @@ class SurveyResource extends Resource
                 //     ->label('Dok. Hukum')
                 //     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Waktu Survey')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
