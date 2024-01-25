@@ -52,7 +52,9 @@ class LatestSurveys extends BaseWidget
                 ->searchable(),
             Tables\Columns\TextColumn::make('surveyor.nama')
                 ->label('Surveyor')
-                ->searchable(),
+                ->searchable()
+                ->listWithLineBreaks()
+                ->limitList(3),
             ]);
     }
 }
