@@ -274,7 +274,9 @@ class SurveyResource extends Resource
                             ->maxLength(255),
                         Forms\Components\FileUpload::make('foto')
                             ->image()
-                            ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                            ->multiple(10)
+                            ->preserveFilenames()
+                            ->label('Foto Bukti (Maks. 10 gambar)')
                             ->hidden(fn (Get $get) => $get('status') !== '1')
                             ->columnSpan(6)
                             ->downloadable(),
