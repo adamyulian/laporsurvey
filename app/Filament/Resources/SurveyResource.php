@@ -485,6 +485,8 @@ class SurveyResource extends Resource
                             ImageEntry::make('foto')
                                 ->columnSpan(2)
                                 ->stacked()
+                                ->overlap(5)
+                                ->circular()
                                 ->limit(3)
                                 ->limitedRemainingText()
                                 ->label('Foto Bukti Penggunaan/Pemanfaatan'),
