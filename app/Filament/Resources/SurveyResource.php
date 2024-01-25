@@ -400,7 +400,6 @@ class SurveyResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surveyor.nama')
                     ->listWithLineBreaks()
-                    ->bulleted()
                     ->limitList(3)
                     ->label('Surveyor')
                     ->searchable(),
