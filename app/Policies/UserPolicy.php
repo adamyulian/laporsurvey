@@ -7,13 +7,13 @@ use Illuminate\Auth\Access\Response;
 
 class UserPolicy
 {
-    // /**
-    //  * Determine whether the user can view any models.
-    //  */
-    // public function viewAny(User $user): bool
-    // {
-    //     //
-    // }
+    /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        return $user->role === 'admin';
+    }
 
     /**
      * Determine whether the user can view the model.
