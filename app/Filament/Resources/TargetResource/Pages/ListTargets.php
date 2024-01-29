@@ -36,7 +36,7 @@ class ListTargets extends ListRecords
             'Belum' => Tab::make('Belum')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query;
+                        return $query->where('user_id', 0);
                     }
                     // Non-admin users can only view their own component
                     // return 
@@ -46,7 +46,7 @@ class ListTargets extends ListRecords
             'Selesai' => Tab::make('Selesai')
                 ->modifyQueryUsing(function (Builder $query) {
                 if (Auth::user()->role === 'admin') {
-                    return $query;
+                    return $query->where('user_id','!=', 0);
                 }
                 // Non-admin users can only view their own component
                 // return 
