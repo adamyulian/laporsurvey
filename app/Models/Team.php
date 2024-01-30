@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Survey;
 use App\Models\Surveyor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
