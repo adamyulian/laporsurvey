@@ -425,10 +425,10 @@ class SurveyResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                Filter::make('team')
-                    ->relationship('team', 'name', fn (Builder $query) => $query->withTrashed())
-                    ->searchable()
-                    ->preload()
+                // Filter::make('team')
+                //     ->relationship('team', 'name', fn (Builder $query) => $query->withTrashed())
+                //     ->searchable()
+                //     ->preload()
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
