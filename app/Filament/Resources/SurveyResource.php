@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use Closure;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Survey;
@@ -11,6 +12,7 @@ use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Rules\AttendanceRadius;
+use App\Helpers\LocationHelpers;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Radio;
@@ -20,24 +22,24 @@ use Filament\Support\Enums\FontWeight;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\Group;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Placeholder;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Cheesegrits\FilamentGoogleMaps\Fields\Map;
 use App\Filament\Resources\SurveyResource\Pages;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Cheesegrits\FilamentGoogleMaps\Commands\Geocode;
 use Cheesegrits\FilamentGoogleMaps\Fields\WidgetMap;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
+use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
 use Filament\Forms\Components\Section as formsection;
 use App\Filament\Resources\SurveyResource\RelationManagers;
-use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
-use Closure;
-use NunoMaduro\Collision\Adapters\Phpunit\State;
-use App\Helpers\LocationHelpers;
-use Filament\Forms\Components\Placeholder;
+use Filament\Tables\Filters\Filter;
 
 class SurveyResource extends Resource
 {
@@ -423,7 +425,7 @@ class SurveyResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('team')
+                Filter::make('team')
                     ->relationship('team', 'name', fn (Builder $query) => $query->withTrashed())
                     ->searchable()
                     ->preload()
