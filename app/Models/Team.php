@@ -19,4 +19,9 @@ class Team extends Model
         return $this->hasMany(related:Surveyor::class);
     }
 
+    public function Survey()
+    {
+        return $this->hasMany(related:Survey::class);
+    }
+
 }

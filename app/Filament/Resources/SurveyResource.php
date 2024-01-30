@@ -415,6 +415,7 @@ class SurveyResource extends Resource
                 Tables\Columns\TextColumn::make('team.name')
                     ->label('Nama Team')
                     ->sortable()
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
