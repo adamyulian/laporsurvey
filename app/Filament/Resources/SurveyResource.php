@@ -39,6 +39,7 @@ use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
 use Filament\Forms\Components\Section as formsection;
 use App\Filament\Resources\SurveyResource\RelationManagers;
+use App\Models\Team;
 use Filament\Tables\Filters\Filter;
 
 class SurveyResource extends Resource
@@ -425,11 +426,9 @@ class SurveyResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // Filter::make('team')
-                //     ->relationship('team', 'name', fn (Builder $query) => $query->withTrashed())
-                //     ->searchable()
-                //     ->preload()
-            ])
+                SelectFilter::make('team_id')
+                        ->options(fn (): array => Team::query()->pluck('name', 'id')->all())
+                ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
