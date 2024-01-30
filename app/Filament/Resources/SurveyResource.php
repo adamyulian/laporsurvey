@@ -397,7 +397,8 @@ class SurveyResource extends Resource
                         'belum' => 'danger',
                         'sudah_habis' => 'warning',
                         'ada' => 'success',})
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('surveyor.nama')
                     ->listWithLineBreaks()
                     ->limitList(3)
@@ -409,6 +410,10 @@ class SurveyResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Waktu Survey')
                     ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('team.name')
+                    ->label('Nama Team')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
