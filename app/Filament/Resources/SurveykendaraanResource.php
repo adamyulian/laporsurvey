@@ -2,17 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SurveykendaraanResource\Pages;
-use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
-use App\Models\Surveykendaraan;
 use Filament\Forms;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Surveykendaraan;
+use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Auth;
+use Filament\Forms\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\SurveykendaraanResource\Pages;
+use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
+use App\Models\TargetKendaraan;
 
 class SurveykendaraanResource extends Resource
 {
@@ -24,9 +26,35 @@ class SurveykendaraanResource extends Resource
     {
         return $form
             ->schema([
+                Section::make('Informasi Target')
+                    ->collapsible()
+                    ->collapsed(true)
+                    ->schema([
+                        Forms\Components\Select::make('target_kendaraan_id')
+                        ->label('Silakan memilih Nopol/Target Survey')
+                        ->preload()
+                        ->relationship(
+                            name: 'Targetkendaraan', 
+                            titleAttribute: 'nopol',
+                            modifyQueryUsing: function (Builder $query) {
+                                if (Auth::user()->role === 'admin') {
+                                    return $query;
+                                }
+                        
+                                // Non-admin users can only view their own component
+                                // return 
+                                $teamname = Auth::user()->team->name;
+                                $query->where('surveyor', $teamname)
+                                ->where('status', 0)
+                                ;}
+                            )
+                        ->getOptionLabelFromRecordUsing(fn (TargetKendaraan $record) => "{$record->register} {$record->nama} {$record->alamat}")
+                        ->searchable(['register', 'nama', 'alamat'])
+                        ->live(onBlur:true)
+                    ]),
                 Section::make('Interior')
                     ->collapsible()
-                    ->collapsed(false)
+                    ->collapsed(true)
                     ->schema([
                         Forms\Components\Select::make('tempat_duduk')
                         ->options([
@@ -74,7 +102,7 @@ class SurveykendaraanResource extends Resource
                         ]),
                 Section::make('Eksterior')
                     ->collapsible()
-                    ->collapsed(false)
+                    ->collapsed(true)
                     ->schema([
                         Forms\Components\Select::make('body')
                         ->options([
@@ -169,7 +197,7 @@ class SurveykendaraanResource extends Resource
                         ]),
                 Section::make('Mesin')
                     ->collapsible()
-                    ->collapsed(false)
+                    ->collapsed(true)
                     ->schema([
                         Forms\Components\Select::make('mesin')
                         ->options([

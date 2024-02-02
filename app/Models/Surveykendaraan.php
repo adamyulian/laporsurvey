@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Targetkendaraan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Surveykendaraan extends Model
 {
@@ -42,5 +43,11 @@ class Surveykendaraan extends Model
         'gambar_interior',
         'gambar_eksterior',
         'gambar_mesin',
+        'target_kendaraan_id'
         ];
+
+        public function Targetkendaraan()
+    {
+        return $this->belongsTo(related:Targetkendaraan::class);
+    }
 }
