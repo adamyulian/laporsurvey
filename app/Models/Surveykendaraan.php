@@ -9,6 +9,12 @@ class Surveykendaraan extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'gambar_interior' => 'array',
+        'gambar_eksterior' => 'array',
+        'gambar_mesin' => 'array'
+    ];
+
     protected $fillable = [
         'tempat_duduk',
         'dashboard',

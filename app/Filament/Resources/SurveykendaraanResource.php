@@ -6,6 +6,7 @@ use App\Filament\Resources\SurveykendaraanResource\Pages;
 use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
 use App\Models\Surveykendaraan;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,188 +24,207 @@ class SurveykendaraanResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('tempat_duduk')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('dashboard')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('ac')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('kaca_film')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('toolkit')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('body')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('cat')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('lampu_utama')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('lampu_sein_depan')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('lampu_sein_blkg')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('lampu_rem')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('ban_mobil')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('ban_serep')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('klakson')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('wiper')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('spion')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('mesin')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('accu')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('rem')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('transmisi')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('power_steering')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('radiator')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('oli_mesin')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('gambar_interior')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('gambar_eksterior')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
-                Forms\Components\Select::make('gambar_mesin')
-                    ->options([
-                        'Baik' => 'Baik',
-                        'Kurang Baik' => 'Kurang Baik',
-                        'Rusak' => 'Rusak',
-                        ])
-                    ->native(false),
+                Section::make('Interior')
+                    ->schema([
+                        Forms\Components\Select::make('tempat_duduk')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('dashboard')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('ac')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('kaca_film')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('toolkit')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\FileUpload::make('gambar_interior')
+                        ->image()
+                        ->multiple(2),
+                        ]),
+                Section::make('Eksterior')
+                    ->schema([
+                        Forms\Components\Select::make('body')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('cat')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('lampu_utama')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('lampu_sein_depan')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false),
+                    Forms\Components\Select::make('lampu_sein_blkg')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('lampu_rem')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('ban_mobil')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('ban_serep')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('klakson')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('wiper')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('spion')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\FileUpload::make('gambar_eksterior')
+                        ->image()
+                        ->multiple(),
+                        ]),
+                Section::make('Mesin')
+                    ->schema([
+                        Forms\Components\Select::make('mesin')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('accu')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('rem')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('transmisi')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('power_steering')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('radiator')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\Select::make('oli_mesin')
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->native(false)
+                        ->columnSpanFull(),
+                    Forms\Components\FileUpload::make('gambar_mesin')
+                        ->image()
+                        ->multiple(),
+                        ]),
             ]);
     }
 
