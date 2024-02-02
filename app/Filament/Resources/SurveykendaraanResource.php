@@ -43,14 +43,13 @@ class SurveykendaraanResource extends Resource
                         
                                 // Non-admin users can only view their own component
                                 // return 
-                                $teamname = Auth::user()->team->name;
-                                $query->where('surveyor', $teamname)
+                                $teamId = Auth::user()->team->id;
+                                $query->where('team_id', $teamId)
                                 ->where('status', 0)
                                 ;}
                             )
-                        ->getOptionLabelFromRecordUsing(fn (TargetKendaraan $record) => "{$record->register} {$record->nama} {$record->alamat}")
-                        ->searchable(['register', 'nama', 'alamat'])
-                        ->live(onBlur:true)
+                        ->getOptionLabelFromRecordUsing(fn (TargetKendaraan $record) => "{$record->nopol} {$record->merk} {$record->tipe}")
+                        ->searchable(['nopol'])
                     ]),
                 Section::make('Interior')
                     ->collapsible()
