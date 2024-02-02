@@ -1,10 +1,11 @@
 <?php
 
+
+use App\Models\Targetkendaraan;
 use App\Models\target_kendaraan;
-use App\Models\TargetKendaraan;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -14,7 +15,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('surveykendaraans', function (Blueprint $table) {
-            $table->foreignIdFor(TargetKendaraan::class)->nullable();
+            $table->foreignIdFor(Targetkendaraan::class)->nullable();
         });
     }
 
