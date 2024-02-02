@@ -270,6 +270,7 @@ class SurveykendaraanResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->heading('Survey Result')
             ->columns([
                 Tables\Columns\TextColumn::make('tempat_duduk')
                     ->searchable(),
@@ -345,7 +346,8 @@ class SurveykendaraanResource extends Resource
                 ]),
             ])
             ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                    ->label('New Survey'),
             ]);
     }
     
