@@ -32,7 +32,7 @@ class TargetResource extends Resource
 
     protected static ?string $navigationLabel = 'Target Aset';
 
-    protected static ?string $navigationGroup = 'Pelaksanaan';
+    protected static ?string $navigationGroup = 'Pemanfaatan Aset Tanah';
 
     public static function form(Form $form): Form
     {

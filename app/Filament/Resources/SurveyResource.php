@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Closure;
 use Filament\Forms;
+use App\Models\Team;
 use Filament\Tables;
 use App\Models\Survey;
 use App\Models\Target;
@@ -15,6 +16,7 @@ use App\Rules\AttendanceRadius;
 use App\Helpers\LocationHelpers;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Radio;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Toggle;
@@ -39,8 +41,10 @@ use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use Cheesegrits\FilamentGoogleMaps\Widgets\MapWidget;
 use Filament\Forms\Components\Section as formsection;
 use App\Filament\Resources\SurveyResource\RelationManagers;
-use App\Models\Team;
-use Filament\Tables\Filters\Filter;
+use App\Filament\Resources\SurveyResource\RelationManagers\DetailRelationManager;
+use App\Filament\Resources\SurveyResource\RelationManagers\DetailsRelationManager;
+use App\Models\Detail;
+use App\Models\Surveyor;
 
 class SurveyResource extends Resource
 {
@@ -52,7 +56,7 @@ class SurveyResource extends Resource
 
     protected static ?string $navigationLabel = 'Survey';
 
-    protected static ?string $navigationGroup = 'Pelaksanaan';
+    protected static ?string $navigationGroup = 'Pemanfaatan Aset Tanah';
 
     public static function form(Form $form): Form
     {
@@ -374,7 +378,8 @@ class SurveyResource extends Resource
                     ->description(fn (Survey $record): string => $record->target->nama)
                     ->limit(25)
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 // Tables\Columns\TextColumn::make('user.name')
                 //     ->sortable(),
                 Tables\Columns\IconColumn::make('status')
@@ -383,7 +388,8 @@ class SurveyResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
                 // Tables\Columns\ImageColumn::make('foto')
                 //     ->searchable(),
                 // Tables\Columns\TextColumn::make('nama_pic')
@@ -406,7 +412,8 @@ class SurveyResource extends Resource
                     ->listWithLineBreaks()
                     ->limitList(3)
                     ->label('Surveyor')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 // Tables\Columns\ImageColumn::make('dokumen_hub_hukum')
                 //     ->label('Dok. Hukum')
                 //     ->searchable(),
@@ -414,12 +421,12 @@ class SurveyResource extends Resource
                     ->label('Waktu Survey')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('team.name')
                     ->label('Nama Team')
                     ->sortable()
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -427,6 +434,8 @@ class SurveyResource extends Resource
             ])
             ->filters([
                 SelectFilter::make('team_id')
+                        ->label('Group')
+                        ->native(false)
                         ->options(fn (): array => Team::query()->pluck('name', 'id')->all())
                 ])
             ->actions([
@@ -464,12 +473,24 @@ class SurveyResource extends Resource
                         TextEntry::make('target.penggunaan')
                             ->columnSpan(2)
                             ->label('Penggunaan'),
-                        TextEntry::make('target.luas')
-                            ->columnSpan(1)
-                            ->label('Luas Tanah/Bangunan'),
                         TextEntry::make('target.tahun_perolehan')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->label('Tahun Perolehan'),  
+                        TextEntry::make('target.luas')
+                            ->columnSpan(2)
+                            ->label('Luas Tanah/Bangunan'),
+                        TextEntry::make('Luas Total Penggunaan')
+                            ->label('Luas Total Penggunaan')
+                            ->columnSpan(2)
+                            ->state(function (Survey $record): float {
+                                $subtotal = 0;
+                                $detailcostsubtasks = Detail::select('*')->where('survey_id', $record->id)->get();
+                                foreach ($detailcostsubtasks as $key => $rincian){
+                                    $luas = $rincian->luas;
+                                    $subtotal+=$luas;
+                                }
+                                return $subtotal;
+                            }),
                         TextEntry::make('target.alamat')
                             ->columnSpan(2)
                             ->label('Alamat'),
@@ -551,7 +572,7 @@ class SurveyResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            DetailRelationManager::class,
         ];
     }
     

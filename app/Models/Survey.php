@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Detail;
 use App\Models\Target;
 use App\Models\Surveyor;
 use Illuminate\Support\Facades\Auth;
@@ -183,4 +184,11 @@ class Survey extends Model
     {
         return $this->belongsToMany(related:Surveyor::class);
     }
+
+    public function Detail()
+    {
+        return $this->hasMany(related:Detail::class);
+    }
+
+    
 }
