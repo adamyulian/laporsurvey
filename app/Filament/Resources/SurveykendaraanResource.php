@@ -30,175 +30,175 @@ class SurveykendaraanResource extends Resource
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('dashboard')
+                Forms\Components\Select::make('dashboard')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('ac')
+                Forms\Components\Select::make('ac')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('kaca_film')
+                Forms\Components\Select::make('kaca_film')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('toolkit')
+                Forms\Components\Select::make('toolkit')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('body')
+                Forms\Components\Select::make('body')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('cat')
+                Forms\Components\Select::make('cat')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('lampu_utama')
+                Forms\Components\Select::make('lampu_utama')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('lampu_sein_depan')
+                Forms\Components\Select::make('lampu_sein_depan')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('lampu_sein_blkg')
+                Forms\Components\Select::make('lampu_sein_blkg')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('lampu_rem')
+                Forms\Components\Select::make('lampu_rem')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('ban_mobil')
+                Forms\Components\Select::make('ban_mobil')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('ban_serep')
+                Forms\Components\Select::make('ban_serep')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('klakson')
+                Forms\Components\Select::make('klakson')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('wiper')
+                Forms\Components\Select::make('wiper')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('spion')
+                Forms\Components\Select::make('spion')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('mesin')
+                Forms\Components\Select::make('mesin')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('accu')
+                Forms\Components\Select::make('accu')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('rem')
+                Forms\Components\Select::make('rem')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('transmisi')
+                Forms\Components\Select::make('transmisi')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('power_steering')
+                Forms\Components\Select::make('power_steering')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('radiator')
+                Forms\Components\Select::make('radiator')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('oli_mesin')
+                Forms\Components\Select::make('oli_mesin')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('gambar_interior')
+                Forms\Components\Select::make('gambar_interior')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('gambar_eksterior')
+                Forms\Components\Select::make('gambar_eksterior')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
                         'Rusak' => 'Rusak',
                         ])
                     ->native(false),
-                Forms\Components\TextInput::make('gambar_mesin')
+                Forms\Components\Select::make('gambar_mesin')
                     ->options([
                         'Baik' => 'Baik',
                         'Kurang Baik' => 'Kurang Baik',
