@@ -19,6 +19,12 @@ class TargetkendaraanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Target';
+
+    protected static ?string $recordTitleAttribute = 'Target';
+
+    protected static ?string $navigationGroup = 'Kondisi Aset Kendaraan';
+
     public static function form(Form $form): Form
     {
         return $form

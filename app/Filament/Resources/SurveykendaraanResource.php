@@ -22,6 +22,12 @@ class SurveykendaraanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Survey';
+
+    protected static ?string $recordTitleAttribute = 'Survey';
+
+    protected static ?string $navigationGroup = 'Kondisi Aset Kendaraan';
+
     public static function form(Form $form): Form
     {
         return $form
