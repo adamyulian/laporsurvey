@@ -28,6 +28,8 @@ class SurveykendaraanResource extends Resource
 
     protected static ?string $navigationGroup = 'Kondisi Aset Kendaraan';
 
+    protected ?string $heading = 'Survey Kendaraan';
+
     public static function form(Form $form): Form
     {
         return $form
