@@ -25,6 +25,8 @@ class SurveykendaraanResource extends Resource
         return $form
             ->schema([
                 Section::make('Interior')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->schema([
                         Forms\Components\Select::make('tempat_duduk')
                         ->options([
@@ -71,6 +73,8 @@ class SurveykendaraanResource extends Resource
                         ->multiple(2),
                         ]),
                 Section::make('Eksterior')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->schema([
                         Forms\Components\Select::make('body')
                         ->options([
@@ -164,6 +168,8 @@ class SurveykendaraanResource extends Resource
                         ->multiple(),
                         ]),
                 Section::make('Mesin')
+                    ->collapsible()
+                    ->collapsed(false)
                     ->schema([
                         Forms\Components\Select::make('mesin')
                         ->options([
