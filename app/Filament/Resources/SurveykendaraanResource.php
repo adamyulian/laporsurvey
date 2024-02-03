@@ -272,7 +272,6 @@ class SurveykendaraanResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->heading('Survey Result')
             ->columns([
                 Tables\Columns\TextColumn::make('tempat_duduk')
                     ->searchable(),

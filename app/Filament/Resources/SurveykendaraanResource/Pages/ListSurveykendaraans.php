@@ -10,7 +10,7 @@ class ListSurveykendaraans extends ListRecords
 {
     protected static string $resource = SurveykendaraanResource::class;
 
-    protected ?string $heading = 'Survey Kendaraan';
+    protected ?string $heading = 'Daftar Survey';
 
     protected function getHeaderActions(): array
     {

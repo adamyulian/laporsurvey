@@ -10,6 +10,8 @@ class ViewSurveykendaraan extends ViewRecord
 {
     protected static string $resource = SurveykendaraanResource::class;
 
+    protected ?string $heading = 'Hasil Survey';
+
     protected function getHeaderActions(): array
     {
         return [

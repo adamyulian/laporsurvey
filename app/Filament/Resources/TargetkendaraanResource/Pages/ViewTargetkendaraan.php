@@ -10,6 +10,8 @@ class ViewTargetkendaraan extends ViewRecord
 {
     protected static string $resource = TargetkendaraanResource::class;
 
+    protected ?string $heading = 'View Target';
+
     protected function getHeaderActions(): array
     {
         return [

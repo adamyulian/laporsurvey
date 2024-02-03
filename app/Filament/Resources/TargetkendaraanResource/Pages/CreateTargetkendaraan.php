@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateTargetkendaraan extends CreateRecord
 {
     protected static string $resource = TargetkendaraanResource::class;
+
+    protected ?string $heading = 'Create Target';
 }

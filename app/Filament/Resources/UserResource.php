@@ -54,7 +54,9 @@ class UserResource extends Resource
                         'admin' =>'Admin',
                         'ketua' => 'Ketua',
                         'surveyor' => 'Surveyor'
-                    ])
+                    ]),
+                Forms\Components\Toggle::make('penyelia')
+                    ->label('Apakah Penyelia Aset ?'),
             ]);
     }
 
@@ -95,6 +97,9 @@ class UserResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('role')
                     ->label('Role')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('penyelia')
+                    ->label('Penyelia')
                     ->sortable(),
             ])
             ->filters([

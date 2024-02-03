@@ -10,6 +10,8 @@ class EditSurveykendaraan extends EditRecord
 {
     protected static string $resource = SurveykendaraanResource::class;
 
+    protected ?string $heading = 'Edit Survey';
+
     protected function getHeaderActions(): array
     {
         return [

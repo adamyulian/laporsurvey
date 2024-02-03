@@ -10,6 +10,8 @@ class ListTargetkendaraans extends ListRecords
 {
     protected static string $resource = TargetkendaraanResource::class;
 
+    protected ?string $heading = 'List Target';
+
     protected function getHeaderActions(): array
     {
         return [

@@ -10,6 +10,8 @@ class EditTargetkendaraan extends EditRecord
 {
     protected static string $resource = TargetkendaraanResource::class;
 
+    protected ?string $heading = 'Edit Target';
+
     protected function getHeaderActions(): array
     {
         return [
