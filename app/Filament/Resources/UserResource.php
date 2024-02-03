@@ -98,7 +98,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('role')
                     ->label('Role')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('penyelia')
+                Tables\Columns\ToggleColumn::make('penyelia')
                     ->label('Penyelia')
                     ->sortable(),
             ])
