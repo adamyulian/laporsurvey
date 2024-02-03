@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSurveykendaraan extends CreateRecord
 {
     protected static string $resource = SurveykendaraanResource::class;
+
+    protected ?string $heading = 'Create Survey';
 }
