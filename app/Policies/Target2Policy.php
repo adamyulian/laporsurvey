@@ -13,7 +13,7 @@ class Target2Policy
      */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin' or $user->penyelia === 1;
+        return $user->role === 'admin' or $user->penyelia === '1';
     }
 
     // /**

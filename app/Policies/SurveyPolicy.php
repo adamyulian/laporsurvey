@@ -11,10 +11,10 @@ class SurveyPolicy
     // /**
     //  * Determine whether the user can view any models.
     //  */
-    // public function viewAny(User $user): bool
-    // {
-    //     //
-    // }
+    public function viewAny(User $user): bool
+    {
+        return $user->role === 'admin' or $user->penyelia === '0';
+    }
 
     // /**
     //  * Determine whether the user can view the model.
