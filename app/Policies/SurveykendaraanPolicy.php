@@ -14,7 +14,7 @@ class SurveykendaraanPolicy
     public function viewAny(User $user): bool
     {
         dump($user->penyelia);
-        return $user->penyelia === 1;
+        return $user->penyelia === '1';
     }
 
     // /**
