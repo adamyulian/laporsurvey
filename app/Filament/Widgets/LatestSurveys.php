@@ -11,16 +11,18 @@ use Filament\Widgets\TableWidget as BaseWidget;
 class LatestSurveys extends BaseWidget
 {
     protected static ?int $sort = 4;
+
+    public static function canView(): bool
+    {
+        return auth()->user()->role === 'admin' or auth()->user()->role === 'ketua' ;
+    }
     
-    protected int | string | array $columnSpan = [
-        'md' => 2,
-        'xl' => 3,
-    ];
+    protected int | string | array $columnSpan = 'full';
 
     public function table(Table $table): Table
     {
         return $table
-            ->heading('Survey Terbaru Aset Tanah')
+            ->heading('Survey Aset Tanah')
             ->query(SurveyResource::getEloquentQuery())
             ->defaultPaginationPageOption(option:5)
             ->defaultSort(column:'created_at', direction:'desc')
