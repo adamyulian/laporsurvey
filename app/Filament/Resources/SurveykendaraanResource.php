@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SurveykendaraanResource\Pages;
 use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
+use App\Models\Target2;
 use App\Models\TargetKendaraan;
 
 class SurveykendaraanResource extends Resource
@@ -42,7 +43,7 @@ class SurveykendaraanResource extends Resource
                         ->label('Silakan memilih Nopol/Target Survey')
                         ->preload()
                         ->relationship(
-                            name: 'Targetkendaraan', 
+                            name: 'Target2', 
                             titleAttribute: 'nopol',
                             modifyQueryUsing: function (Builder $query) {
                                 if (Auth::user()->role === 'admin') {
@@ -56,7 +57,7 @@ class SurveykendaraanResource extends Resource
                                 ->where('status', 0)
                                 ;}
                             )
-                        ->getOptionLabelFromRecordUsing(fn (TargetKendaraan $record) => "{$record->nopol} {$record->merk} {$record->tipe}")
+                        ->getOptionLabelFromRecordUsing(fn (Target2 $record) => "{$record->nopol} {$record->merk} {$record->tipe}")
                         ->searchable(['nopol'])
                     ]),
                 Section::make('Interior')

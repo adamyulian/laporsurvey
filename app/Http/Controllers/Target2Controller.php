@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\target_kendaraan;
-use App\Http\Requests\Storetarget_kendaraanRequest;
-use App\Http\Requests\Updatetarget_kendaraanRequest;
+use App\Models\Target2;
+use App\Http\Requests\StoreTarget2Request;
+use App\Http\Requests\UpdateTarget2Request;
 
-class TargetKendaraanController extends Controller
+class Target2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class TargetKendaraanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Storetarget_kendaraanRequest $request)
+    public function store(StoreTarget2Request $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class TargetKendaraanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(target_kendaraan $target_kendaraan)
+    public function show(Target2 $target2)
     {
         //
     }
@@ -43,7 +43,7 @@ class TargetKendaraanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(target_kendaraan $target_kendaraan)
+    public function edit(Target2 $target2)
     {
         //
     }
@@ -51,7 +51,7 @@ class TargetKendaraanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updatetarget_kendaraanRequest $request, target_kendaraan $target_kendaraan)
+    public function update(UpdateTarget2Request $request, Target2 $target2)
     {
         //
     }
@@ -59,7 +59,7 @@ class TargetKendaraanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(target_kendaraan $target_kendaraan)
+    public function destroy(Target2 $target2)
     {
         //
     }

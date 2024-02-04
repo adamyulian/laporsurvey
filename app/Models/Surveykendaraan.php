@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Target2;
 use App\Models\Targetkendaraan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -67,8 +68,9 @@ class Surveykendaraan extends Model
                 }
             });
         }
-        public function targetkendaraan()
+
+    public function Target2()
     {
-        return $this->belongsTo(related:Targetkendaraan::class);
+        return $this->belongsTo(related:Target2::class);
     }
 }

@@ -4,19 +4,19 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Target2;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use App\Models\Targetkendaraan;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\Target2Resource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\TargetkendaraanResource\Pages;
-use App\Filament\Resources\TargetkendaraanResource\RelationManagers;
+use App\Filament\Resources\Target2Resource\RelationManagers;
 
-class TargetkendaraanResource extends Resource
+class Target2Resource extends Resource
 {
-    protected static ?string $model = Targetkendaraan::class;
+    protected static ?string $model = Target2::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -46,6 +46,8 @@ class TargetkendaraanResource extends Resource
                     ->numeric(),
                 Forms\Components\TextInput::make('nama_penyelia')
                     ->maxLength(255),
+                Forms\Components\TextInput::make('user_id')
+                    ->numeric(),
             ]);
     }
 
@@ -79,6 +81,11 @@ class TargetkendaraanResource extends Resource
                 Tables\Columns\TextColumn::make('team_id')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('nama_penyelia')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('user_id')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -87,8 +94,6 @@ class TargetkendaraanResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('nama_penyelia')
-                    ->searchable(),
             ])
             ->filters([
                 //
@@ -117,10 +122,10 @@ class TargetkendaraanResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTargetkendaraans::route('/'),
-            'create' => Pages\CreateTargetkendaraan::route('/create'),
-            'view' => Pages\ViewTargetkendaraan::route('/{record}'),
-            'edit' => Pages\EditTargetkendaraan::route('/{record}/edit'),
+            'index' => Pages\ListTarget2s::route('/'),
+            'create' => Pages\CreateTarget2::route('/create'),
+            'view' => Pages\ViewTarget2::route('/{record}'),
+            'edit' => Pages\EditTarget2::route('/{record}/edit'),
         ];
     }    
 }
