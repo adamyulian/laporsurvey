@@ -17,7 +17,7 @@ class LatestSurveys extends BaseWidget
     public function table(Table $table): Table
     {
         return $table
-            ->heading('Survey Pemanfaatan Aset')
+            ->heading('Survey Pemanfaatan Aset Tanah')
             ->query(SurveyResource::getEloquentQuery())
             ->defaultPaginationPageOption(option:5)
             ->defaultSort(column:'created_at', direction:'desc')
