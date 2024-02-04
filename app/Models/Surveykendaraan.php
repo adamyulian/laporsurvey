@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Target2;
 use App\Models\Targetkendaraan;
 use Illuminate\Support\Facades\Auth;
@@ -52,14 +53,14 @@ class Surveykendaraan extends Model
             static::creating(function($model) {
                 $model->user_id = Auth::user()->id;
                 $model->team_id = Auth::user()->team->id;
-                $cekTarget = Targetkendaraan::where('id', $model->target_kendaraan_id)->first();
+                $cekTarget = Target2::where('id', $model->target_kendaraan_id)->first();
                 $cekTarget->update([
                     'status' => 1
                 ]);
             });
             static::deleting(function ($model) {
                 // Assuming there is a 'target_id' attribute in the model
-                $target = Targetkendaraan::where('id', $model->target_kendaraan_id)->first();
+                $target = Target2::where('id', $model->target_kendaraan_id)->first();
         
                 if ($target) {
                     $target->update([
@@ -72,5 +73,10 @@ class Surveykendaraan extends Model
     public function Target2()
     {
         return $this->belongsTo(related:Target2::class);
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(related:User::class);
     }
 }
