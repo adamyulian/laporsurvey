@@ -13,9 +13,8 @@ class SurveykendaraanPolicy
     //  */
     public function viewAny(User $user): bool
     {
-        dump($user->role);
         dump($user->penyelia);
-        return $user->penyelia === false;
+        return $user->penyelia === 1;
     }
 
     // /**
