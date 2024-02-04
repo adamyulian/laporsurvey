@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\TargetkendaraanResource\Pages;
-use App\Filament\Resources\TargetkendaraanResource\RelationManagers;
-use App\Models\Targetkendaraan;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Targetkendaraan;
+use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\TargetkendaraanResource\Pages;
+use App\Filament\Resources\TargetkendaraanResource\RelationManagers;
 
 class TargetkendaraanResource extends Resource
 {
@@ -51,6 +52,17 @@ class TargetkendaraanResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function (Builder $query) {
+
+            if (Auth::user()->role === 'admin') {
+                return $query;
+            }
+    
+            // Non-admin users can only view their own component
+            // return 
+                $name = Auth::user()->name;
+                $query->where('nama_penyelia', $name);
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('nopol')
                     ->searchable(),

@@ -272,6 +272,17 @@ class SurveykendaraanResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(function (Builder $query) {
+
+            if (Auth::user()->role === 'admin') {
+                return $query;
+            }
+    
+            // Non-admin users can only view their own component
+            // return 
+                $user_id = Auth::user()->id;
+                $query->where('user_id', $user_id);
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('tempat_duduk')
                     ->searchable(),
