@@ -13,6 +13,8 @@ class SurveykendaraanPolicy
     //  */
     public function viewAny(User $user): bool
     {
+        dd($user->role);
+        dd($user->penyelia);
         return $user->role === 'admin' or $user->penyelia === 1;
     }
 
