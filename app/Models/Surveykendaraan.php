@@ -67,7 +67,7 @@ class Surveykendaraan extends Model
                 }
             });
         }
-        public function Targetkendaraan()
+        public function targetkendaraan()
     {
         return $this->belongsTo(related:Targetkendaraan::class);
     }
