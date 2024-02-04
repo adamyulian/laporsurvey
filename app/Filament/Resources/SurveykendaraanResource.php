@@ -51,8 +51,8 @@ class SurveykendaraanResource extends Resource
                         
                                 // Non-admin users can only view their own component
                                 // return 
-                                $teamId = Auth::user()->team->id;
-                                $query->where('team_id', $teamId)
+                                $nameUser = Auth::user()->name;
+                                $query->where('targetkendaraan.nama_penyelia', $nameUser)
                                 ->where('status', 0)
                                 ;}
                             )
