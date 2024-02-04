@@ -15,7 +15,7 @@ class SurveykendaraanPolicy
     {
         dump($user->role);
         dump($user->penyelia);
-        return $user->penyelia === 1;
+        return $user->penyelia === 0;
     }
 
     // /**
