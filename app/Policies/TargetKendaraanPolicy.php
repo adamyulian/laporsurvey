@@ -6,15 +6,15 @@ use App\Models\User;
 use App\Models\target_kendaraan;
 use Illuminate\Auth\Access\Response;
 
-class TargetKendaraanPolicy
+class TargetkendaraanPolicy
 {
     // /**
     //  * Determine whether the user can view any models.
     //  */
-    // public function viewAny(User $user): bool
-    // {
-    //     return $user->role === 'admin' or $user->penyelia === 1;
-    // }
+    public function viewAny(User $user): bool
+    {
+        return $user->role === 'admin' or $user->penyelia === 1;
+    }
 
     // /**
     //  * Determine whether the user can view the model.
