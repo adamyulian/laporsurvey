@@ -8,7 +8,7 @@ use App\Models\Surveykendaraan;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
 
-class LatestSurveys extends BaseWidget
+class LatestSurveykendaraans extends BaseWidget
 {
     protected static ?int $sort = 5;
 
