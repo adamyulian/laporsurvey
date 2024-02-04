@@ -12,12 +12,15 @@ class LatestSurveys extends BaseWidget
 {
     protected static ?int $sort = 4;
     
-    protected int | string | array $columnSpan = 'full';
+    protected int | string | array $columnSpan = [
+        'md' => 2,
+        'xl' => 3,
+    ];
 
     public function table(Table $table): Table
     {
         return $table
-            ->heading('Survey Pemanfaatan Aset Tanah')
+            ->heading('Survey Terbaru Aset Tanah')
             ->query(SurveyResource::getEloquentQuery())
             ->defaultPaginationPageOption(option:5)
             ->defaultSort(column:'created_at', direction:'desc')
