@@ -39,7 +39,7 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\Select::make('target_kendaraan_id')
+                        Forms\Components\ToggleButtons::make('target_kendaraan_id')
                         ->label('Silakan memilih Nopol/Target Survey')
                         ->preload()
                         ->relationship(
@@ -64,45 +64,95 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\Select::make('tempat_duduk')
+                        Forms\Components\ToggleButtons::make('tempat_duduk')
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('dashboard')
+                    Forms\Components\ToggleButtons::make('dashboard')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('ac')
+                    Forms\Components\ToggleButtons::make('ac')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('kaca_film')
+                    Forms\Components\ToggleButtons::make('kaca_film')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('toolkit')
+                    Forms\Components\ToggleButtons::make('toolkit')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_interior')
                         ->image()
@@ -112,92 +162,204 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\Select::make('body')
+                        Forms\Components\ToggleButtons::make('body')
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('cat')
+                    Forms\Components\ToggleButtons::make('cat')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('lampu_utama')
+                    Forms\Components\ToggleButtons::make('lampu_utama')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('lampu_sein_depan')
+                    Forms\Components\ToggleButtons::make('lampu_sein_depan')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false),
-                    Forms\Components\Select::make('lampu_sein_blkg')
+,
+                    Forms\Components\ToggleButtons::make('lampu_sein_blkg')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('lampu_rem')
+                    Forms\Components\ToggleButtons::make('lampu_rem')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('ban_mobil')
+                    Forms\Components\ToggleButtons::make('ban_mobil')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('ban_serep')
+                    Forms\Components\ToggleButtons::make('ban_serep')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('klakson')
+                    Forms\Components\ToggleButtons::make('klakson')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('wiper')
+                    Forms\Components\ToggleButtons::make('wiper')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('spion')
+                    Forms\Components\ToggleButtons::make('spion')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_eksterior')
                         ->image()
@@ -207,61 +369,138 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\Select::make('mesin')
+                        Forms\Components\ToggleButtons::make('mesin')
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('accu')
+                    Forms\Components\ToggleButtons::make('accu')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('rem')
+                    Forms\Components\ToggleButtons::make('rem')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('transmisi')
+                    Forms\Components\ToggleButtons::make('transmisi')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('power_steering')
+                    Forms\Components\ToggleButtons::make('power_steering')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('radiator')
+                    Forms\Components\ToggleButtons::make('radiator')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
-                    Forms\Components\Select::make('oli_mesin')
+                    Forms\Components\ToggleButtons::make('oli_mesin')
+                    ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'success',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-                        ->native(false)
+
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_mesin')
                         ->image()
