@@ -386,8 +386,12 @@ class SurveyResource extends Resource
                     ->alignCenter()
                     ->label('Digunakan/Dimanfaatkan')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('surveyor_id')
-                    ->label('Status Detail')
+                Tables\Columns\TextColumn::make('details')
+                    ->state(function (Survey $record): float {
+                        $details = Detail::where('survey_id', $record->id)->count();
+                        return $details;
+                    })
+                    ->label('Jumlah Detail')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
