@@ -536,6 +536,7 @@ class SurveykendaraanResource extends Resource
             })
             ->columns([
                 Tables\Columns\TextColumn::make('target2.opd')
+                    ->label('Kendaraan')
                     ->description(fn (Surveykendaraan $record): string => $record->target2->nopol )
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tempat_duduk')
@@ -709,46 +710,10 @@ class SurveykendaraanResource extends Resource
                                 // ...
                             ]),
                     ]),
-                    Section::make('Hasil Survey Interior')
-                        ->columns(4)
-                        ->schema([
-                            TextEntry::make('detail')
-                                ->columnSpan(2)
-                                ->label('Detail Penggunaan/Pemanfaatan'),
-                            ImageEntry::make('gambar_interior')
-                                ->columnSpan(4)
-                                ->limit(5)
-                                ->limitedRemainingText()
-                                ->label('Foto Bukti Penggunaan/Pemanfaatan')
-                                ->size(150),
-                            ImageEntry::make('gambar_eksterior')
-                                ->columnSpan(2)
-                                ->label('Foto Jalan Akses'),
-                            ImageEntry::make('gambar_mesin')
-                                ->columnSpan(2)
-                                ->label('Foto Bangunan dan Jalan'),
-                            TextEntry::make('nama_pic')
-                                ->columnSpan(2)
-                                ->label('Nama Penanggung Jawab'),
-                            TextEntry::make('no_hp_pic')
-                                ->columnSpan(2)
-                                ->label('Nomor Telepon/Whatsapp Penanggung Jawab'),
-                            TextEntry::make('hubungan_hukum')
-                                ->columnSpan(2)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'belum' => 'danger',
-                                    'sudah_habis' => 'warning',
-                                    'ada' => 'success',})
-                                ->label('Hubungan Hukum'),
-                            ImageEntry::make('dokumen_hub_hukum')
-                                ->columnSpan(2)
-                                ->label('Dokumen Hub. Hukum'),
-                            
-                        ])
+                  
                 ])->columnSpan(4),
                 Group::make([
-                    Section::make([
+                    InfolistSection::make([
                         TextEntry::make('created_at')
                             ->dateTime(),
                         TextEntry::make('published_at')
