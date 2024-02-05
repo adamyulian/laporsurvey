@@ -651,6 +651,7 @@ class SurveykendaraanResource extends Resource
                     Tabs::make('Tabs')
                     ->tabs([
                         Tabs\Tab::make('Interior')
+                            ->columns(4)
                             ->schema([
                                 TextEntry::make('tempat_duduk')
                                 ->columnSpan(2)
@@ -696,6 +697,7 @@ class SurveykendaraanResource extends Resource
                                 ->columnSpan(2),
                             ]),
                         Tabs\Tab::make('Eksterior')
+                            ->columns(4)
                             ->schema([
                                 TextEntry::make('body')
                                 ->columnSpan(2)
@@ -789,6 +791,7 @@ class SurveykendaraanResource extends Resource
                                 ->columnSpan(2),
                             ]),
                         Tabs\Tab::make('Mesin')
+                            ->columns(4)
                             ->schema([
                                 TextEntry::make('mesin')
                                 ->columnSpan(2)
