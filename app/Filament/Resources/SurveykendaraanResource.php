@@ -635,7 +635,9 @@ class SurveykendaraanResource extends Resource
                             ->size(TextEntry\TextEntrySize::Large),
                         TextEntry::make('target2.opd')
                             ->columnSpan(2)
-                            ->label('Perangkat Daerah'),
+                            ->label('Perangkat Daerah')
+                            ->weight(FontWeight::Bold)
+                            ->size(TextEntry\TextEntrySize::Large),
                         TextEntry::make('target2.merk')
                             ->columnSpan(2)
                             ->label('Merk'),
@@ -644,10 +646,10 @@ class SurveykendaraanResource extends Resource
                             ->label('Tipe'),  
                         TextEntry::make('target2.jabatan')
                             ->columnSpan(2)
-                            ->label('Jabatan'),
+                            ->label('Penggunaan Kendaraan'),
                         TextEntry::make('target2.tahun')
                             ->columnSpan(2)
-                            ->label('Alamat'),
+                            ->label('Tahun'),
                     ]),
                     Tabs::make('Tabs')
                     ->tabs([
