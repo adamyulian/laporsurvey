@@ -24,11 +24,15 @@ class Detail extends Model
             if ($survey->details !== null && $survey->details->count() === 0) {
                 $survey->update(['surveyor_id' => 1]);
             }
-        });
+        });    
 
         static::deleting(function ($model) {
-            // Assuming there is a 'target_id' attribute in the model
             $survey = Survey::find($model->survey_id);
+
+            if ($survey && $survey->details !== null && $survey->details->count() > 0) {
+                // If details count is greater than 0, do not update surveyor_id
+                return;
+            }
     
             if ($survey) {
                 $survey->update([
