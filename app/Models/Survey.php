@@ -53,7 +53,6 @@ class Survey extends Model
             'hubungan_hukum',
             'dokumen_hub_hukum',
             'detail',
-            'team_id',
             'lat',
             'lng',
             'foto1',
