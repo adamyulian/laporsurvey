@@ -52,7 +52,6 @@ class Surveykendaraan extends Model
         protected static function booted() {
             static::creating(function($model) {
                 $model->user_id = Auth::user()->id;
-                $model->team_id = Auth::user()->team->id;
                 $cekTarget = Target2::where('id', $model->target_kendaraan_id)->first();
                 $cekTarget->update([
                     'status' => 1
