@@ -658,12 +658,12 @@ class SurveykendaraanResource extends Resource
                                     'Baik' => 'success',
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
-                                })                            
-                                ->icons(fn (string $state): string => match ($state) {
-                                    'Baik' => 'heroicon-o-check-badge',
-                                    'Kurang Baik' => 'heroicon-o-shield-exclamation',
-                                    'Rusak' => 'heroicon-o-archive-box-x-mark',
-                                }),
+                                }),                            
+                                // ->icons(fn (string $state): string => match ($state) {
+                                //     'Baik' => 'heroicon-o-check-badge',
+                                //     'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                                //     'Rusak' => 'heroicon-o-archive-box-x-mark',
+                                // }),
                                 TextEntry::make('dashboard')
                                 ->columnSpan(2)
                                 ->colors([
