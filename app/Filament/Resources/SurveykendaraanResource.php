@@ -789,9 +789,12 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
-                                ImageEntry::make('gambar_eksterior')
-                                ->columnSpan(2)
-                                ->size(150),
+                                InfolistSection::make('Gambar')
+                                ->schema([
+                                    ImageEntry::make('gambar_eksterior')
+                                    ->columnSpan(2)
+                                    ->size(150),
+                                ])
                             ]),
                         Tabs\Tab::make('Mesin')
                             ->columns(4)
