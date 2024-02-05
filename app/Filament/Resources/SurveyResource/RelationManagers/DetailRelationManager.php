@@ -51,7 +51,8 @@ class DetailRelationManager extends RelationManager
             ->recordTitleAttribute('penggunaan')
             ->columns([
                 Tables\Columns\TextColumn::make('penggunaan'),
-                Tables\Columns\TextColumn::make('luas'),
+                Tables\Columns\TextColumn::make('luas')
+                ->label('Luas (M2)'),
             ])
             ->filters([
                 //

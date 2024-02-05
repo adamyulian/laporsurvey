@@ -392,6 +392,7 @@ class SurveyResource extends Resource
                         return $details;
                     })
                     ->label('Jumlah Detail')
+                    ->alignCenter()
                     ->badge(),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
