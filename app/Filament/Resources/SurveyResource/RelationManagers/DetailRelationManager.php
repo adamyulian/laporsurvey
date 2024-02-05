@@ -39,7 +39,7 @@ class DetailRelationManager extends RelationManager
                             ->label('Nama Penggunaan/Pemanfaatan'),
                 Forms\Components\Textarea::make('detail')
                             ->label('Detail Penggunaan')
-                            ->placeholder('Contoh : Jika digunakan sebagai Rumah Ibadah, isi sebagai Masjid atau Gereja')
+                            ->placeholder('Jika digunakan sebagai Rumah Ibadah rincikan namanya, Contoh : Masjid Ulil Albaab')
                             ->required(),
                 Forms\Components\TextInput::make('luas')
                     ->required()
