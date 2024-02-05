@@ -392,7 +392,7 @@ class SurveyResource extends Resource
                         return $details;
                     })
                     ->label('Jumlah Detail')
-                    ->sortable(),
+                    ->badge(),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
                     ->searchable()
