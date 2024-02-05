@@ -625,6 +625,7 @@ class SurveykendaraanResource extends Resource
             ->schema([
                 Group::make([
                     InfolistSection::make('Informasi Kendaraan')
+                    ->collapsible()
                     ->columns(4)
                     ->schema([
                         TextEntry::make('target2.nopol')
@@ -649,6 +650,7 @@ class SurveykendaraanResource extends Resource
                             ->label('Alamat'),
                     ]),
                     Tabs::make('Tabs')
+                    ->collapsible()
                     ->tabs([
                         Tabs\Tab::make('Interior')
                             ->columns(4)
