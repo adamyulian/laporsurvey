@@ -35,7 +35,6 @@ class DetailRelationManager extends RelationManager
                                 'Jalan' => 'Jalan',
                                 'Sawah/Kebun' => 'Sawah/Kebun',
                                 'Tambak' => 'Tambak',
-                                'Lainnya' => 'Lainnya'
                             ])
                             ->label('Nama Penggunaan/Pemanfaatan'),
                 Forms\Components\TextInput::make('luas')
