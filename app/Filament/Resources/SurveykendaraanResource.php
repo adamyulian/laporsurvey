@@ -694,9 +694,14 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }), 
-                                ImageEntry::make('gambar_interior')
-                                ->columnSpan(2)
-                                ->size(150),
+                                InfolistSection::make('Gambar')
+                                ->collapsible()
+                                ->collapsed(true)
+                                ->schema([
+                                    ImageEntry::make('gambar_interior')
+                                    ->columnSpanFull()
+                                    ->size(760),
+                                ])
                             ]),
                         Tabs\Tab::make('Eksterior')
                             ->columns(4)
@@ -791,11 +796,11 @@ class SurveykendaraanResource extends Resource
                                 }),
                                 InfolistSection::make('Gambar')
                                 ->collapsible()
-                                ->collapsed(false)
+                                ->collapsed(true)
                                 ->schema([
                                     ImageEntry::make('gambar_eksterior')
                                     ->columnSpanFull()
-                                    ->size(500),
+                                    ->size(760),
                                 ])
                             ]),
                         Tabs\Tab::make('Mesin')
@@ -857,9 +862,14 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
-                                ImageEntry::make('gambar_eksterior')
-                                ->columnSpan(2)
-                                ->size(150),
+                                InfolistSection::make('Gambar')
+                                ->collapsible()
+                                ->collapsed(true)
+                                ->schema([
+                                    ImageEntry::make('gambar_mesin')
+                                    ->columnSpanFull()
+                                    ->size(760),
+                                ])
                             ]),
                     ]),
                   
