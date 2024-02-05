@@ -22,7 +22,7 @@ class Detail extends Model
             $survey = Survey::find($model->survey_id);
             dump($survey->details);
             dump($survey->details->count());
-            if ($survey->details !== null && $survey->details->count() === '0') {
+            if ($survey && $survey->details !== null && $survey->details->count() === '0') {
                 $survey->update(['surveyor_id' => '1']);
             }
         });    
