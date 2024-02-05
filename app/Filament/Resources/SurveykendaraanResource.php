@@ -69,7 +69,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -87,7 +87,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -105,7 +105,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -123,7 +123,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -141,7 +141,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -167,7 +167,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -185,7 +185,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -203,7 +203,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -221,7 +221,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -239,7 +239,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -257,7 +257,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -275,7 +275,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -293,7 +293,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -311,7 +311,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -329,7 +329,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -347,7 +347,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -374,7 +374,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -393,7 +393,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -412,7 +412,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -431,7 +431,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -450,7 +450,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -469,7 +469,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
@@ -488,7 +488,7 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Rusak' => 'success',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
