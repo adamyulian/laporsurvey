@@ -19,7 +19,7 @@ class Detail extends Model
     protected static function booted() {
         static::creating(function($model) {
 
-            $survey = Survey::find($model->survey_id);
+            $survey = Survey::where('id', $model->survey_id)->first();
             dump($survey->details);
             dump($survey->details->count());
             if ($survey && $survey->details !== null && $survey->details->count() === '0') {
@@ -28,7 +28,7 @@ class Detail extends Model
         });    
 
         static::deleting(function ($model) {
-            $survey = Survey::find($model->survey_id);
+            $survey = Survey::where('id', $model->survey_id)->first();
 
             if ($survey && $survey->details !== null && $survey->details->count() > 0) {
                 // If details count is greater than 0, do not update surveyor_id
