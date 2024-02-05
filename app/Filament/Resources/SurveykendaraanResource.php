@@ -536,7 +536,7 @@ class SurveykendaraanResource extends Resource
             })
             ->columns([
                 Tables\Columns\TextColumn::make('target2.opd')
-                    ->description(fn (Surveykendaraan $record): string => $record->target->nopol )
+                    ->description(fn (Surveykendaraan $record): string => $record->target2->nopol )
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tempat_duduk')
                     ->searchable(),
