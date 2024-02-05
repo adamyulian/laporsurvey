@@ -650,7 +650,6 @@ class SurveykendaraanResource extends Resource
                             ->label('Alamat'),
                     ]),
                     Tabs::make('Tabs')
-                    ->collapsible()
                     ->tabs([
                         Tabs\Tab::make('Interior')
                             ->columns(4)
@@ -696,7 +695,8 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }), 
                                 ImageEntry::make('gambar_interior')
-                                ->columnSpan(2),
+                                ->columnSpan(2)
+                                ->size(150),
                             ]),
                         Tabs\Tab::make('Eksterior')
                             ->columns(4)
@@ -790,7 +790,8 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 ImageEntry::make('gambar_eksterior')
-                                ->columnSpan(2),
+                                ->columnSpan(2)
+                                ->size(150),
                             ]),
                         Tabs\Tab::make('Mesin')
                             ->columns(4)
@@ -852,7 +853,8 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 ImageEntry::make('gambar_eksterior')
-                                ->columnSpan(2),
+                                ->columnSpan(2)
+                                ->size(150),
                             ]),
                     ]),
                   
