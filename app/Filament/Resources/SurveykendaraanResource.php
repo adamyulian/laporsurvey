@@ -790,10 +790,12 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 InfolistSection::make('Gambar')
+                                ->collapsible()
+                                ->collapsed(false)
                                 ->schema([
                                     ImageEntry::make('gambar_eksterior')
                                     ->columnSpanFull()
-                                    ->size(150),
+                                    ->size(500),
                                 ])
                             ]),
                         Tabs\Tab::make('Mesin')
