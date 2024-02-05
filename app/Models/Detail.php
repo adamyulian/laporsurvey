@@ -13,6 +13,7 @@ class Detail extends Model
     protected $fillable = [
         'penggunaan',
         'survey_id',
+        'detail',
         'luas'
     ];
 
