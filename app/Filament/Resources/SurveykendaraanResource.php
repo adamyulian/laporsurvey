@@ -654,6 +654,7 @@ class SurveykendaraanResource extends Resource
                             ->schema([
                                 TextEntry::make('tempat_duduk')
                                 ->columnSpan(2)
+                                ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'success',
                                     'Kurang Baik' => 'warning',
