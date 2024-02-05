@@ -18,7 +18,8 @@ class Detail extends Model
 
     protected static function booted() {
         static::creating(function($model) {
-            $survey = Survey::find($surveyId);
+
+            $survey = Survey::find($model->survey_id);
 
             if ($survey->details->count() > 0) {
                 $survey->update(['status' => 1]);
