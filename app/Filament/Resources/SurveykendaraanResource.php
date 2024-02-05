@@ -585,12 +585,9 @@ class SurveykendaraanResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('oli_mesin')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('gambar_interior')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('gambar_eksterior')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('gambar_mesin')
-                    ->searchable(),
+                Tables\Columns\ImageColumn::make('gambar_interior'),
+                Tables\Columns\ImageColumn::make('gambar_eksterior'),
+                Tables\Columns\ImageColumn::make('gambar_mesin'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
