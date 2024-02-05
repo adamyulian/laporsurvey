@@ -46,7 +46,7 @@ class Surveykendaraan extends Model
         'gambar_interior',
         'gambar_eksterior',
         'gambar_mesin',
-        'target_kendaraan_id'
+        'target2_id'
         ];
         
         protected static function booted() {

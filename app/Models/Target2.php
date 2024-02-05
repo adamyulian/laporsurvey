@@ -19,4 +19,9 @@ class Target2 extends Model
         'team_id',
         'nama_penyelia'
         ];
+
+    public function Surveykendaraan()
+        {
+            return $this->hasMany(related:Surveykendaraan::class);
+        }
 }
