@@ -792,7 +792,7 @@ class SurveykendaraanResource extends Resource
                                 InfolistSection::make('Gambar')
                                 ->schema([
                                     ImageEntry::make('gambar_eksterior')
-                                    ->columnSpan(2)
+                                    ->columnSpanFull()
                                     ->size(150),
                                 ])
                             ]),
