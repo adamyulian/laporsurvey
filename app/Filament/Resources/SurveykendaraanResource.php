@@ -4,18 +4,29 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Detail;
+use App\Models\Survey;
+use App\Models\Target;
+use App\Models\Target2;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\Surveykendaraan;
+use App\Models\TargetKendaraan;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Section;
+use Filament\Support\Enums\FontWeight;
+use Filament\Infolists\Components\Tabs;
+use Filament\Infolists\Components\Group;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SurveykendaraanResource\Pages;
+use Filament\Infolists\Components\Section as InfolistSection;
 use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
-use App\Models\Target2;
-use App\Models\TargetKendaraan;
 
 class SurveykendaraanResource extends Resource
 {
@@ -524,6 +535,9 @@ class SurveykendaraanResource extends Resource
                 $query->where('user_id', $user_id);
             })
             ->columns([
+                Tables\Columns\TextColumn::make('target2.opd')
+                    ->description(fn (Surveykendaraan $record): string => $record->target->nopol )
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('tempat_duduk')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('dashboard')
@@ -603,6 +617,153 @@ class SurveykendaraanResource extends Resource
             ]);
     }
     
+    public static function infolist(Infolist $infolist): Infolist
+
+    {
+        return $infolist
+            ->schema([
+                Group::make([
+                    InfolistSection::make('Informasi Kendaraan')
+                    ->columns(4)
+                    ->schema([
+                        TextEntry::make('target2.nopol')
+                            ->columnSpan(2)
+                            ->label('Nomor Polisi')
+                            ->weight(FontWeight::Bold)
+                            ->size(TextEntry\TextEntrySize::Large),
+                        TextEntry::make('target2.opd')
+                            ->columnSpan(2)
+                            ->label('Perangkat Daerah'),
+                        TextEntry::make('target2.merk')
+                            ->columnSpan(2)
+                            ->label('Merk'),
+                        TextEntry::make('target2.tipe')
+                            ->columnSpan(2)
+                            ->label('Tipe'),  
+                        TextEntry::make('target2.jabatan')
+                            ->columnSpan(2)
+                            ->label('Jabatan'),
+                        TextEntry::make('target2.tahun')
+                            ->columnSpan(2)
+                            ->label('Alamat'),
+                    ]),
+                    Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('Interior')
+                            ->schema([
+                                TextEntry::make('tempat_duduk')
+                                ->columnSpan(2)
+                                ->colors([
+                                    'Baik' => 'info',
+                                    'Kurang Baik' => 'warning',
+                                    'Rusak' => 'danger',
+                                ])
+                                ->icons([
+                                    'Baik' => 'heroicon-o-check-badge',
+                                    'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                                    'Rusak' => 'heroicon-o-archive-box-x-mark',
+                                ]),
+                                TextEntry::make('dashboard')
+                                ->columnSpan(2)
+                                ->colors([
+                                    'Baik' => 'info',
+                                    'Kurang Baik' => 'warning',
+                                    'Rusak' => 'danger',
+                                ])
+                                ->icons([
+                                    'Baik' => 'heroicon-o-check-badge',
+                                    'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                                    'Rusak' => 'heroicon-o-archive-box-x-mark',
+                                ]),
+                                TextEntry::make('ac')
+                                ->columnSpan(2)
+                                ->colors([
+                                    'Baik' => 'info',
+                                    'Kurang Baik' => 'warning',
+                                    'Rusak' => 'danger',
+                                ])
+                                ->icons([
+                                    'Baik' => 'heroicon-o-check-badge',
+                                    'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                                    'Rusak' => 'heroicon-o-archive-box-x-mark',
+                                ]),
+                                TextEntry::make('kaca_film')
+                                ->columnSpan(2)
+                                ->colors([
+                                    'Baik' => 'info',
+                                    'Kurang Baik' => 'warning',
+                                    'Rusak' => 'danger',
+                                ])
+                                ->icons([
+                                    'Baik' => 'heroicon-o-check-badge',
+                                    'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                                    'Rusak' => 'heroicon-o-archive-box-x-mark',
+                                ]),
+                            ]),
+                        Tabs\Tab::make('Eksterior')
+                            ->schema([
+                                // ...
+                            ]),
+                        Tabs\Tab::make('Mesin')
+                            ->schema([
+                                // ...
+                            ]),
+                    ]),
+                    Section::make('Hasil Survey Interior')
+                        ->columns(4)
+                        ->schema([
+                            TextEntry::make('detail')
+                                ->columnSpan(2)
+                                ->label('Detail Penggunaan/Pemanfaatan'),
+                            ImageEntry::make('gambar_interior')
+                                ->columnSpan(4)
+                                ->limit(5)
+                                ->limitedRemainingText()
+                                ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                                ->size(150),
+                            ImageEntry::make('gambar_eksterior')
+                                ->columnSpan(2)
+                                ->label('Foto Jalan Akses'),
+                            ImageEntry::make('gambar_mesin')
+                                ->columnSpan(2)
+                                ->label('Foto Bangunan dan Jalan'),
+                            TextEntry::make('nama_pic')
+                                ->columnSpan(2)
+                                ->label('Nama Penanggung Jawab'),
+                            TextEntry::make('no_hp_pic')
+                                ->columnSpan(2)
+                                ->label('Nomor Telepon/Whatsapp Penanggung Jawab'),
+                            TextEntry::make('hubungan_hukum')
+                                ->columnSpan(2)
+                                ->badge()
+                                ->color(fn (string $state): string => match ($state) {
+                                    'belum' => 'danger',
+                                    'sudah_habis' => 'warning',
+                                    'ada' => 'success',})
+                                ->label('Hubungan Hukum'),
+                            ImageEntry::make('dokumen_hub_hukum')
+                                ->columnSpan(2)
+                                ->label('Dokumen Hub. Hukum'),
+                            
+                        ])
+                ])->columnSpan(4),
+                Group::make([
+                    Section::make([
+                        TextEntry::make('created_at')
+                            ->dateTime(),
+                        TextEntry::make('published_at')
+                            ->dateTime(),
+                        TextEntry::make('lat'),
+                        TextEntry::make('lng'),
+                        TextEntry::make('address')
+                                ->label('Location Data Saved'),
+                        TextEntry::make('surveyor.nama')
+                                ->label('Surveyor')
+                    ])
+                ])->columnSpan(1)
+            ])->columns(5);
+    }
+
     public static function getRelations(): array
     {
         return [
@@ -618,5 +779,5 @@ class SurveykendaraanResource extends Resource
             'view' => Pages\ViewSurveykendaraan::route('/{record}'),
             'edit' => Pages\EditSurveykendaraan::route('/{record}/edit'),
         ];
-    }    
+    }   
 }
