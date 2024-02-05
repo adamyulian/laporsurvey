@@ -386,6 +386,8 @@ class SurveyResource extends Resource
                     ->alignCenter()
                     ->label('Digunakan/Dimanfaatkan')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('surveyor_id')
+                    ->label('Status Detail'),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
                     ->searchable()
