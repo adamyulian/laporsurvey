@@ -20,9 +20,7 @@ class Detail extends Model
         static::creating(function($model) {
 
             $survey = Survey::where('id', $model->survey_id)->first();
-            dump($survey->details);
-            dump($survey->details->count());
-            if ($survey && $survey->details !== null && $survey->details->count() === '0') {
+            if ($survey->details !== null) {
                 $survey->update(['surveyor_id' => '1']);
             }
         });    
