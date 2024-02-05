@@ -13,7 +13,7 @@ class SurveyPolicy
     //  */
     public function viewAny(User $user): bool
     {
-        return $user->role === 'admin' or $user->penyelia === '0';
+        return $user->role === 'admin' or $user->role === 'ketua';
     }
 
     // /**
