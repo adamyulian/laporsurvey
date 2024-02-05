@@ -654,16 +654,16 @@ class SurveykendaraanResource extends Resource
                             ->schema([
                                 TextEntry::make('tempat_duduk')
                                 ->columnSpan(2)
-                                ->colors([
-                                    'Baik' => 'info',
+                                ->color(fn (string $state): string => match ($state) {
+                                    'Baik' => 'success',
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
-                                ])
-                                ->icons([
+                                })                            
+                                ->icons(fn (string $state): string => match ($state) {
                                     'Baik' => 'heroicon-o-check-badge',
                                     'Kurang Baik' => 'heroicon-o-shield-exclamation',
                                     'Rusak' => 'heroicon-o-archive-box-x-mark',
-                                ]),
+                                }),
                                 TextEntry::make('dashboard')
                                 ->columnSpan(2)
                                 ->colors([
