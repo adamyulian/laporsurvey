@@ -39,7 +39,7 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\ToggleButtons::make('target_kendaraan_id')
+                        Forms\Components\Select::make('target_kendaraan_id')
                         ->label('Silakan memilih Nopol/Target Survey')
                         ->preload()
                         ->relationship(
