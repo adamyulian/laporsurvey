@@ -8,6 +8,7 @@ use App\Models\Detail;
 use App\Models\Survey;
 use App\Models\Target;
 use App\Models\Target2;
+use Filament\Forms\Get;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\Surveykendaraan;
@@ -75,7 +76,33 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\ToggleButtons::make('tempat_duduk')
+                    Forms\Components\ToggleButtons::make('kebersihan')
+                        ->required()
+                        ->live()
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Kotor' => 'danger',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Kotor' => 'heroicon-o-archive-box-x-mark',
+                        ])
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Kotor' => 'Rusak',
+                            ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_kebersihan')
+                        ->hidden(fn (Get $get) => $get('kebersihan') !== 'Baik')
+                        ->requiredUnless('kebersihan', 'Baik')
+                        ->columnSpanFull(),
+                    Forms\Components\ToggleButtons::make('speedometer')
+                        ->required()
+                        ->live()
                         ->inline()
                         ->colors([
                             'Baik' => 'info',
@@ -93,8 +120,14 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
                         ->columnSpanFull(),
-                    Forms\Components\ToggleButtons::make('dashboard')
-                    ->inline()
+                    Forms\Components\Textarea::make('ket_speedometer')
+                        ->hidden(fn (Get $get) => $get('speedometer') !== 'Baik')
+                        ->requiredUnless('speedometer', 'Baik')
+                        ->columnSpanFull(),
+                    Forms\Components\ToggleButtons::make('tempat_duduk')
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -110,9 +143,39 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_tempat_duduk')
+                        ->hidden(fn (Get $get) => $get('tempat_duduk') !== 'Baik')
+                        ->requiredUnless('tempat_duduk', 'Baik')
+                        ->columnSpanFull(),
+                    Forms\Components\ToggleButtons::make('dashboard')
+                        ->required()
+                        ->live()
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'danger',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_dashboard')
+                        ->hidden(fn (Get $get) => $get('dashboard') !== 'Baik')
+                        ->requiredUnless('dashboard', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ac')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -128,9 +191,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_ac')
+                        ->hidden(fn (Get $get) => $get('ac') !== 'Baik')
+                        ->requiredUnless('ac', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('kaca_film')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -146,9 +215,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_kaca_film')
+                        ->hidden(fn (Get $get) => $get('kaca_film') !== 'Baik')
+                        ->requiredUnless('kaca_film', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('toolkit')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -165,15 +240,27 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
                         ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_toolkit')
+                        ->hidden(fn (Get $get) => $get('toolkit') !== 'Baik')
+                        ->requiredUnless('toolkit', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_interior')
+                        ->label('Foto Kondisi Interior (Max. 2 Files)')
+                        ->required()
                         ->image()
                         ->multiple(2),
+                    Forms\Components\FileUpload::make('gambar_speedometer')
+                        ->label('Foto Speedometer, Usahakan KM dan BBM jelas')
+                        ->required()
+                        ->image(),
                         ]),
                 Section::make('Eksterior')
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\ToggleButtons::make('body')
+                    Forms\Components\ToggleButtons::make('body')
+                        ->required()
+                        ->live()
                         ->inline()
                         ->colors([
                             'Baik' => 'info',
@@ -191,8 +278,14 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
                         ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_body')
+                        ->hidden(fn (Get $get) => $get('body') !== 'Baik')
+                        ->requiredUnless('body', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('cat')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -208,9 +301,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_cat')
+                        ->hidden(fn (Get $get) => $get('cat') !== 'Baik')
+                        ->requiredUnless('cat', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_utama')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -226,9 +325,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_lampu_utama')
+                        ->hidden(fn (Get $get) => $get('lampu_utama') !== 'Baik')
+                        ->requiredUnless('lampu_utama', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_sein_depan')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -244,9 +349,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
-,
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_lampu_sein_depan')
+                        ->hidden(fn (Get $get) => $get('lampu_sein_depan') !== 'Baik')
+                        ->requiredUnless('lampu_sein_depan', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_sein_blkg')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -262,9 +373,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_lampu_sein_blkg')
+                        ->hidden(fn (Get $get) => $get('lampu_sein_blkg') !== 'Baik')
+                        ->requiredUnless('lampu_sein_blkg', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_rem')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -280,9 +397,14 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_lampu_rem')
+                        ->hidden(fn (Get $get) => $get('lampu_rem') !== 'Baik')
+                        ->requiredUnless('lampu_rem', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ban_mobil')
-                    ->inline()
+                        ->required()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -298,9 +420,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_ban_mobil')
+                        ->hidden(fn (Get $get) => $get('ban_mobil') !== 'Baik')
+                        ->requiredUnless('ban_mobil', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ban_serep')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -316,9 +444,13 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_ban_serep')
+                        ->hidden(fn (Get $get) => $get('ban_serep') !== 'Baik')
+                        ->requiredUnless('ban_serep', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('klakson')
-                    ->inline()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -334,9 +466,15 @@ class SurveykendaraanResource extends Resource
                             'Kurang Baik' => 'Kurang Baik',
                             'Rusak' => 'Rusak',
                             ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_klakson')
+                        ->hidden(fn (Get $get) => $get('klakson') !== 'Baik')
+                        ->requiredUnless('klakson', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('wiper')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -353,8 +491,14 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
                         ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_wiper')
+                        ->hidden(fn (Get $get) => $get('wiper') !== 'Baik')
+                        ->requiredUnless('wiper', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('spion')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -371,6 +515,10 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
 
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_spion')
+                        ->hidden(fn (Get $get) => $get('spion') !== 'Baik')
+                        ->requiredUnless('spion', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_eksterior')
                         ->image()
@@ -380,7 +528,9 @@ class SurveykendaraanResource extends Resource
                     ->collapsible()
                     ->collapsed(true)
                     ->schema([
-                        Forms\Components\ToggleButtons::make('mesin')
+                    Forms\Components\ToggleButtons::make('mesin')
+                        ->required()
+                        ->live()
                         ->inline()
                         ->colors([
                             'Baik' => 'info',
@@ -399,8 +549,14 @@ class SurveykendaraanResource extends Resource
                             ])
 
                         ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_mesin')
+                        ->hidden(fn (Get $get) => $get('mesin') !== 'Baik')
+                        ->requiredUnless('mesin', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('accu')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -417,9 +573,15 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
 
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_accu')
+                        ->hidden(fn (Get $get) => $get('accu') !== 'Baik')
+                        ->requiredUnless('accu', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('rem')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -436,9 +598,15 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
 
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_rem')
+                        ->hidden(fn (Get $get) => $get('rem') !== 'Baik')
+                        ->requiredUnless('rem', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('transmisi')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -455,9 +623,15 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
 
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_transmisi')
+                        ->hidden(fn (Get $get) => $get('transmisi') !== 'Baik')
+                        ->requiredUnless('transmisi', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('power_steering')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -474,9 +648,15 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
 
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_power_steering')
+                        ->hidden(fn (Get $get) => $get('power_steering') !== 'Baik')
+                        ->requiredUnless('power_steering', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('radiator')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -494,8 +674,14 @@ class SurveykendaraanResource extends Resource
                             ])
 
                         ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_radiator')
+                        ->hidden(fn (Get $get) => $get('radiator') !== 'Baik')
+                        ->requiredUnless('radiator', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('oli_mesin')
-                    ->inline()
+                        ->required()
+                        ->live()
+                        ->inline()
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
@@ -512,6 +698,10 @@ class SurveykendaraanResource extends Resource
                             'Rusak' => 'Rusak',
                             ])
 
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_oli_mesin')
+                        ->hidden(fn (Get $get) => $get('oli_mesin') !== 'Baik')
+                        ->requiredUnless('oli_mesin', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_mesin')
                         ->image()
