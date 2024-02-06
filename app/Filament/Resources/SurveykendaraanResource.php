@@ -97,7 +97,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_kebersihan')
-                        ->hidden(fn (Get $get) => $get('kebersihan') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('kebersihan') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('kebersihan', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('speedometer')
@@ -121,7 +121,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_speedometer')
-                        ->hidden(fn (Get $get) => $get('speedometer') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('speedometer') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('speedometer', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('tempat_duduk')
@@ -145,7 +145,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_tempat_duduk')
-                        ->hidden(fn (Get $get) => $get('tempat_duduk') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('tempat_duduk') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('tempat_duduk', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('dashboard')
@@ -169,7 +169,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_dashboard')
-                        ->hidden(fn (Get $get) => $get('dashboard') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('dashboard') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('dashboard', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ac')
@@ -193,7 +193,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_ac')
-                        ->hidden(fn (Get $get) => $get('ac') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('ac') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('ac', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('kaca_film')
@@ -217,7 +217,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_kaca_film')
-                        ->hidden(fn (Get $get) => $get('kaca_film') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('kaca_film') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('kaca_film', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('toolkit')
@@ -241,7 +241,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_toolkit')
-                        ->hidden(fn (Get $get) => $get('toolkit') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('toolkit') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('toolkit', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_interior')
@@ -279,7 +279,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_body')
-                        ->hidden(fn (Get $get) => $get('body') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('body') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('body', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('cat')
@@ -303,7 +303,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_cat')
-                        ->hidden(fn (Get $get) => $get('cat') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('cat') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('cat', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_utama')
@@ -327,7 +327,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_lampu_utama')
-                        ->hidden(fn (Get $get) => $get('lampu_utama') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('lampu_utama') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('lampu_utama', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_sein_depan')
@@ -351,7 +351,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_lampu_sein_depan')
-                        ->hidden(fn (Get $get) => $get('lampu_sein_depan') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('lampu_sein_depan') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('lampu_sein_depan', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_sein_blkg')
@@ -375,7 +375,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_lampu_sein_blkg')
-                        ->hidden(fn (Get $get) => $get('lampu_sein_blkg') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('lampu_sein_blkg') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('lampu_sein_blkg', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('lampu_rem')
@@ -399,7 +399,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_lampu_rem')
-                        ->hidden(fn (Get $get) => $get('lampu_rem') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('lampu_rem') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('lampu_rem', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ban_mobil')
@@ -422,7 +422,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_ban_mobil')
-                        ->hidden(fn (Get $get) => $get('ban_mobil') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('ban_mobil') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('ban_mobil', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ban_serep')
@@ -446,7 +446,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_ban_serep')
-                        ->hidden(fn (Get $get) => $get('ban_serep') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('ban_serep') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('ban_serep', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('klakson')
@@ -468,7 +468,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_klakson')
-                        ->hidden(fn (Get $get) => $get('klakson') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('klakson') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('klakson', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('wiper')
@@ -492,7 +492,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_wiper')
-                        ->hidden(fn (Get $get) => $get('wiper') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('wiper') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('wiper', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('spion')
@@ -517,7 +517,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_spion')
-                        ->hidden(fn (Get $get) => $get('spion') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('spion') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('spion', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_eksterior')
@@ -550,7 +550,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_mesin')
-                        ->hidden(fn (Get $get) => $get('mesin') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('mesin') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('mesin', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('accu')
@@ -575,7 +575,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_accu')
-                        ->hidden(fn (Get $get) => $get('accu') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('accu') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('accu', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('rem')
@@ -600,7 +600,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_rem')
-                        ->hidden(fn (Get $get) => $get('rem') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('rem') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('rem', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('transmisi')
@@ -625,7 +625,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_transmisi')
-                        ->hidden(fn (Get $get) => $get('transmisi') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('transmisi') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('transmisi', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('power_steering')
@@ -650,7 +650,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_power_steering')
-                        ->hidden(fn (Get $get) => $get('power_steering') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('power_steering') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('power_steering', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('radiator')
@@ -675,7 +675,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_radiator')
-                        ->hidden(fn (Get $get) => $get('radiator') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('radiator') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('radiator', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('oli_mesin')
@@ -700,7 +700,7 @@ class SurveykendaraanResource extends Resource
 
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_oli_mesin')
-                        ->hidden(fn (Get $get) => $get('oli_mesin') === 'Baik')
+                        ->hidden(fn (Get $get) => $get('oli_mesin') === 'Baik' || $get('kaca_film') === null)
                         ->requiredUnless('oli_mesin', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_mesin')
