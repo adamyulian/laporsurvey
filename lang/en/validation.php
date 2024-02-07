@@ -174,6 +174,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'data.name' => [
+            'failed' => 'Username atau kata sandi tidak cocok.',
+        ],
     ],
 
     /*
