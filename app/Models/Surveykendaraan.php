@@ -81,14 +81,14 @@ class Surveykendaraan extends Model
         protected static function booted() {
             static::creating(function($model) {
                 $model->user_id = Auth::user()->id;
-                $cekTarget = Target2::where('id', $model->target_kendaraan_id)->first();
+                $cekTarget = Target2::where('id', $model->target2_id)->first();
                 $cekTarget->update([
                     'status' => 1
                 ]);
             });
             static::deleting(function ($model) {
                 // Assuming there is a 'target_id' attribute in the model
-                $target = Target2::where('id', $model->target_kendaraan_id)->first();
+                $target = Target2::where('id', $model->target2_id)->first();
         
                 if ($target) {
                     $target->update([
