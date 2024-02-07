@@ -1232,8 +1232,24 @@ class SurveykendaraanResource extends Resource
                 Group::make([
                     InfolistSection::make([
                         TextEntry::make('created_at')
-                            ->label('Waktu Survey dibuat : ')
-                            ->dateTime(),
+                            ->label('Waktu Survey dibuat : '),
+                        TextEntry::make('group1_total_value')
+                            ->label('Nilai Interior : ')
+                            ->size(TextEntry\TextEntrySize::Medium)
+                            ->weight(FontWeight::Bold),
+                        TextEntry::make('group2_total_value')
+                            ->label('Nilai Eksterior : ')
+                            ->size(TextEntry\TextEntrySize::Medium)
+                            ->weight(FontWeight::Bold),
+                        TextEntry::make('group3_total_value')
+                            ->label('Nilai Mesin : ')
+                            ->size(TextEntry\TextEntrySize::Medium)
+                            ->weight(FontWeight::Bold),
+                        TextEntry::make('overall_total_value')
+                            ->label('Nilai Total')
+                            ->size(TextEntry\TextEntrySize::Large)
+                            ->weight(FontWeight::Bold),
+
                         InfolistSection::make('Gambar')
                             ->collapsible()
                             ->collapsed(true)
