@@ -407,6 +407,54 @@ class SurveykendaraanResource extends Resource
                         ->hidden(fn (Get $get) => $get('lampu_rem') === 'Baik' or $get('lampu_rem') === null)
                         ->requiredUnless('lampu_rem', 'Baik')
                         ->columnSpanFull(),
+                        Forms\Components\ToggleButtons::make('lampu_kabut')
+                        ->required()
+                        ->live()
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'danger',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_lampu_kabut')
+                        ->hidden(fn (Get $get) => $get('lampu_kabut') === 'Baik' or $get('lampu_kabut') === null)
+                        ->requiredUnless('lampu_kabut', 'Baik')
+                        ->columnSpanFull(),
+                    Forms\Components\ToggleButtons::make('lampu_mundur')
+                        ->required()
+                        ->live()
+                        ->inline()
+                        ->colors([
+                            'Baik' => 'info',
+                            'Kurang Baik' => 'warning',
+                            'Rusak' => 'danger',
+                        ])
+                        ->icons([
+                            'Baik' => 'heroicon-o-check-badge',
+                            'Kurang Baik' => 'heroicon-o-shield-exclamation',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
+                        ])
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Kurang Baik' => 'Kurang Baik',
+                            'Rusak' => 'Rusak',
+                            ])
+                        ->columnSpanFull(),
+                    Forms\Components\Textarea::make('ket_lampu_mundur')
+                        ->hidden(fn (Get $get) => $get('lampu_mundur') === 'Baik' or $get('lampu_mundur') === null)
+                        ->requiredUnless('lampu_mundur', 'Baik')
+                        ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('ban_mobil')
                         ->required()
                         ->inline()

@@ -197,6 +197,22 @@ class Surveykendaraan extends Model
                         ],
                         'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
                     ],
+                    'lampu_kabut'=> [
+                        'values' => [
+                            'Baik' => 2,
+                            'Kurang Baik' => 1,
+                            'Rusak' => 0,
+                        ],
+                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                    ],
+                    'lampu_mundur'=> [
+                        'values' => [
+                            'Baik' => 2,
+                            'Kurang Baik' => 1,
+                            'Rusak' => 0,
+                        ],
+                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                    ],
                     'ban_mobil'=> [
                         'values' => [
                             'Baik' => 2,
