@@ -774,7 +774,7 @@ class SurveykendaraanResource extends Resource
                         ->schema([
                             Forms\Components\DatePicker::make('masa_pajak')
                                 ->required(),
-                            Forms\Components\TextInput::make('informasi_tambahan')
+                            Forms\Components\Textarea::make('informasi_tambahan')
                                 ->required()
                         ])
             ]);
