@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SurveykendaraanResource\Pages;
 use Filament\Infolists\Components\Section as InfolistSection;
 use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
+use Filament\Tables\Columns\TextColumn;
 
 class SurveykendaraanResource extends Resource
 {
@@ -892,10 +893,23 @@ class SurveykendaraanResource extends Resource
                 ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('gambar_speedometer'),
-                Tables\Columns\ImageColumn::make('gambar_interior'),
+                Tables\Columns\TextColumn::make('group1_total_value')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('group2_total_value')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('group3_total_value')
+                    ->badge(),
+                Tables\Columns\TextColumn::make('overall_total_value')
+                    ->badge()
+                    ->size(TextColumn\TextColumnSize::Large)
+                    ->weight(FontWeight::Bold),
+                Tables\Columns\ImageColumn::make('gambar_speedometer')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('gambar_interior')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\ImageColumn::make('gambar_eksterior'),
-                Tables\Columns\ImageColumn::make('gambar_mesin'),
+                Tables\Columns\ImageColumn::make('gambar_mesin')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
