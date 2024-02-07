@@ -18,7 +18,7 @@ class Target2Resource extends Resource
 {
     protected static ?string $model = Target2::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-truck';
 
     protected static ?string $navigationLabel = 'Target';
 
