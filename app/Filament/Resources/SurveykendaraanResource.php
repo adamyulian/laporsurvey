@@ -800,6 +800,7 @@ class SurveykendaraanResource extends Resource
                 Tables\Columns\TextColumn::make('target2.opd')
                     ->label('Kendaraan')
                     ->wrap()
+                    ->limit(25)
                     ->description(fn (Surveykendaraan $record): string => $record->target2->nopol )
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tempat_duduk')
