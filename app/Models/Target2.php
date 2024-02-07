@@ -18,7 +18,8 @@ class Target2 extends Model
         'opd',
         'team_id',
         'nama_penyelia',
-        'status'
+        'status',
+        'user_id'
         ];
 
     public function Surveykendaraan()
