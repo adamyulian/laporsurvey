@@ -49,7 +49,7 @@ class SurveykendaraanResource extends Resource
             ->schema([
                 Section::make('Informasi Target')
                     ->collapsible()
-                    ->collapsed(true)
+                    ->collapsed(false)
                     ->schema([
                         Forms\Components\Select::make('target2_id')
                         ->label('Silakan memilih Nopol/Target Survey')
