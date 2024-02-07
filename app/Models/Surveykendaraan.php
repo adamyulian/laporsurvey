@@ -509,7 +509,7 @@ class Surveykendaraan extends Model
                     $groupWeightFactor = $groupData['weightFactor'];
                     $model->{$groupName . '_total_value'} = $groupTotalValue * ($groupWeightFactor / 100);
                     // Accumulate total value considering weight factors
-                    $overallTotalValue += $groupTotalValue * ($groupWeightFactor / 100);
+                    $overallTotalValue += $groupTotalValue * ($groupWeightFactor / 100) * 50;
                 }
                 // Save the overall total value
                 $model->overall_total_value = $overallTotalValue;
