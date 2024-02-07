@@ -905,7 +905,8 @@ class SurveykendaraanResource extends Resource
                 Tables\Columns\TextColumn::make('overall_total_value')
                     ->label('Total')
                     ->size(TextColumn\TextColumnSize::Large)
-                    ->weight(FontWeight::Bold),
+                    ->weight(FontWeight::Bold)
+                    ->color('info'),
                 Tables\Columns\ImageColumn::make('gambar_speedometer')
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\ImageColumn::make('gambar_interior')
