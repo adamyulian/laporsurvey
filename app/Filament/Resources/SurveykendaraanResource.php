@@ -821,6 +821,7 @@ class SurveykendaraanResource extends Resource
                 ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('gambar_speedometer'),
                 Tables\Columns\ImageColumn::make('gambar_interior'),
                 Tables\Columns\ImageColumn::make('gambar_eksterior'),
                 Tables\Columns\ImageColumn::make('gambar_mesin'),
