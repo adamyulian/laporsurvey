@@ -85,17 +85,17 @@ class SurveykendaraanResource extends Resource
                         ->colors([
                             'Baik' => 'info',
                             'Kurang Baik' => 'warning',
-                            'Kotor' => 'danger',
+                            'Rusak' => 'danger',
                         ])
                         ->icons([
                             'Baik' => 'heroicon-o-check-badge',
                             'Kurang Baik' => 'heroicon-o-shield-exclamation',
-                            'Kotor' => 'heroicon-o-archive-box-x-mark',
+                            'Rusak' => 'heroicon-o-archive-box-x-mark',
                         ])
                         ->options([
                             'Baik' => 'Baik',
                             'Kurang Baik' => 'Kurang Baik',
-                            'Kotor' => 'Rusak',
+                            'Rusak' => 'Kotor',
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_kebersihan')
