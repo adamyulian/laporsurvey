@@ -1255,8 +1255,9 @@ class SurveykendaraanResource extends Resource
                   
                 ])->columnSpan(3),
                 Group::make([
-                    InfolistSection::make([
-                        TextEntry::make('group1_total_value')
+                    InfolistSection::make('Nilai Survey')
+                        ->schema([
+                            TextEntry::make('group1_total_value')
                             ->label('Nilai Interior : ')
                             ->size(TextEntry\TextEntrySize::Medium)
                             ->weight(FontWeight::Bold),
@@ -1272,9 +1273,8 @@ class SurveykendaraanResource extends Resource
                             ->label('Nilai Total :')
                             ->size(TextEntry\TextEntrySize::Large)
                             ->weight(FontWeight::Bold),
-                        TextEntry::make('created_at')
-                            ->label('Waktu Survey dibuat : '),
-                        InfolistSection::make('Gambar')
+                        ]),
+                    InfolistSection::make('Gambar')
                             ->collapsible()
                             ->collapsed(true)
                             ->schema([
@@ -1287,8 +1287,9 @@ class SurveykendaraanResource extends Resource
                                 ImageEntry::make('gambar_mesin')
                                 ->size(360),
                             ]),
-                    ])
                 ])->columnSpan(2),
+                TextEntry::make('created_at')
+                            ->label('Waktu Survey dibuat : '),
             ])->columns(5);
     }
 
