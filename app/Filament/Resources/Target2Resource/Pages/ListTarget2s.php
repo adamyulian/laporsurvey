@@ -2,9 +2,12 @@
 
 namespace App\Filament\Resources\Target2Resource\Pages;
 
-use App\Filament\Resources\Target2Resource;
 use Filament\Actions;
+use Illuminate\Support\Facades\Auth;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\Target2Resource;
+use Filament\Resources\Pages\ListRecords\Tab;
 
 class ListTarget2s extends ListRecords
 {
@@ -16,6 +19,43 @@ class ListTarget2s extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    public function getTabs(): array
+    {
+        return [
+            'All' => Tab::make('All Target')
+                ->modifyQueryUsing(function (Builder $query) {
+                    if (Auth::user()->role === 'admin') {
+                        return $query;
+                    }
+                    // Non-admin users can only view their own component
+                    // return 
+                        $nameUser = Auth::user()->nama_penyelia;
+                        $query->where('nama_penyelia', $nameUser)
+                        ->where('status', 0);
+                    }),
+            'Belum' => Tab::make('Belum')
+                ->modifyQueryUsing(function (Builder $query) {
+                    if (Auth::user()->role === 'admin') {
+                        return $query->where('status', 0);
+                    }
+                    // Non-admin users can only view their own component
+                    // return 
+                        $userId = Auth::user()->id;
+                        $query->where('user_id', $userId)->where('status', 0);
+                    }),
+            'Selesai' => Tab::make('Selesai')
+                ->modifyQueryUsing(function (Builder $query) {
+                if (Auth::user()->role === 'admin') {
+                    return $query->where('status','!=', 0);
+                }
+                // Non-admin users can only view their own component
+                // return 
+                    $userId = Auth::user()->id;
+                    $query->where('user_id', $userId)->where('status','!=', 0);
+                }),
         ];
     }
 }
