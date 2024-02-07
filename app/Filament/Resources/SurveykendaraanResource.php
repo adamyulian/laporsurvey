@@ -903,7 +903,7 @@ class SurveykendaraanResource extends Resource
                                 ->columnSpan(2)
                                 ->label('Keterangan Tempat Duduk'),                          
                                 TextEntry::make('dashboard')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -911,9 +911,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }), 
                                 TextEntry::make('ket_dashboard')
+                                ->columnSpan(2)
                                 ->label('Keterangan Dashboard'),
                                 TextEntry::make('ac')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -921,9 +922,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }), 
                                 TextEntry::make('ket_ac')
+                                ->columnSpan(2)
                                 ->label('Keterangan AC'),
                                 TextEntry::make('kaca_film')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -931,9 +933,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_kaca_film')
+                                ->columnSpan(2)
                                 ->label('Keterangan Kaca Film'),
                                 TextEntry::make('toolkit')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -941,13 +944,14 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_toolkit')
+                                ->columnSpan(2)
                                 ->label('Keterangan Toolkit'),
                             ]),
                         Tabs\Tab::make('Eksterior')
                             ->columns(4)
                             ->schema([
                                 TextEntry::make('body')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -955,9 +959,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_body')
+                                ->columnSpan(2)
                                 ->label('Keterangan Body'),
                                 TextEntry::make('cat')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -965,9 +970,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_cat')
+                                ->columnSpan(2)
                                 ->label('Keterangan Cat'),
                                 TextEntry::make('lampu_utama')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -975,9 +981,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_lampu_utama')
+                                ->columnSpan(2)
                                 ->label('Keterangan Lampu Utama'),
                                 TextEntry::make('lampu_sein_depan')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -985,9 +992,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_lampu_sein_depan')
+                                ->columnSpan(2)
                                 ->label('Keterangan Lampu Sein Depan'),
                                 TextEntry::make('lampu_sein_blkg')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -995,9 +1003,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }), 
                                 TextEntry::make('ket_lampu_sein_blkg')
+                                ->columnSpan(2)
                                 ->label('Keterangan Lampu Sein Belakang'),
                                 TextEntry::make('lampu_rem')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1005,9 +1014,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }), 
                                 TextEntry::make('ket_lampu_rem')
+                                ->columnSpan(2)
                                 ->label('Keterangan Lampu Rem'),
                                 TextEntry::make('ban_mobil')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1015,9 +1025,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }), 
                                 TextEntry::make('ket_ban_mobil')
+                                ->columnSpan(2)
                                 ->label('Keterangan Ban Mobil'),
                                 TextEntry::make('ban_serep')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1025,9 +1036,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_ban_serep')
+                                ->columnSpan(2)
                                 ->label('Keterangan Ban Serep'),
                                 TextEntry::make('klakson')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1035,9 +1047,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_klakson')
+                                ->columnSpan(2)
                                 ->label('Keterangan Klakson'),
                                 TextEntry::make('wiper')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1045,9 +1058,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_wiper')
+                                ->columnSpan(2)
                                 ->label('Keterangan Wiper'),
                                 TextEntry::make('spion')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1055,13 +1069,14 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_spion')
+                                ->columnSpan(2)
                                 ->label('Keterangan Spion'),
                             ]),
                         Tabs\Tab::make('Mesin')
                             ->columns(4)
                             ->schema([
                                 TextEntry::make('mesin')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1069,9 +1084,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_mesin')
+                                ->columnSpan(2)
                                 ->label('Keterangan Mesin'),
                                 TextEntry::make('accu')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1079,9 +1095,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_accu')
+                                ->columnSpan(2)
                                 ->label('Keterangan Accu'),
                                 TextEntry::make('rem')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1089,9 +1106,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_rem')
+                                ->columnSpan(2)
                                 ->label('Keterangan Rem'),
                                 TextEntry::make('transmisi')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1099,9 +1117,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_transmisi')
+                                ->columnSpan(2)
                                 ->label('Keterangan Transmisi'),
                                 TextEntry::make('power_steering')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1109,9 +1128,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_power_steering')
+                                ->columnSpan(2)
                                 ->label('Keterangan Power Steering'),
                                 TextEntry::make('radiator')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1119,9 +1139,10 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_radiator')
+                                ->columnSpan(2)
                                 ->label('Keterangan Radiator'),
                                 TextEntry::make('oli_mesin')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -1129,6 +1150,7 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_oli_mesin')
+                                ->columnSpan(2)
                                 ->label('Keterangan Oli Mesin'),
                             ]),
                     ]),
@@ -1141,13 +1163,13 @@ class SurveykendaraanResource extends Resource
                             ->collapsed(true)
                             ->schema([
                                 ImageEntry::make('gambar_speedometer')
-                                ->size(480),
+                                ->size(360),
                                 ImageEntry::make('gambar_interior')
-                                ->size(480),
+                                ->size(360),
                                 ImageEntry::make('gambar_eksterior')
-                                ->size(480),
+                                ->size(360),
                                 ImageEntry::make('gambar_mesin')
-                                ->size(480),
+                                ->size(360),
                             ]),
                         TextEntry::make('created_at')
                             ->label('Waktu Survey dibuat : ')
