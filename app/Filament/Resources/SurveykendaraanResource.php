@@ -446,7 +446,7 @@ class SurveykendaraanResource extends Resource
                             ])
                         ->columnSpanFull(),
                     Forms\Components\Textarea::make('ket_ban_serep')
-                        ->hidden(fn (Get $get) => $get('ban_serep') === 'Baik' or $get('ban_Serep') === null)
+                        ->hidden(fn (Get $get) => $get('ban_serep') === 'Baik' or $get('ban_serep') === null)
                         ->requiredUnless('ban_serep', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('klakson')
