@@ -889,7 +889,7 @@ class SurveykendaraanResource extends Resource
                     ->columnSpan(3)
                     ->tabs([
                         Tabs\Tab::make('Interior')
-                            ->columns(4)
+                            ->columns(3)
                             ->schema([
                                 TextEntry::make('tempat_duduk')
                                 ->columnSpan(1)
@@ -948,7 +948,7 @@ class SurveykendaraanResource extends Resource
                                 ->label('Keterangan Toolkit'),
                             ]),
                         Tabs\Tab::make('Eksterior')
-                            ->columns(4)
+                            ->columns(3)
                             ->schema([
                                 TextEntry::make('body')
                                 ->columnSpan(1)
@@ -1073,7 +1073,7 @@ class SurveykendaraanResource extends Resource
                                 ->label('Keterangan Spion'),
                             ]),
                         Tabs\Tab::make('Mesin')
-                            ->columns(4)
+                            ->columns(3)
                             ->schema([
                                 TextEntry::make('mesin')
                                 ->columnSpan(1)
