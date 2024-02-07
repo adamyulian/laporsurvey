@@ -75,17 +75,15 @@ class Target2Resource extends Resource
                 Tables\Columns\TextColumn::make('tipe')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('jabatan')
+                    ->description(fn (Target2 $record): string => $record->opd)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('opd')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('team_id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('nama_penyelia')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('user_id')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
