@@ -894,13 +894,16 @@ class SurveykendaraanResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('group1_total_value')
+                    ->label('Interior')
                     ->badge(),
                 Tables\Columns\TextColumn::make('group2_total_value')
+                    ->label('Eksterior')
                     ->badge(),
                 Tables\Columns\TextColumn::make('group3_total_value')
+                    ->label('Mesin')
                     ->badge(),
                 Tables\Columns\TextColumn::make('overall_total_value')
-                    ->badge()
+                    ->label('Total')
                     ->size(TextColumn\TextColumnSize::Large)
                     ->weight(FontWeight::Bold),
                 Tables\Columns\ImageColumn::make('gambar_speedometer')
