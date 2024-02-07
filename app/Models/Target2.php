@@ -17,7 +17,8 @@ class Target2 extends Model
         'jabatan',
         'opd',
         'team_id',
-        'nama_penyelia'
+        'nama_penyelia',
+        'status'
         ];
 
     public function Surveykendaraan()
