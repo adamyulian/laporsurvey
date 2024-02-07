@@ -97,7 +97,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 20, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'kebersihan'=> [
                         'values' => [
@@ -105,7 +105,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'tempat_duduk'=> [
                         'values' => [
@@ -113,7 +113,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'dashboard'=> [
                         'values' => [
@@ -121,7 +121,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'ac'=> [
                         'values' => [
@@ -129,7 +129,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 20, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'kaca_film'=> [
                         'values' => [
@@ -137,7 +137,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'toolkit'=> [
                         'values' => [
@@ -155,7 +155,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'cat'=> [
                         'values' => [
@@ -163,7 +163,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'lampu_utama'=> [
                         'values' => [
@@ -171,7 +171,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'lampu_sein_depan'=> [
                         'values' => [
@@ -179,7 +179,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'lampu_sein_blkg'=> [
                         'values' => [
@@ -187,7 +187,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'lampu_rem'=> [
                         'values' => [
@@ -195,7 +195,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'lampu_kabut'=> [
                         'values' => [
@@ -203,7 +203,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 2, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'lampu_mundur'=> [
                         'values' => [
@@ -211,7 +211,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'ban_mobil'=> [
                         'values' => [
@@ -219,7 +219,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 20, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'ban_serep'=> [
                         'values' => [
@@ -227,7 +227,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'klakson'=> [
                         'values' => [
@@ -235,7 +235,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 3, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'wiper'=> [
                         'values' => [
@@ -243,7 +243,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 5, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'spion'=> [
                         'values' => [
@@ -251,7 +251,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 9, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
                     ],
                 ],
                 'group3' => [
@@ -269,7 +269,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 14, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'rem'=> [
                         'values' => [
@@ -277,7 +277,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 14, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'transmisi'=> [
                         'values' => [
@@ -293,7 +293,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 14, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 10, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'radiator'=> [
                         'values' => [
@@ -301,7 +301,7 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 14, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                     'oli_mesin'=> [
                         'values' => [
@@ -309,15 +309,15 @@ class Surveykendaraan extends Model
                             'Kurang Baik' => 1,
                             'Rusak' => 0,
                         ],
-                        'weightFactor' => 14, // Weight factor for the 'transmisi' field in group 1
+                        'weightFactor' => 15, // Weight factor for the 'transmisi' field in group 1
                     ],
                 ],
             ];
 
             // Define weight factors for each group
             $groupWeightFactors = [
-                'group1' => 30, // Assuming group 1 has a maximum weight of 30%
-                'group2' => 30, // Assuming group 2 has a maximum weight of 30%
+                'group1' => 20, // Assuming group 1 has a maximum weight of 30%
+                'group2' => 40, // Assuming group 2 has a maximum weight of 30%
                 'group3' => 40, // Assuming group 2 has a maximum weight of 40%
                 // Add weight factors for other groups here
             ];
