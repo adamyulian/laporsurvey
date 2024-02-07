@@ -897,14 +897,18 @@ class SurveykendaraanResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('group1_total_value')
                     ->label('Interior')
-                    ->badge(),
+                    ->alignCenter()
+                    ->size(TextColumn\TextColumnSize::Medium),
                 Tables\Columns\TextColumn::make('group2_total_value')
                     ->label('Eksterior')
-                    ->badge(),
+                    ->alignCenter()
+                    ->size(TextColumn\TextColumnSize::Medium),
                 Tables\Columns\TextColumn::make('group3_total_value')
                     ->label('Mesin')
-                    ->badge(),
+                    ->alignCenter()
+                    ->size(TextColumn\TextColumnSize::Medium),
                 Tables\Columns\TextColumn::make('overall_total_value')
+                    ->alignCenter()
                     ->label('Total')
                     ->size(TextColumn\TextColumnSize::Large)
                     ->weight(FontWeight::Bold)
