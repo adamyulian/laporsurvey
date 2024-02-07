@@ -1273,6 +1273,9 @@ class SurveykendaraanResource extends Resource
                             ->label('Nilai Total :')
                             ->size(TextEntry\TextEntrySize::Large)
                             ->weight(FontWeight::Bold),
+                        TextEntry::make('created_at')
+                            ->time()
+                            ->label('Waktu Pelaksanaan Survey : '),
                         ]),
                     InfolistSection::make('Gambar')
                             ->collapsible()
@@ -1288,8 +1291,6 @@ class SurveykendaraanResource extends Resource
                                 ->size(360),
                             ]),
                 ])->columnSpan(2),
-                TextEntry::make('created_at')
-                            ->label('Waktu Survey dibuat : '),
             ])->columns(5);
     }
 
