@@ -24,8 +24,6 @@ class StatsOverview extends BaseWidget
         if ($user && ($user->role === 'admin')) {
             // Admin gets all data
             return [
-                Section::make('Survey Aset Tanah')
-                ->schema([
                     Stat::make('Total Target Aset Tanah', Target::count()),
                     Stat::make('Total Survey Aset Tanah', Survey::count()),
                     Stat::make('Sisa Target Survey', Target::where('user_id',0)->count()),
@@ -33,9 +31,6 @@ class StatsOverview extends BaseWidget
                     Stat::make('Total Survey Group 2', Survey::where('team_id', 2)->count()),
                     Stat::make('Total Survey Group 3', Survey::where('team_id', 3)->count()),
                     Stat::make('Total Survey Group 4', Survey::where('team_id', 4)->count()),
-                ])
-                
-               
             ];
         } elseif ($user->role === 'ketua') {
             // Regular user gets data based on their ID
