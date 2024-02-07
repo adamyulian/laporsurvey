@@ -509,6 +509,7 @@ class SurveykendaraanResource extends Resource
                         ->requiredUnless('ban_serep', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('klakson')
+                        ->live()
                         ->required()
                         ->inline()
                         ->colors([
