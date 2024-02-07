@@ -106,7 +106,8 @@ class Target2Resource extends Resource
                 ]),
             ])
             ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                ->label('Buat Target Baru'),
             ]);
     }
     
