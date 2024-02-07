@@ -1158,6 +1158,9 @@ class SurveykendaraanResource extends Resource
                 ])->columnSpan(3),
                 Group::make([
                     InfolistSection::make([
+                        TextEntry::make('created_at')
+                            ->label('Waktu Survey dibuat : ')
+                            ->dateTime(),
                         InfolistSection::make('Gambar')
                             ->collapsible()
                             ->collapsed(true)
@@ -1171,16 +1174,8 @@ class SurveykendaraanResource extends Resource
                                 ImageEntry::make('gambar_mesin')
                                 ->size(360),
                             ]),
-                        TextEntry::make('created_at')
-                            ->label('Waktu Survey dibuat : ')
-                            ->dateTime(),
                     ])
                 ])->columnSpan(2),
-                Group::make([
-                        TextEntry::make('created_at')
-                            ->label('Waktu Survey dibuat : ')
-                            ->dateTime(),
-                ])->columnSpan(3)
             ])->columns(5);
     }
 
