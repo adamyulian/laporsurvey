@@ -81,7 +81,7 @@ class Surveykendaraan extends Model
         protected static function booted() {
             static::creating(function($model) {
                 $model->user_id = Auth::user()->id;
-                dump($cekTarget = Target2::where('id', $model->target2_id)->first());
+                dd($cekTarget = Target2::where('id', $model->target2_id)->first());
                 $cekTarget->update([
                     'status' => 1
                 ]);
