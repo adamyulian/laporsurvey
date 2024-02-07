@@ -33,7 +33,7 @@ class ListTarget2s extends ListRecords
                     }
                     // Non-admin users can only view their own component
                     // return 
-                        $nameUser = Auth::user()->nama_penyelia;
+                        $nameUser = Auth::user()->name;
                         $query->where('nama_penyelia', $nameUser)
                         ->where('status', 0);
                     }),
@@ -44,8 +44,8 @@ class ListTarget2s extends ListRecords
                     }
                     // Non-admin users can only view their own component
                     // return 
-                        $userId = Auth::user()->id;
-                        $query->where('user_id', $userId)->where('status', 0);
+                        $userName = Auth::user()->name;
+                        $query->where('nama_penyelia', $userName)->where('status', 0);
                     }),
             'Selesai' => Tab::make('Selesai')
                 ->modifyQueryUsing(function (Builder $query) {
@@ -54,8 +54,8 @@ class ListTarget2s extends ListRecords
                 }
                 // Non-admin users can only view their own component
                 // return 
-                    $userId = Auth::user()->id;
-                    $query->where('user_id', $userId)->where('status','!=', 0);
+                    $userName = Auth::user()->name;
+                    $query->where('nama_penyelia', $userName)->where('status','!=', 0);
                 }),
         ];
     }
