@@ -1274,7 +1274,7 @@ class SurveykendaraanResource extends Resource
                             ->size(TextEntry\TextEntrySize::Large)
                             ->weight(FontWeight::Bold),
                         TextEntry::make('created_at')
-                            ->time()
+                            ->dateTime()
                             ->label('Waktu Pelaksanaan Survey : '),
                         ]),
                     InfolistSection::make('Gambar')
