@@ -222,6 +222,7 @@ class SurveykendaraanResource extends Resource
                         ->requiredUnless('kaca_film', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\ToggleButtons::make('toolkit')
+                        ->label('toolkit/dongkrak')
                         ->required()
                         ->live()
                         ->inline()
@@ -254,6 +255,9 @@ class SurveykendaraanResource extends Resource
                         ->label('Foto Speedometer, Usahakan KM dan BBM jelas')
                         ->required()
                         ->image(),
+                    Forms\Components\TextInput::make('kilometer')
+                        ->numeric()
+                        ->required()
                         ]),
                 Section::make('Eksterior')
                     ->collapsible()
@@ -426,6 +430,11 @@ class SurveykendaraanResource extends Resource
                         ->hidden(fn (Get $get) => $get('ban_mobil') === 'Baik' or $get('ban_mobil') === null)
                         ->requiredUnless('ban_mobil', 'Baik')
                         ->columnSpanFull(),
+                    Forms\Components\TextInput::make('merk_ban')
+                        ->required(),
+                    Forms\Components\TextInput::make('tahun_ban')
+                        ->numeric()
+                        ->required(),
                     Forms\Components\ToggleButtons::make('ban_serep')
                         ->required()
                         ->live()
@@ -580,6 +589,8 @@ class SurveykendaraanResource extends Resource
                         ->hidden(fn (Get $get) => $get('accu') === 'Baik' or $get('accu') === null)
                         ->requiredUnless('accu', 'Baik')
                         ->columnSpanFull(),
+                    Forms\Components\TextInput::make('merk_accu')
+                        ->required(),
                     Forms\Components\ToggleButtons::make('rem')
                         ->required()
                         ->live()
@@ -709,6 +720,15 @@ class SurveykendaraanResource extends Resource
                         ->image()
                         ->multiple(),
                         ]),
+                Section::make('Informasi Tambahan')
+                        ->collapsible()
+                        ->collapsed(true)
+                        ->schema([
+                            Forms\Components\DatePicker::make('masa_pajak')
+                                ->required(),
+                            Forms\Components\TextInput::make('informasi_tambahan')
+                                ->required()
+                        ])
             ]);
     }
 
@@ -748,6 +768,7 @@ class SurveykendaraanResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('toolkit')
+                ->label('toolkit/dongkrak')
                 ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
@@ -939,6 +960,7 @@ class SurveykendaraanResource extends Resource
                                 ->columnSpan(2)
                                 ->label('Keterangan Kaca Film'),
                                 TextEntry::make('toolkit')
+                                ->label('Toolkit / Dongkrak')
                                 ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {

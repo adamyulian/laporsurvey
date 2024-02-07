@@ -74,8 +74,15 @@ class Surveykendaraan extends Model
            'ket_radiator',
            'ket_oli_mesin',
            'gambar_speedometer',
-        'target2_id'
-
+        'target2_id',
+        'kilometer',
+        'merk_ban',
+        'tahun_ban',
+        'merk_accu',
+        'masa_pajak',
+        'informasi_tambahan',
+        'lampu_kabut',
+        'lampu_mundur',
         ];
 
         protected static function calculateGroupValues($model)
