@@ -886,12 +886,13 @@ class SurveykendaraanResource extends Resource
                             ->label('Tahun'),
                     ]),
                     Tabs::make('Tabs')
+                    ->columnSpan(3)
                     ->tabs([
                         Tabs\Tab::make('Interior')
                             ->columns(4)
                             ->schema([
                                 TextEntry::make('tempat_duduk')
-                                ->columnSpan(2)
+                                ->columnSpan(1)
                                 ->badge()
                                 ->color(fn (string $state): string => match ($state) {
                                     'Baik' => 'info',
@@ -899,6 +900,7 @@ class SurveykendaraanResource extends Resource
                                     'Rusak' => 'danger',
                                 }),
                                 TextEntry::make('ket_tempat_duduk')
+                                ->columnSpan(2)
                                 ->label('Keterangan Tempat Duduk'),                          
                                 TextEntry::make('dashboard')
                                 ->columnSpan(2)
@@ -1139,22 +1141,18 @@ class SurveykendaraanResource extends Resource
                             ->collapsed(true)
                             ->schema([
                                 ImageEntry::make('gambar_speedometer')
-                                ->columnSpanFull()
                                 ->size(480),
                                 ImageEntry::make('gambar_interior')
-                                ->columnSpanFull()
                                 ->size(480),
                                 ImageEntry::make('gambar_eksterior')
-                                ->columnSpanFull()
                                 ->size(480),
                                 ImageEntry::make('gambar_mesin')
-                                ->columnSpanFull()
                                 ->size(480),
                             ]),
                         TextEntry::make('created_at')
+                            ->label('Waktu Survey dibuat : ')
                             ->dateTime(),
                     ])
-                    
                 ])->columnSpan(2)
             ])->columns(5);
     }
