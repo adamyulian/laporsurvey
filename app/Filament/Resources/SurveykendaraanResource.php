@@ -859,6 +859,7 @@ class SurveykendaraanResource extends Resource
                 Group::make([
                     InfolistSection::make('Informasi Kendaraan')
                     ->collapsible()
+                    ->columnSpan(3)
                     ->columns(4)
                     ->schema([
                         TextEntry::make('target2.nopol')
@@ -896,7 +897,9 @@ class SurveykendaraanResource extends Resource
                                     'Baik' => 'info',
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
-                                }),                            
+                                }),
+                                TextEntry::make('ket_tempat_duduk')
+                                ->label('Keterangan Tempat Duduk'),                          
                                 TextEntry::make('dashboard')
                                 ->columnSpan(2)
                                 ->badge()
@@ -905,6 +908,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }), 
+                                TextEntry::make('ket_dashboard')
+                                ->label('Keterangan Dashboard'),
                                 TextEntry::make('ac')
                                 ->columnSpan(2)
                                 ->badge()
@@ -913,6 +918,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }), 
+                                TextEntry::make('ket_ac')
+                                ->label('Keterangan AC'),
                                 TextEntry::make('kaca_film')
                                 ->columnSpan(2)
                                 ->badge()
@@ -921,6 +928,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_kaca_film')
+                                ->label('Keterangan Kaca Film'),
                                 TextEntry::make('toolkit')
                                 ->columnSpan(2)
                                 ->badge()
@@ -928,15 +937,9 @@ class SurveykendaraanResource extends Resource
                                     'Baik' => 'info',
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
-                                }), 
-                                InfolistSection::make('Gambar')
-                                ->collapsible()
-                                ->collapsed(true)
-                                ->schema([
-                                    ImageEntry::make('gambar_interior')
-                                    ->columnSpanFull()
-                                    ->size(760),
-                                ])
+                                }),
+                                TextEntry::make('ket_toolkit')
+                                ->label('Keterangan Toolkit'),
                             ]),
                         Tabs\Tab::make('Eksterior')
                             ->columns(4)
@@ -949,6 +952,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_body')
+                                ->label('Keterangan Body'),
                                 TextEntry::make('cat')
                                 ->columnSpan(2)
                                 ->badge()
@@ -957,6 +962,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_cat')
+                                ->label('Keterangan Cat'),
                                 TextEntry::make('lampu_utama')
                                 ->columnSpan(2)
                                 ->badge()
@@ -965,6 +972,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_lampu_utama')
+                                ->label('Keterangan Lampu Utama'),
                                 TextEntry::make('lampu_sein_depan')
                                 ->columnSpan(2)
                                 ->badge()
@@ -973,6 +982,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_lampu_sein_depan')
+                                ->label('Keterangan Lampu Sein Depan'),
                                 TextEntry::make('lampu_sein_blkg')
                                 ->columnSpan(2)
                                 ->badge()
@@ -981,6 +992,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }), 
+                                TextEntry::make('ket_lampu_sein_blkg')
+                                ->label('Keterangan Lampu Sein Belakang'),
                                 TextEntry::make('lampu_rem')
                                 ->columnSpan(2)
                                 ->badge()
@@ -989,6 +1002,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }), 
+                                TextEntry::make('ket_lampu_rem')
+                                ->label('Keterangan Lampu Rem'),
                                 TextEntry::make('ban_mobil')
                                 ->columnSpan(2)
                                 ->badge()
@@ -997,6 +1012,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }), 
+                                TextEntry::make('ket_ban_mobil')
+                                ->label('Keterangan Ban Mobil'),
                                 TextEntry::make('ban_serep')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1005,6 +1022,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_ban_serep')
+                                ->label('Keterangan Ban Serep'),
                                 TextEntry::make('klakson')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1013,6 +1032,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_klakson')
+                                ->label('Keterangan Klakson'),
                                 TextEntry::make('wiper')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1021,6 +1042,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_wiper')
+                                ->label('Keterangan Wiper'),
                                 TextEntry::make('spion')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1029,14 +1052,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
-                                InfolistSection::make('Gambar')
-                                ->collapsible()
-                                ->collapsed(true)
-                                ->schema([
-                                    ImageEntry::make('gambar_eksterior')
-                                    ->columnSpanFull()
-                                    ->size(760),
-                                ])
+                                TextEntry::make('ket_spion')
+                                ->label('Keterangan Spion'),
                             ]),
                         Tabs\Tab::make('Mesin')
                             ->columns(4)
@@ -1049,6 +1066,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_mesin')
+                                ->label('Keterangan Mesin'),
                                 TextEntry::make('accu')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1057,6 +1076,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_accu')
+                                ->label('Keterangan Accu'),
                                 TextEntry::make('rem')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1065,6 +1086,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_rem')
+                                ->label('Keterangan Rem'),
                                 TextEntry::make('transmisi')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1073,6 +1096,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_transmisi')
+                                ->label('Keterangan Transmisi'),
                                 TextEntry::make('power_steering')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1081,6 +1106,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_power_steering')
+                                ->label('Keterangan Power Steering'),
                                 TextEntry::make('radiator')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1089,6 +1116,8 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
+                                TextEntry::make('ket_radiator')
+                                ->label('Keterangan Radiator'),
                                 TextEntry::make('oli_mesin')
                                 ->columnSpan(2)
                                 ->badge()
@@ -1097,26 +1126,36 @@ class SurveykendaraanResource extends Resource
                                     'Kurang Baik' => 'warning',
                                     'Rusak' => 'danger',
                                 }),
-                                InfolistSection::make('Gambar')
-                                ->collapsible()
-                                ->collapsed(true)
-                                ->schema([
-                                    ImageEntry::make('gambar_mesin')
-                                    ->columnSpanFull()
-                                    ->size(760),
-                                ])
+                                TextEntry::make('ket_oli_mesin')
+                                ->label('Keterangan Oli Mesin'),
                             ]),
                     ]),
                   
-                ])->columnSpan(4),
+                ])->columnSpan(5),
                 Group::make([
                     InfolistSection::make([
+                        InfolistSection::make('Gambar')
+                            ->collapsible()
+                            ->collapsed(true)
+                            ->schema([
+                                ImageEntry::make('gambar_speedometer')
+                                ->columnSpanFull()
+                                ->size(480),
+                                ImageEntry::make('gambar_interior')
+                                ->columnSpanFull()
+                                ->size(480),
+                                ImageEntry::make('gambar_eksterior')
+                                ->columnSpanFull()
+                                ->size(480),
+                                ImageEntry::make('gambar_mesin')
+                                ->columnSpanFull()
+                                ->size(480),
+                            ]),
                         TextEntry::make('created_at')
                             ->dateTime(),
-                        TextEntry::make('published_at')
-                            ->dateTime(),
                     ])
-                ])->columnSpan(1)
+                    
+                ])->columnSpan(2)
             ])->columns(5);
     }
 
