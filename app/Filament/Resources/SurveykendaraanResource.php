@@ -1133,7 +1133,7 @@ class SurveykendaraanResource extends Resource
                             ]),
                     ]),
                   
-                ])->columnSpan(5),
+                ])->columnSpan(3),
                 Group::make([
                     InfolistSection::make([
                         InfolistSection::make('Gambar')
