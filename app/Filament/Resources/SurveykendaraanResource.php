@@ -1175,7 +1175,12 @@ class SurveykendaraanResource extends Resource
                             ->label('Waktu Survey dibuat : ')
                             ->dateTime(),
                     ])
-                ])->columnSpan(2)
+                ])->columnSpan(2),
+                Group::make([
+                        TextEntry::make('created_at')
+                            ->label('Waktu Survey dibuat : ')
+                            ->dateTime(),
+                ])->columnSpan(3)
             ])->columns(5);
     }
 
