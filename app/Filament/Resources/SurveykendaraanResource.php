@@ -54,6 +54,7 @@ class SurveykendaraanResource extends Resource
                         Forms\Components\Select::make('target2_id')
                         ->label('Silakan memilih Nopol/Target Survey')
                         ->preload()
+                        ->required()
                         ->relationship(
                             name: 'Target2', 
                             titleAttribute: 'nopol',
