@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\SurveykendaraanExporter;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Detail;
@@ -19,7 +20,9 @@ use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Section;
 use Filament\Support\Enums\FontWeight;
 use Filament\Infolists\Components\Tabs;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Infolists\Components\Group;
+use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -28,7 +31,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SurveykendaraanResource\Pages;
 use Filament\Infolists\Components\Section as InfolistSection;
 use App\Filament\Resources\SurveykendaraanResource\RelationManagers;
-use Filament\Tables\Columns\TextColumn;
 
 class SurveykendaraanResource extends Resource
 {
@@ -811,6 +813,7 @@ class SurveykendaraanResource extends Resource
                 $user_id = Auth::user()->id;
                 $query->where('user_id', $user_id);
             })
+            
             ->columns([
                 Tables\Columns\TextColumn::make('target2.opd')
                     ->label('Kendaraan')
@@ -960,7 +963,11 @@ class SurveykendaraanResource extends Resource
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make()
                     ->label('New Survey'),
-            ]);
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(SurveykendaraanExporter::class)
+            ]);;
     }
     
     public static function infolist(Infolist $infolist): Infolist
