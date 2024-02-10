@@ -1330,6 +1330,7 @@ class SurveykendaraanResource extends Resource
                             ->label('Nilai Total :')
                             ->columnSpan(3)
                             ->alignCenter()
+                            ->color('info')
                             ->size(TextEntry\TextEntrySize::Large)
                             ->weight(FontWeight::Bold),
                             TextEntry::make('created_at')
