@@ -1007,20 +1007,26 @@ class SurveykendaraanResource extends Resource
                     InfolistSection::make('Informasi Kendaraan')
                         ->collapsible()
                         ->columnSpan(3)
-                        ->columns(4)
+                        ->columns(3)
                         ->schema([
                             TextEntry::make('kilometer')
-                                ->label('Kilometer'),
+                                ->label('Kilometer')
+                                ->columnSpan(1),
                             TextEntry::make('merk_ban')
-                                ->label('Merk Ban'),
+                                ->label('Merk Ban')
+                                ->columnSpan(1),
                             TextEntry::make('tahun_ban')
-                                ->label('Tahun Ban'),
+                                ->label('Tahun Ban')
+                                ->columnSpan(1),
                             TextEntry::make('merk_accu')
-                                ->label('Merk Accu'),
+                                ->label('Merk Accu')
+                                ->columnSpan(1),
                             TextEntry::make('masa_pajak')
-                                ->label('Masa Pajak'),
+                                ->label('Masa Pajak')
+                                ->columnSpan(1),
                             TextEntry::make('informasi_tambahan')
-                                ->label('Informasi Tambahan'),
+                                ->label('Informasi Tambahan')
+                                ->columnSpan(1),
                         ]),
                     InfolistSection::make('Kondisi Kendaraan')
                         ->collapsible()
