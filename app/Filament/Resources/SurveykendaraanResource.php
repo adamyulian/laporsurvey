@@ -1334,6 +1334,8 @@ class SurveykendaraanResource extends Resource
                             ->weight(FontWeight::Bold),
                             TextEntry::make('created_at')
                             ->dateTime()
+                            ->columnSpan(3)
+                            ->inlineLabel()
                             ->label('Waktu Pelaksanaan Survey : '),
                         ]),
                     InfolistSection::make('Gambar')
