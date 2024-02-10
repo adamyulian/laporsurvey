@@ -20,7 +20,7 @@ class Target2Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-truck';
 
-    protected static ?string $navigationLabel = 'Target';
+    protected static ?string $navigationLabel = 'Target Kendaraan';
 
     protected static ?string $recordTitleAttribute = 'Target';
 

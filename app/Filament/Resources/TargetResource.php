@@ -30,7 +30,7 @@ class TargetResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-americas';
 
-    protected static ?string $navigationLabel = 'Target Aset';
+    protected static ?string $navigationLabel = 'Target Tanah';
 
     protected static ?string $navigationGroup = 'Pemanfaatan Aset Tanah';
 
