@@ -1004,13 +1004,31 @@ class SurveykendaraanResource extends Resource
                             ->columnSpan(2)
                             ->label('Tahun'),
                     ]),
+                    InfolistSection::make('Informasi Kendaraan')
+                        ->collapsible()
+                        ->columnSpan(3)
+                        ->columns(4)
+                        ->schema([
+                            TextEntry::make('kilometer')
+                                ->label('Kilometer'),
+                            TextEntry::make('merk_ban')
+                                ->label('Merk Ban'),
+                            TextEntry::make('tahun_ban')
+                                ->label('Tahun Ban'),
+                            TextEntry::make('merk_accu')
+                                ->label('Merk Accu'),
+                            TextEntry::make('masa_pajak')
+                                ->label('Masa Pajak'),
+                            TextEntry::make('informasi_tambahan')
+                                ->label('Informasi Tambahan'),
+                        ]),
                     InfolistSection::make('Kondisi Kendaraan')
                         ->collapsible()
                         ->columnSpan(3)
                         ->columns(4)
                         ->schema([
                             Tabs::make('Tabs')
-                                ->columnSpan(3)
+                                ->columnSpan(4)
                                 ->tabs([
                                     Tabs\Tab::make('Interior')
                                         ->columns(3)
@@ -1073,7 +1091,7 @@ class SurveykendaraanResource extends Resource
                                             ->label('Keterangan Toolkit'),
                                         ]),
                                     Tabs\Tab::make('Eksterior')
-                                        ->columns(3)
+                                        ->columns()
                                         ->schema([
                                             TextEntry::make('body')
                                             ->columnSpan(1)
