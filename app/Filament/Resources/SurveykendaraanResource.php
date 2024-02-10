@@ -1004,276 +1004,280 @@ class SurveykendaraanResource extends Resource
                             ->columnSpan(2)
                             ->label('Tahun'),
                     ]),
-                    Tabs::make('Tabs')
-                    ->columnSpan(3)
-                    ->tabs([
-                        Tabs\Tab::make('Interior')
-                            ->columns(3)
-                            ->schema([
-                                TextEntry::make('tempat_duduk')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_tempat_duduk')
-                                ->columnSpan(2)
-                                ->label('Keterangan Tempat Duduk'),                          
-                                TextEntry::make('dashboard')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }), 
-                                TextEntry::make('ket_dashboard')
-                                ->columnSpan(2)
-                                ->label('Keterangan Dashboard'),
-                                TextEntry::make('ac')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }), 
-                                TextEntry::make('ket_ac')
-                                ->columnSpan(2)
-                                ->label('Keterangan AC'),
-                                TextEntry::make('kaca_film')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_kaca_film')
-                                ->columnSpan(2)
-                                ->label('Keterangan Kaca Film'),
-                                TextEntry::make('toolkit')
-                                ->label('Toolkit / Dongkrak')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_toolkit')
-                                ->columnSpan(2)
-                                ->label('Keterangan Toolkit'),
-                            ]),
-                        Tabs\Tab::make('Eksterior')
-                            ->columns(3)
-                            ->schema([
-                                TextEntry::make('body')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_body')
-                                ->columnSpan(2)
-                                ->label('Keterangan Body'),
-                                TextEntry::make('cat')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_cat')
-                                ->columnSpan(2)
-                                ->label('Keterangan Cat'),
-                                TextEntry::make('lampu_utama')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_lampu_utama')
-                                ->columnSpan(2)
-                                ->label('Keterangan Lampu Utama'),
-                                TextEntry::make('lampu_sein_depan')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_lampu_sein_depan')
-                                ->columnSpan(2)
-                                ->label('Keterangan Lampu Sein Depan'),
-                                TextEntry::make('lampu_sein_blkg')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }), 
-                                TextEntry::make('ket_lampu_sein_blkg')
-                                ->columnSpan(2)
-                                ->label('Keterangan Lampu Sein Belakang'),
-                                TextEntry::make('lampu_rem')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }), 
-                                TextEntry::make('ket_lampu_rem')
-                                ->columnSpan(2)
-                                ->label('Keterangan Lampu Rem'),
-                                TextEntry::make('ban_mobil')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }), 
-                                TextEntry::make('ket_ban_mobil')
-                                ->columnSpan(2)
-                                ->label('Keterangan Ban Mobil'),
-                                TextEntry::make('ban_serep')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_ban_serep')
-                                ->columnSpan(2)
-                                ->label('Keterangan Ban Serep'),
-                                TextEntry::make('klakson')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_klakson')
-                                ->columnSpan(2)
-                                ->label('Keterangan Klakson'),
-                                TextEntry::make('wiper')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_wiper')
-                                ->columnSpan(2)
-                                ->label('Keterangan Wiper'),
-                                TextEntry::make('spion')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_spion')
-                                ->columnSpan(2)
-                                ->label('Keterangan Spion'),
-                            ]),
-                        Tabs\Tab::make('Mesin')
-                            ->columns(3)
-                            ->schema([
-                                TextEntry::make('mesin')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_mesin')
-                                ->columnSpan(2)
-                                ->label('Keterangan Mesin'),
-                                TextEntry::make('accu')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_accu')
-                                ->columnSpan(2)
-                                ->label('Keterangan Accu'),
-                                TextEntry::make('rem')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_rem')
-                                ->columnSpan(2)
-                                ->label('Keterangan Rem'),
-                                TextEntry::make('transmisi')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_transmisi')
-                                ->columnSpan(2)
-                                ->label('Keterangan Transmisi'),
-                                TextEntry::make('power_steering')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_power_steering')
-                                ->columnSpan(2)
-                                ->label('Keterangan Power Steering'),
-                                TextEntry::make('radiator')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_radiator')
-                                ->columnSpan(2)
-                                ->label('Keterangan Radiator'),
-                                TextEntry::make('oli_mesin')
-                                ->columnSpan(1)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'Baik' => 'info',
-                                    'Kurang Baik' => 'warning',
-                                    'Rusak' => 'danger',
-                                }),
-                                TextEntry::make('ket_oli_mesin')
-                                ->columnSpan(2)
-                                ->label('Keterangan Oli Mesin'),
-                            ]),
-                    ]),
+                    InfolistSection::make('Kondisi Kendaraan')
+                        ->schema([
+                            Tabs::make('Tabs')
+                                ->columnSpan(3)
+                                ->tabs([
+                                    Tabs\Tab::make('Interior')
+                                        ->columns(3)
+                                        ->schema([
+                                            TextEntry::make('tempat_duduk')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_tempat_duduk')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Tempat Duduk'),                          
+                                            TextEntry::make('dashboard')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }), 
+                                            TextEntry::make('ket_dashboard')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Dashboard'),
+                                            TextEntry::make('ac')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }), 
+                                            TextEntry::make('ket_ac')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan AC'),
+                                            TextEntry::make('kaca_film')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_kaca_film')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Kaca Film'),
+                                            TextEntry::make('toolkit')
+                                            ->label('Toolkit / Dongkrak')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_toolkit')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Toolkit'),
+                                        ]),
+                                    Tabs\Tab::make('Eksterior')
+                                        ->columns(3)
+                                        ->schema([
+                                            TextEntry::make('body')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_body')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Body'),
+                                            TextEntry::make('cat')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_cat')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Cat'),
+                                            TextEntry::make('lampu_utama')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_lampu_utama')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Lampu Utama'),
+                                            TextEntry::make('lampu_sein_depan')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_lampu_sein_depan')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Lampu Sein Depan'),
+                                            TextEntry::make('lampu_sein_blkg')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }), 
+                                            TextEntry::make('ket_lampu_sein_blkg')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Lampu Sein Belakang'),
+                                            TextEntry::make('lampu_rem')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }), 
+                                            TextEntry::make('ket_lampu_rem')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Lampu Rem'),
+                                            TextEntry::make('ban_mobil')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }), 
+                                            TextEntry::make('ket_ban_mobil')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Ban Mobil'),
+                                            TextEntry::make('ban_serep')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_ban_serep')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Ban Serep'),
+                                            TextEntry::make('klakson')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_klakson')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Klakson'),
+                                            TextEntry::make('wiper')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_wiper')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Wiper'),
+                                            TextEntry::make('spion')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_spion')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Spion'),
+                                        ]),
+                                    Tabs\Tab::make('Mesin')
+                                        ->columns(3)
+                                        ->schema([
+                                            TextEntry::make('mesin')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_mesin')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Mesin'),
+                                            TextEntry::make('accu')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_accu')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Accu'),
+                                            TextEntry::make('rem')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_rem')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Rem'),
+                                            TextEntry::make('transmisi')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_transmisi')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Transmisi'),
+                                            TextEntry::make('power_steering')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_power_steering')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Power Steering'),
+                                            TextEntry::make('radiator')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_radiator')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Radiator'),
+                                            TextEntry::make('oli_mesin')
+                                            ->columnSpan(1)
+                                            ->badge()
+                                            ->color(fn (string $state): string => match ($state) {
+                                                'Baik' => 'info',
+                                                'Kurang Baik' => 'warning',
+                                                'Rusak' => 'danger',
+                                            }),
+                                            TextEntry::make('ket_oli_mesin')
+                                            ->columnSpan(2)
+                                            ->label('Keterangan Oli Mesin'),
+                                            ]),
+                                        ]),
+                        ])
+                    
                   
                 ])->columnSpan(3),
                 Group::make([

@@ -7,6 +7,8 @@ use Filament\Actions\Exports\ExportColumn;
 use Filament\Actions\Exports\Exporter;
 use Filament\Actions\Exports\Models\Export;
 
+use function PHPSTORM_META\map;
+
 class SurveykendaraanExporter extends Exporter
 {
     protected static ?string $model = Surveykendaraan::class;
@@ -16,7 +18,32 @@ class SurveykendaraanExporter extends Exporter
         return [
             ExportColumn::make('id')
                 ->label('ID'),
-            ExportColumn::make('target2.nopol'),
+            ExportColumn::make('target2.nopol')
+                ->label('nopol'),
+            ExportColumn::make('target2.opd')
+                ->label('opd'),
+            ExportColumn::make('target2.tahun')
+                ->label('tahun'),
+            ExportColumn::make('target2.merk')
+                ->label('merk'),
+            ExportColumn::make('target2.tipe')
+                ->label('tipe'),
+            ExportColumn::make('target2.jabatan')
+                ->label('jabatan'),
+            ExportColumn::make('kilometer'),
+            ExportColumn::make('merk_ban'),
+            ExportColumn::make('tahun_ban'),
+            ExportColumn::make('merk_accu'),
+            ExportColumn::make('masa_pajak'),
+            ExportColumn::make('informasi_tambahan'),
+            ExportColumn::make('group1_total_value')
+                ->label('total nilai interior'),
+            ExportColumn::make('group2_total_value')
+                ->label('total nilai eksterior'),
+            ExportColumn::make('group3_total_value')
+                ->label('total nilai mesin'),
+            ExportColumn::make('overall_total_value')
+                ->label('total nilai keseluruhan'),
             ExportColumn::make('speedometer'),
             ExportColumn::make('kebersihan'),
             ExportColumn::make('tempat_duduk'),
@@ -29,6 +56,8 @@ class SurveykendaraanExporter extends Exporter
             ExportColumn::make('lampu_utama'),
             ExportColumn::make('lampu_sein_depan'),
             ExportColumn::make('lampu_sein_blkg'),
+            ExportColumn::make('lampu_kabut'),
+            ExportColumn::make('lampu_mundur'),
             ExportColumn::make('lampu_rem'),
             ExportColumn::make('ban_mobil'),
             ExportColumn::make('ban_serep'),
@@ -55,6 +84,8 @@ class SurveykendaraanExporter extends Exporter
             ExportColumn::make('ket_lampu_sein_depan'),
             ExportColumn::make('ket_lampu_sein_blkg'),
             ExportColumn::make('ket_lampu_rem'),
+            ExportColumn::make('ket_lampu_kabut'),
+            ExportColumn::make('ket_lampu_mundur'),
             ExportColumn::make('ket_ban_mobil'),
             ExportColumn::make('ket_ban_serep'),
             ExportColumn::make('ket_klakson'),
@@ -67,20 +98,7 @@ class SurveykendaraanExporter extends Exporter
             ExportColumn::make('ket_power_steering'),
             ExportColumn::make('ket_radiator'),
             ExportColumn::make('ket_oli_mesin'),
-            ExportColumn::make('group1_total_value'),
-            ExportColumn::make('group2_total_value'),
-            ExportColumn::make('group3_total_value'),
-            ExportColumn::make('overall_total_value'),
-            ExportColumn::make('kilometer'),
-            ExportColumn::make('merk_ban'),
-            ExportColumn::make('tahun_ban'),
-            ExportColumn::make('merk_accu'),
-            ExportColumn::make('masa_pajak'),
-            ExportColumn::make('informasi_tambahan'),
-            ExportColumn::make('lampu_kabut'),
-            ExportColumn::make('lampu_mundur'),
-            ExportColumn::make('ket_lampu_kabut'),
-            ExportColumn::make('ket_lampu_mundur'),
+           
         ];
     }
 
