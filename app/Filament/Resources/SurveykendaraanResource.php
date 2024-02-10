@@ -1336,7 +1336,7 @@ class SurveykendaraanResource extends Resource
                             ->dateTime()
                             ->columnSpan(3)
                             ->inlineLabel()
-                            ->label('Waktu Pelaksanaan Survey : '),
+                            ->label('Waktu Survey : '),
                         ]),
                     InfolistSection::make('Gambar')
                             ->collapsible()
