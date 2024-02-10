@@ -251,11 +251,16 @@ class SurveykendaraanResource extends Resource
                         ->label('Foto Kondisi Interior (Max. 2 Files)')
                         ->required()
                         ->image()
-                        ->multiple(2),
+                        ->multiple()
+                        ->previewable(false)
+                        ->openable()
+                        ->maxFiles(2),
                     Forms\Components\FileUpload::make('gambar_speedometer')
                         ->label('Foto Speedometer, Usahakan KM dan BBM jelas')
                         ->required()
-                        ->image(),
+                        ->image()
+                        ->previewable(false)
+                        ->openable(),
                     Forms\Components\TextInput::make('kilometer')
                         ->numeric()
                         ->required()
@@ -582,8 +587,13 @@ class SurveykendaraanResource extends Resource
                         ->requiredUnless('spion', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_eksterior')
+                        ->label('Foto Kondisi Eksterior (Max. 2 Files)')
                         ->image()
-                        ->multiple(),
+                        ->required()
+                        ->multiple(2)
+                        ->previewable(false)
+                        ->openable()
+                        ->maxFiles(2),
                         ]),
                 Section::make('Mesin')
                     ->collapsible()
@@ -767,8 +777,13 @@ class SurveykendaraanResource extends Resource
                         ->requiredUnless('oli_mesin', 'Baik')
                         ->columnSpanFull(),
                     Forms\Components\FileUpload::make('gambar_mesin')
+                        ->label('Foto Kondisi Mesin (Max. 2 Files)')
+                        ->required()
                         ->image()
-                        ->multiple(),
+                        ->multiple(2)
+                        ->previewable(false)
+                        ->openable()
+                        ->maxFiles(2),
                         ]),
                 Section::make('Informasi Tambahan')
                         ->collapsible()
