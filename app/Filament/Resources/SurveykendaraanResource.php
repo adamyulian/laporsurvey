@@ -1091,7 +1091,7 @@ class SurveykendaraanResource extends Resource
                                             ->label('Keterangan Toolkit'),
                                         ]),
                                     Tabs\Tab::make('Eksterior')
-                                        ->columns()
+                                        ->columns(3)
                                         ->schema([
                                             TextEntry::make('body')
                                             ->columnSpan(1)
