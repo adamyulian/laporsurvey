@@ -1309,24 +1309,30 @@ class SurveykendaraanResource extends Resource
                 ])->columnSpan(3),
                 Group::make([
                     InfolistSection::make('Nilai Survey')
+                        ->columns(3)
                         ->schema([
                             TextEntry::make('group1_total_value')
                             ->label('Nilai Interior : ')
+                            ->columnSpan(1)
                             ->size(TextEntry\TextEntrySize::Medium)
                             ->weight(FontWeight::Bold),
-                        TextEntry::make('group2_total_value')
+                            TextEntry::make('group2_total_value')
                             ->label('Nilai Eksterior : ')
+                            ->columnSpan(1)
                             ->size(TextEntry\TextEntrySize::Medium)
                             ->weight(FontWeight::Bold),
-                        TextEntry::make('group3_total_value')
+                            TextEntry::make('group3_total_value')
                             ->label('Nilai Mesin : ')
+                            ->columnSpan(1)
                             ->size(TextEntry\TextEntrySize::Medium)
                             ->weight(FontWeight::Bold),
-                        TextEntry::make('overall_total_value')
+                            TextEntry::make('overall_total_value')
                             ->label('Nilai Total :')
+                            ->columnSpan(3)
+                            ->alignCenter()
                             ->size(TextEntry\TextEntrySize::Large)
                             ->weight(FontWeight::Bold),
-                        TextEntry::make('created_at')
+                            TextEntry::make('created_at')
                             ->dateTime()
                             ->label('Waktu Pelaksanaan Survey : '),
                         ]),
