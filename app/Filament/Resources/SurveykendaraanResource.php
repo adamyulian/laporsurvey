@@ -1005,6 +1005,9 @@ class SurveykendaraanResource extends Resource
                             ->label('Tahun'),
                     ]),
                     InfolistSection::make('Kondisi Kendaraan')
+                        ->collapsible()
+                        ->columnSpan(3)
+                        ->columns(4)
                         ->schema([
                             Tabs::make('Tabs')
                                 ->columnSpan(3)
