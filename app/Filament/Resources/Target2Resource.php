@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\Target2Exporter;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Target2;
@@ -9,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\Target2Resource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -42,12 +44,6 @@ class Target2Resource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('opd')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('team_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('nama_penyelia')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('user_id')
-                    ->numeric(),
             ]);
     }
 
@@ -108,6 +104,22 @@ class Target2Resource extends Resource
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make()
                 ->label('Buat Target Baru'),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(Target2Exporter::class)
+                    ->label('Download Data')
+                    ->modifyQueryUsing(function (Builder $query) {
+
+                        if (Auth::user()->role === 'admin') {
+                            return $query;
+                        }
+                
+                        // Non-admin users can only view their own component
+                        // return 
+                            $user_id = Auth::user()->id;
+                            $query->where('user_id', $user_id);
+                        })
             ]);
     }
     

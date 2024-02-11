@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Target2 extends Model
 {
@@ -26,4 +27,11 @@ class Target2 extends Model
         {
             return $this->hasMany(related:Surveykendaraan::class);
         }
+        protected static function booted() {
+            static::creating(function($model) {
+                $model->user_id = Auth::user()->id;
+                $model->nama_penyelia = Auth::user()->name;
+            });
+        }
+    
 }
