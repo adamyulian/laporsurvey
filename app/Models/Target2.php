@@ -31,6 +31,7 @@ class Target2 extends Model
             static::creating(function($model) {
                 $model->user_id = Auth::user()->id;
                 $model->nama_penyelia = Auth::user()->name;
+                $model->status = '0';
             });
         }
     
