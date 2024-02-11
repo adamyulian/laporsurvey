@@ -1334,7 +1334,7 @@ class SurveykendaraanResource extends Resource
                             ->alignCenter()
                             ->color('info')
                             ->size(TextEntry\TextEntrySize::Large)
-                            ->weight(FontWeight::Bold),
+                            ->weight(FontWeight::ExtraBold),
                             TextEntry::make('created_at')
                             ->dateTime()
                             ->columnSpan(3)
