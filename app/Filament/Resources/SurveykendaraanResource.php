@@ -968,6 +968,7 @@ class SurveykendaraanResource extends Resource
                 ExportAction::make()
                     ->exporter(SurveykendaraanExporter::class)
                     ->label('Download Data')
+                    ->color('info')
             ]);
     }
     

@@ -109,6 +109,7 @@ class Target2Resource extends Resource
                 ExportAction::make()
                     ->exporter(Target2Exporter::class)
                     ->label('Download Data')
+                    ->color('info')
             ]);
     }
     
