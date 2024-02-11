@@ -968,17 +968,6 @@ class SurveykendaraanResource extends Resource
                 ExportAction::make()
                     ->exporter(SurveykendaraanExporter::class)
                     ->label('Download Data')
-                    ->modifyQueryUsing(function (Builder $query) {
-
-                        if (Auth::user()->role === 'admin') {
-                            return $query;
-                        }
-                
-                        // Non-admin users can only view their own component
-                        // return 
-                            $user_id = Auth::user()->id;
-                            $query->where('user_id', $user_id);
-                        })
             ]);
     }
     
