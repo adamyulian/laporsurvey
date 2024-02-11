@@ -16,10 +16,14 @@ class SurveyExporter extends Exporter
         return [
             ExportColumn::make('id')
                 ->label('ID'),
-            ExportColumn::make('target.nama'),
-            ExportColumn::make('target.register'),
-            ExportColumn::make('target.luas'),
-            ExportColumn::make('target.tahun_perolehan'),
+            ExportColumn::make('target.nama')
+                ->label('nama aset'),
+            ExportColumn::make('target.register')
+                ->label('register'),
+            ExportColumn::make('target.luas')
+                ->label('luas'),
+            ExportColumn::make('target.tahun_perolehan')
+                ->label('tahun perolehan'),
             ExportColumn::make('status'),
             ExportColumn::make('guna'),
             ExportColumn::make('nama_pic'),

@@ -2,14 +2,17 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\SurveyExporter;
 use Closure;
 use Filament\Forms;
 use App\Models\Team;
 use Filament\Tables;
+use App\Models\Detail;
 use App\Models\Survey;
 use App\Models\Target;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
+use App\Models\Surveyor;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Rules\AttendanceRadius;
@@ -24,6 +27,7 @@ use Filament\Support\Enums\FontWeight;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\Group;
+use Filament\Tables\Actions\ExportAction;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\Placeholder;
@@ -43,8 +47,6 @@ use Filament\Forms\Components\Section as formsection;
 use App\Filament\Resources\SurveyResource\RelationManagers;
 use App\Filament\Resources\SurveyResource\RelationManagers\DetailRelationManager;
 use App\Filament\Resources\SurveyResource\RelationManagers\DetailsRelationManager;
-use App\Models\Detail;
-use App\Models\Surveyor;
 
 class SurveyResource extends Resource
 {
@@ -458,6 +460,12 @@ class SurveyResource extends Resource
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(SurveyExporter::class)
+                    ->label('Download Data')
+                    ->color('info')
             ]);
     }
     
