@@ -815,12 +815,18 @@ class SurveykendaraanResource extends Resource
             })
             
             ->columns([
+                Tables\Columns\TextColumn::make('target2.nopol')
+                    ->label('Kendaraan')
+                    ->wrap()
+                    ->limit(25)
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('target2.opd')
                     ->label('Kendaraan')
                     ->wrap()
                     ->limit(25)
-                    ->description(fn (Surveykendaraan $record): string => $record->target2->nopol )
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('tempat_duduk')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true)
