@@ -514,6 +514,25 @@ class Surveykendaraan extends Model
                 // Save the overall total value
                 $model->overall_total_value = $overallTotalValue;
                     });
+            static::updating(function($model) {
+                // Calculate the total value for each group and save individual field values
+                $groupValues = self::calculateGroupValues($model);
+                $overallTotalValue = 0;
+                foreach ($groupValues as $groupName => $groupData) {
+                    // Save the individual field values for the group
+                    foreach ($groupData['fieldValues'] as $fieldName => $fieldValue) {
+                        $model->$fieldName = $fieldValue;
+                    }
+                    // Save the total value for the group considering the weight factors of both the group and individual fields
+                    $groupTotalValue = $groupData['totalValue'];
+                    $groupWeightFactor = $groupData['weightFactor'];
+                    $model->{$groupName . '_total_value'} = $groupTotalValue * ($groupWeightFactor / 100) * 50 * (100 / $groupWeightFactor);
+                    // Accumulate total value considering weight factors
+                    $overallTotalValue += $groupTotalValue * ($groupWeightFactor / 100) * 50;
+                }
+                // Save the overall total value
+                $model->overall_total_value = $overallTotalValue;
+            });
             static::deleting(function ($model) {
                 // Assuming there is a 'target_id' attribute in the model
                 $target = Target2::where('id', $model->target2_id)->first();
