@@ -42,6 +42,20 @@ class Target2Resource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('jabatan')
                     ->maxLength(255),
+                Forms\Components\Select::make('nama_penyelia')
+                    ->label('Nama Penyelia')
+                    ->native(false)
+                    ->searchable()
+                    ->options([
+                        'ADHITIYA DWIJAYA ARIYANTO',
+                        'ERLANGGA ADHI CAHYA PUTRA, SE',
+                        'AHMAD ADAM YULIAN',
+                        'ANANG SUNTORO',
+                        'GUNTUR WIJAYA MUIN, S.E',
+                        'RACHMANU ISNAINI',
+                        'TEDY IRAWAN',
+                        'MUHAMMAD ALI FIKRI'
+                    ]),
                 Forms\Components\Select::make('opd')
                     ->native(false)
                     ->searchable()
