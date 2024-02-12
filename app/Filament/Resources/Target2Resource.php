@@ -43,6 +43,8 @@ class Target2Resource extends Resource
                 Forms\Components\TextInput::make('jabatan')
                     ->maxLength(255),
                 Forms\Components\Select::make('opd')
+                    ->native(false)
+                    ->searchable()
                     ->options([
                         'BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA',
                         'BADAN KESATUAN BANGSA, POLITIK DAN PERLINDUNGAN MASYARAKAT',
