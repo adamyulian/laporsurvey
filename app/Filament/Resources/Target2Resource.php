@@ -42,8 +42,43 @@ class Target2Resource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('jabatan')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('opd')
-                    ->maxLength(255),
+                Forms\Components\Select::make('opd')
+                    ->options([
+                        'BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA',
+                        'BADAN KESATUAN BANGSA, POLITIK DAN PERLINDUNGAN MASYARAKAT',
+                        'BADAN PENANGGULANGAN BENCANA',
+                        'BADAN PENDAPATAN DAN PAJAK DAERAH',
+                        'BADAN PENGELOLAHAN KEUANGAN DAN ASET DAERAH',
+                        'BADAN PERENCANAAN PEMBANGUNAN DAERAH, PENELITIAN DAN PENGEMBANGAN',
+                        'BAGIAN HUKUM DAN KERJASAMA',
+                        'BAGIAN ORGANISASI',
+                        'BAGIAN PEMERINTAHAN DAN KESEJAHTERAAN RAKYAT',
+                        'BAGIAN PENGADAAN BARANG/JASA DAN ADMINISTRASI PEMBANGUNAN',
+                        'BAGIAN PEREKONOMIAN DAN SUMBER DAYA ALAM',
+                        'BAGIAN UMUM, PROTOKOL DAN KOMUNIKASI PIMPINAN',
+                        'DINAS KEBUDAYAAN, KEPEMUDAAN DAN OLAHRAGA SERTA PARIWISATA',
+                        'DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL',
+                        'DINAS KESEHATAN',
+                        'DINAS KETAHANAN PANGAN DAN PERTANIAN',
+                        'DINAS KOMUNIKASI DAN INFORMATIKA',
+                        'DINAS KOPERASI USAHA KECIL DAN MENENGAH DAN PERDAGANGAN',
+                        'DINAS LINGKUNGAN HIDUP',
+                        'DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN',
+                        'DINAS PEMBERDAYAAN PEREMPUAN DAN PERLINDUNGAN ANAK SERTA PENGENDALIAN PENDUDUK DAN KELUARGA BERENCANA',
+                        'DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU',
+                        'DINAS PENDIDIKAN',
+                        'DINAS PERHUBUNGAN',
+                        'DINAS PERINDUSTRIAN DAN TENAGA KERJA',
+                        'DINAS PERPUSTAKAAN DAN KEARSIPAN',
+                        'DINAS PERUMAHAN RAKYAT DAN PEMUKIMAN SERTA PERTANAHAN',
+                        'DINAS SOSIAL',
+                        'DINAS SUMBER DAYA AIR DAN BINA MARGA',
+                        'INSPEKTORAT DAERAH',
+                        'RSUD BHAKTI DHARMA HUSADA',
+                        'RSUD DR SOEWANDHIE',
+                        'SATUAN POLISI PAMONG PRAJA',
+                        'SEKRETARIAT DPRD'
+                    ]),
             ]);
     }
 
