@@ -32,7 +32,7 @@ class ListTargets extends ListRecords
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('opd', $teamname);
+                        $query->where('kecamatan', $teamname);
                     }),
             'Belum' => Tab::make('Belum')
                 ->modifyQueryUsing(function (Builder $query) {
@@ -42,7 +42,7 @@ class ListTargets extends ListRecords
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('opd', $teamname)->where('user_id', 0);
+                        $query->where('kecamatan', $teamname)->where('user_id', 0);
                     }),
             'Selesai' => Tab::make('Selesai')
                 ->modifyQueryUsing(function (Builder $query) {
@@ -52,7 +52,7 @@ class ListTargets extends ListRecords
                 // Non-admin users can only view their own component
                 // return 
                     $teamname = Auth::user()->name;
-                    $query->where('opd', $teamname)->where('user_id','!=', 0);
+                    $query->where('kecamatan', $teamname)->where('user_id','!=', 0);
                 }),
         ];
     }

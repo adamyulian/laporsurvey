@@ -115,7 +115,7 @@ class TargetResource extends Resource
                 // Non-admin users can only view their own component
                 // return 
                     $teamname = Auth::user()->name;
-                    $query->where('opd', $teamname);
+                    $query->where('kecamatan', $teamname);
                 })
             ->columns([
                 Tables\Columns\TextColumn::make('register')
