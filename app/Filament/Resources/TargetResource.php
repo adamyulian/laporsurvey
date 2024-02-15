@@ -125,13 +125,12 @@ class TargetResource extends Resource
                 Tables\Columns\TextColumn::make('luas')
                     ->suffix(' M2')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('penggunaan')
+                Tables\Columns\TextColumn::make('kecamatan')
                     ->limit(15)
-                    ->description(fn (Target $record): string => $record->alamat)
+                    ->label('Kecamatan')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('asal')
-                    ->description(fn (Target $record): string => $record->tahun_perolehan)
-                    ->label('Asal dan Tahun Perolehan')
+                Tables\Columns\TextColumn::make('kelurahan')
+                    ->label('Kelurahan')
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('surveyor')
                 //     ->searchable(),
