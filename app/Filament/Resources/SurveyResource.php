@@ -98,6 +98,8 @@ class SurveyResource extends Resource
                             $set('tahun_perolehan', Target::find($state)->tahun_perolehan);
                             $set('penggunaan', Target::find($state)->penggunaan);
                             $set('alamat', Target::find($state)->alamat);
+                            $set('kecamatan', Target::find($state)->kecamatan);
+                            $set('kelurahan', Target::find($state)->kelurahan);
                             $set('target_id1', Target::find($state)->id);
                             $set('sigis', Target::find($state)->sigis);
                             $set('latitude',Target::find($state)->lat);
@@ -280,26 +282,26 @@ class SurveyResource extends Resource
                             ->hidden(fn (Get $get) => $get('status') !== '1')
                             ->columnSpan(3)
                             ->maxLength(255),
-                        Forms\Components\FileUpload::make('foto')
-                            ->image()
-                            ->multiple(10)
-                            ->preserveFilenames()
-                            ->label('Foto Bukti (Maks. 10 gambar)')
-                            ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(6)
-                            ->downloadable(),
-                        Forms\Components\FileUpload::make('foto1')
-                            ->image()
-                            ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(3)
-                            ->label('Foto Jalan')
-                            ->downloadable(),
-                        Forms\Components\FileUpload::make('foto2')
-                            ->image()
-                            ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(3)
-                            ->label('Foto Bangunan dengan Jalan')
-                            ->downloadable(),
+                        // Forms\Components\FileUpload::make('foto')
+                        //     ->image()
+                        //     ->multiple(10)
+                        //     ->preserveFilenames()
+                        //     ->label('Foto Bukti (Maks. 10 gambar)')
+                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
+                        //     ->columnSpan(6)
+                        //     ->downloadable(),
+                        // Forms\Components\FileUpload::make('foto1')
+                        //     ->image()
+                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
+                        //     ->columnSpan(3)
+                        //     ->label('Foto Jalan')
+                        //     ->downloadable(),
+                        // Forms\Components\FileUpload::make('foto2')
+                        //     ->image()
+                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
+                        //     ->columnSpan(3)
+                        //     ->label('Foto Bangunan dengan Jalan')
+                        //     ->downloadable(),
                         Forms\Components\FileUpload::make('foto3')
                             ->image()
                             ->hidden(fn (Get $get) => $get('status') !== '1')
@@ -312,31 +314,31 @@ class SurveyResource extends Resource
                             ->columnSpan(3)
                             ->label('Foto Bagian Dalam')
                             ->downloadable(),
-                        Forms\Components\TextInput::make('nama_pic')
-                            ->label('Nama Pengelola')
-                            ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(3)
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('no_hp_pic')
-                            ->label('Nomor Telepon/Whatsapp Pengelola')
-                            ->tel()
-                            ->numeric()
-                            ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->columnSpan(3)
-                            ->maxLength(255),
-                        Forms\Components\Select::make('hubungan_hukum')
-                            ->options([
-                                'belum' => 'Belum Pernah Membuat Hubungan Hukum',
-                                'sudah_habis' => 'Masa Berlaku Hubungan Hukum Habis',
-                                'ada' => 'Dokumen Hubungan Hukum Masih Berlaku',
-                            ])
-                            ->hidden(fn (Get $get) => $get('status') !== '1')
-                            ->live()
-                            ->columnSpan(3)
-                            ->native(false),
-                        Forms\Components\FileUpload::make('dokumen_hub_hukum')
-                            ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
-                            ->columnSpan(3), 
+                        // Forms\Components\TextInput::make('nama_pic')
+                        //     ->label('Nama Pengelola')
+                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
+                        //     ->columnSpan(3)
+                        //     ->maxLength(255),
+                        // Forms\Components\TextInput::make('no_hp_pic')
+                        //     ->label('Nomor Telepon/Whatsapp Pengelola')
+                        //     ->tel()
+                        //     ->numeric()
+                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
+                        //     ->columnSpan(3)
+                        //     ->maxLength(255),
+                        // Forms\Components\Select::make('hubungan_hukum')
+                        //     ->options([
+                        //         'belum' => 'Belum Pernah Membuat Hubungan Hukum',
+                        //         'sudah_habis' => 'Masa Berlaku Hubungan Hukum Habis',
+                        //         'ada' => 'Dokumen Hubungan Hukum Masih Berlaku',
+                        //     ])
+                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
+                        //     ->live()
+                        //     ->columnSpan(3)
+                        //     ->native(false),
+                        // Forms\Components\FileUpload::make('dokumen_hub_hukum')
+                        //     ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
+                        //     ->columnSpan(3), 
                         // Forms\Components\Select::make('surveyor')
                         // ->relationship(
                         //     name: 'surveyor',
