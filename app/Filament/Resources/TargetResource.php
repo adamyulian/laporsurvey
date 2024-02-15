@@ -31,9 +31,9 @@ class TargetResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-globe-americas';
 
-    protected static ?string $navigationLabel = 'Target Tanah';
+    protected static ?string $navigationLabel = 'Target';
 
-    protected static ?string $navigationGroup = 'Pemanfaatan Aset Tanah';
+    protected static ?string $navigationGroup = 'Survey Kondisi Aset';
 
     public static function form(Form $form): Form
     {
