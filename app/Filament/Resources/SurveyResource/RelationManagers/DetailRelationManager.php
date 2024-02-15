@@ -55,7 +55,7 @@ class DetailRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('penggunaan')
             ->columns([
-                Tables\Columns\TextColumn::make('survey.target.register'),
+                Tables\Columns\TextColumn::make('survey.target.register.'),
                 // ->state(function (Survey $survey) {
                 //     $register = Target::where('survey_id', $survey->id)->value('register');
         
