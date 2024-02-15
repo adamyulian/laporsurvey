@@ -492,7 +492,10 @@ class SurveyResource extends Resource
                         TextEntry::make('target.register')
                             ->columnSpan(2)
                             ->label('Nomor Register'),
-                        TextEntry::make('target.penggunaan')
+                        TextEntry::make('target.kecamatan')
+                            ->columnSpan(2)
+                            ->label('Penggunaan'),
+                        TextEntry::make('target.kelurahan')
                             ->columnSpan(2)
                             ->label('Penggunaan'),
                         TextEntry::make('target.tahun_perolehan')
@@ -516,61 +519,58 @@ class SurveyResource extends Resource
                         TextEntry::make('target.alamat')
                             ->columnSpan(2)
                             ->label('Alamat'),
-                        TextEntry::make('target.asal')
-                            ->columnSpan(2)
-                            ->label('Asal Perolehan'),
                     ]),
                     Section::make('Hasil Survey')
                         ->columns(4)
                         ->schema([
-                            IconEntry::make('status')
-                                ->columnSpan(4)
-                                ->label('Aset dalam Penggunaan/Pemanfaatan')
-                                ->inlineLabel()
-                                ->boolean()
-                                ->trueIcon('heroicon-o-check-badge')
-                                ->falseIcon('heroicon-o-x-mark'),
-                            TextEntry::make('guna')
-                                ->columnSpan(2)
-                                ->label('Nama Penggunaan/Pemanfaatan'),
-                            TextEntry::make('detail')
-                                ->columnSpan(2)
-                                ->label('Detail Penggunaan/Pemanfaatan'),
-                            ImageEntry::make('foto')
-                                ->columnSpan(4)
-                                ->limit(5)
-                                ->limitedRemainingText()
-                                ->label('Foto Bukti Penggunaan/Pemanfaatan')
-                                ->size(150),
-                            ImageEntry::make('foto1')
-                                ->columnSpan(2)
-                                ->label('Foto Jalan Akses'),
-                            ImageEntry::make('foto2')
-                                ->columnSpan(2)
-                                ->label('Foto Bangunan dan Jalan'),
+                            // IconEntry::make('status')
+                            //     ->columnSpan(4)
+                            //     ->label('Aset dalam Penggunaan/Pemanfaatan')
+                            //     ->inlineLabel()
+                            //     ->boolean()
+                            //     ->trueIcon('heroicon-o-check-badge')
+                            //     ->falseIcon('heroicon-o-x-mark'),
+                            // TextEntry::make('guna')
+                            //     ->columnSpan(2)
+                            //     ->label('Nama Penggunaan/Pemanfaatan'),
+                            // TextEntry::make('detail')
+                            //     ->columnSpan(2)
+                            //     ->label('Detail Penggunaan/Pemanfaatan'),
+                            // ImageEntry::make('foto')
+                            //     ->columnSpan(4)
+                            //     ->limit(5)
+                            //     ->limitedRemainingText()
+                            //     ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                            //     ->size(150),
+                            // ImageEntry::make('foto1')
+                            //     ->columnSpan(2)
+                            //     ->label('Foto Jalan Akses'),
+                            // ImageEntry::make('foto2')
+                            //     ->columnSpan(2)
+                            //     ->label('Foto Bangunan dan Jalan'),
                             ImageEntry::make('foto3')
                             ->columnSpan(2)
                                 ->label('Foto Depan Bangunan'),
                             ImageEntry::make('foto4')
                             ->columnSpan(2)    
                             ->label('Foto Dalam Bangunan'),
-                            TextEntry::make('nama_pic')
-                                ->columnSpan(2)
-                                ->label('Nama Penanggung Jawab'),
-                            TextEntry::make('no_hp_pic')
-                                ->columnSpan(2)
-                                ->label('Nomor Telepon/Whatsapp Penanggung Jawab'),
-                            TextEntry::make('hubungan_hukum')
-                                ->columnSpan(2)
-                                ->badge()
-                                ->color(fn (string $state): string => match ($state) {
-                                    'belum' => 'danger',
-                                    'sudah_habis' => 'warning',
-                                    'ada' => 'success',})
-                                ->label('Hubungan Hukum'),
-                            ImageEntry::make('dokumen_hub_hukum')
-                                ->columnSpan(2)
-                                ->label('Dokumen Hub. Hukum'),
+                            // TextEntry::make('nama_pic')
+                            //     ->columnSpan(2)
+                            //     ->label('Nama Penanggung Jawab'),
+                            // TextEntry::make('no_hp_pic')
+                            //     ->columnSpan(2)
+                            //     ->label('Nomor Telepon/Whatsapp Penanggung Jawab'),
+                            // TextEntry::make('hubungan_hukum')
+                            //     ->columnSpan(2)
+                            //     ->badge()
+                            //     ->color(fn (string $state): string => match ($state) {
+                            //         'belum' => 'danger',
+                            //         'sudah_habis' => 'warning',
+                            //         'ada' => 'success',})
+                            //     ->label('Hubungan Hukum'),
+                            // ImageEntry::make('dokumen_hub_hukum')
+                            //     ->columnSpan(2)
+                            //     ->label('Dokumen Hub. Hukum'),
                             
                         ])
                 ])->columnSpan(4),
@@ -584,8 +584,8 @@ class SurveyResource extends Resource
                         TextEntry::make('lng'),
                         TextEntry::make('address')
                                 ->label('Location Data Saved'),
-                        TextEntry::make('surveyor.nama')
-                                ->label('Surveyor')
+                        // TextEntry::make('surveyor.nama')
+                        //         ->label('Surveyor')
                     ])
                 ])->columnSpan(1)
             ])->columns(5);
