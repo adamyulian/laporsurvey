@@ -133,6 +133,12 @@ class TargetResource extends Resource
                 Tables\Columns\TextColumn::make('kelurahan')
                     ->label('Kelurahan')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('kelurahan')
+                    ->label('Kelurahan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('opd')
+                    ->label('OPD')
+                    ->searchable(),
                 // Tables\Columns\TextColumn::make('surveyor')
                 //     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
