@@ -85,7 +85,7 @@ class SurveyResource extends Resource
                                 // Non-admin users can only view their own component
                                 // return 
                                 $teamname = Auth::user()->name;
-                                $query->where('kecamatan', $teamname)
+                                $query->where('kecamatan', $teamname)->where('user_id', 0)
                                 ;}
                             )
                         ->getOptionLabelFromRecordUsing(fn (Target $record) => "{$record->register} {$record->nama} {$record->alamat}")
