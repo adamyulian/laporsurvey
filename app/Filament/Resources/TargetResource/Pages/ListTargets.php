@@ -24,7 +24,7 @@ class ListTargets extends ListRecords
     public function getTabs(): array
     {
         return [
-            'All' => Tab::make('All Target')
+            'Semua' => Tab::make('Semua')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
                         return $query;
