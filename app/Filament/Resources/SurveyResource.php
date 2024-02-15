@@ -125,13 +125,13 @@ class SurveyResource extends Resource
                                 Forms\Components\TextInput::make('tahun_perolehan')
                                     ->columnSpan(2)
                                     ->disabled(),
-                                Forms\Components\TextInput::make('penggunaan')
+                                Forms\Components\TextInput::make('kecamatan')
                                     ->columnSpan(2)
                                     ->disabled(),
                                 Forms\Components\TextInput::make('alamat')
                                     ->columnSpan(2)
                                     ->disabled(),
-                                Forms\Components\TextInput::make('asal')
+                                Forms\Components\TextInput::make('kelurahan')
                                     ->columnSpan(2)
                                     ->disabled(),
                                 // Forms\Components\FileUpload::make('sigis')
