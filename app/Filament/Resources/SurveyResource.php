@@ -86,7 +86,6 @@ class SurveyResource extends Resource
                                 // return 
                                 $teamname = Auth::user()->name;
                                 $query->where('kecamatan', $teamname)
-                                ->where('user_id', 0)
                                 ;}
                             )
                         ->getOptionLabelFromRecordUsing(fn (Target $record) => "{$record->register} {$record->nama} {$record->alamat}")
