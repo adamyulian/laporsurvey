@@ -14,7 +14,10 @@ class Detail extends Model
         'penggunaan',
         'survey_id',
         'detail',
-        'luas'
+        'luas',
+        'kondisi',
+        'foto_penggunaan',
+        'hub_hukum'
     ];
 
     protected static function booted() {
