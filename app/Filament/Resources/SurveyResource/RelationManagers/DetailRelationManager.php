@@ -105,6 +105,8 @@ class DetailRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('detail'),
                 Tables\Columns\TextColumn::make('luas')
                 ->label('Luas (M2)'),
+                Tables\Columns\TextColumn::make('kondisi'),
+                Tables\Columns\TextColumn::make('foto_penggunaan'),
                 
             ])
             ->filters([
