@@ -139,7 +139,8 @@ class SurveyResource extends Resource
                                     ->disabled(),
                                 Forms\Components\TextInput::make('opd')
                                     ->columnSpan(2)
-                                    ->disabled(),
+                                    ->disabled()
+                                    ->label('OPD Pengguna'),
                                 // Forms\Components\FileUpload::make('sigis')
                                 //     ->disabled()
                                 //     ->columnSpanFull(),
