@@ -47,6 +47,24 @@ class DetailRelationManager extends RelationManager
                     ->required()
                     ->numeric()
                     ->suffix('M2'),
+                Forms\Components\Select::make('kondisi')
+                    ->required()
+                    ->native(false)
+                            ->options([
+                                'Tidak Terawat' => 'Tidak Terawat',
+                                'Terawat' => 'Terawat',
+                            ]),
+                Forms\Components\Select::make('hub_hukum')
+                            ->required()
+                            ->native(false)
+                                    ->options([
+                                        'Ada' => 'Ada',
+                                        'Tidak Ada' => 'Tidak Ada',
+                                        'Digunakan Pemkot Sendiri' => 'Digunakan Pemkot Sendiri',
+                                    ]),
+                Forms\Components\FileUpload::make('foto_penggunaan')
+                            ->required()
+                            ->image()
             ]);
     }
 
