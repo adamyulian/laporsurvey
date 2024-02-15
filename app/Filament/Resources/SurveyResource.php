@@ -371,8 +371,8 @@ class SurveyResource extends Resource
         
                 // Non-admin users can only view their own component
                 //return 
-                    $teamId = Auth::user()->name;
-                    $query->where('kecamatan', $teamId);
+                    $teamId = Auth::user()->id;
+                    $query->where('user_id', $teamId);
                 })
             ->defaultSort(column:'created_at', direction:'desc')
             ->columns([
