@@ -206,21 +206,21 @@ class TargetResource extends Resource
                         TextEntry::make('register')
                             ->columnSpan(2)
                             ->label('Nomor Register'),
-                        TextEntry::make('penggunaan')
+                        TextEntry::make('kecamatan')
                             ->columnSpan(2)
-                            ->label('Penggunaan'),
+                            ->label('Kecamatan'),
+                        TextEntry::make('kelurahan')
+                            ->columnSpan(2)
+                            ->label('Kelurahan'),
                         TextEntry::make('luas')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->label('Luas Tanah/Bangunan'),
                         TextEntry::make('tahun_perolehan')
-                            ->columnSpan(1)
+                            ->columnSpan(2)
                             ->label('Tahun Perolehan'),  
                         TextEntry::make('alamat')
                             ->columnSpan(2)
                             ->label('Alamat'),
-                        TextEntry::make('asal')
-                            ->columnSpan(2)
-                            ->label('Asal Perolehan'),
                         ImageEntry::make('sigis')
                             ->label('Gambar SIGIS')
                     ]),

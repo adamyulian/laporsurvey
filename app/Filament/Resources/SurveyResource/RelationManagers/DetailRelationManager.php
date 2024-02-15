@@ -34,6 +34,7 @@ class DetailRelationManager extends RelationManager
                                 'Balai RT/RW' => 'Balai RT/RW',
                                 'Gedung Serbaguna' => 'Gedung Serbaguna',
                                 'Tanah Kosong' => 'Tanah Kosong',
+                                'Bangunan Kosong' => 'Bangunan Kosong',
                                 'Jalan' => 'Jalan',
                                 'Sawah/Kebun' => 'Sawah/Kebun',
                                 'Tambak' => 'Tambak',
