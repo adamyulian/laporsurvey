@@ -44,7 +44,7 @@ class ListTargets extends ListRecords
                         $teamname = Auth::user()->name;
                         $query->where('kecamatan', $teamname)->where('kode_barang', 'LIKE', '%1.3.1.%');;
                     }),
-            'Tanah' => Tab::make('Semua Bangunan')
+            'Bangunan' => Tab::make('Semua Bangunan')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
                         return $query;
