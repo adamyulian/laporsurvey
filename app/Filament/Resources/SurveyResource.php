@@ -101,6 +101,7 @@ class SurveyResource extends Resource
                             $set('kecamatan', Target::find($state)->kecamatan);
                             $set('kelurahan', Target::find($state)->kelurahan);
                             $set('target_id1', Target::find($state)->id);
+                            $set('opd', Target::find($state)->opd);
                             $set('sigis', Target::find($state)->sigis);
                             $set('latitude',Target::find($state)->lat);
                             $set('longitude',Target::find($state)->lng);
@@ -134,6 +135,9 @@ class SurveyResource extends Resource
                                     ->columnSpan(2)
                                     ->disabled(),
                                 Forms\Components\TextInput::make('kelurahan')
+                                    ->columnSpan(2)
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('opd')
                                     ->columnSpan(2)
                                     ->disabled(),
                                 // Forms\Components\FileUpload::make('sigis')
