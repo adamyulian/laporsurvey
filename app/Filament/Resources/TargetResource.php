@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use App\Filament\Resources\TargetResource\RelationManagers;
 use Filament\Infolists\Components\Section as InfolistSection;
+use Filament\Tables\Actions\Action;
 
 class TargetResource extends Resource
 {
@@ -164,6 +165,8 @@ class TargetResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Action::make('Peta SIGIS')
+                    ->link('https://sigis.surabaya.go.id/popup/simbada/show-reg/.$record->register'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
