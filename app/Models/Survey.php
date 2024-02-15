@@ -61,6 +61,7 @@ class Survey extends Model
             'address',
             'foto4',
             'surveyor_id'
+            
     ];
     protected $appends = [
         'location',
