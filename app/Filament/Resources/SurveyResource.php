@@ -338,24 +338,24 @@ class SurveyResource extends Resource
                         Forms\Components\FileUpload::make('dokumen_hub_hukum')
                             ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
                             ->columnSpan(3), 
-                        Forms\Components\Select::make('surveyor')
-                        ->relationship(
-                            name: 'surveyor',
-                            titleAttribute: 'nama',
+                        // Forms\Components\Select::make('surveyor')
+                        // ->relationship(
+                        //     name: 'surveyor',
+                        //     titleAttribute: 'nama',
 
-                            modifyQueryUsing: function (Builder $query) {
+                        //     modifyQueryUsing: function (Builder $query) {
 
-                                if (Auth::user()->role === 'admin') {
-                                    return $query;
-                                }
-                                $teamname = Auth::user()->team->id;
-                                $query->where('team_id', $teamname)
-                                ;}
-                        )
-                        ->native(false)
-                        ->multiple()
-                        ->columnSpanFull()
-                        ->preload()
+                        //         if (Auth::user()->role === 'admin') {
+                        //             return $query;
+                        //         }
+                        //         $teamname = Auth::user()->team->id;
+                        //         $query->where('team_id', $teamname)
+                        //         ;}
+                        // )
+                        // ->native(false)
+                        // ->multiple()
+                        // ->columnSpanFull()
+                        // ->preload()
                     ]),
             ]);
     }
