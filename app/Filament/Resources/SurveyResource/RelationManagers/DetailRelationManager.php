@@ -3,12 +3,14 @@
 namespace App\Filament\Resources\SurveyResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use App\Models\Survey;
+use App\Models\Target;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\RelationManagers\RelationManager;
 
 class DetailRelationManager extends RelationManager
 {
@@ -53,10 +55,25 @@ class DetailRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('penggunaan')
             ->columns([
+                Tables\Columns\TextColumn::make('no_register')
+                ->state(function (Survey $record): float {
+                    $register = Target::where('survey_id', $record->id)->value('register');
+        
+                    // Define a mapping between rows and letters to append
+                    $appendLetters = ['a', 'b', 'c', 'd', 'e'];
+
+                    // Calculate the index based on the row count
+                    $rowIndex = $this->getIndex(); // Assuming you're using Livewire or similar
+                    $appendIndex = $rowIndex % count($appendLetters);
+
+                    // Append the letter to the register value
+                    return $register . ' ' . $appendLetters[$appendIndex];
+                }),
                 Tables\Columns\TextColumn::make('penggunaan'),
                 Tables\Columns\TextColumn::make('detail'),
                 Tables\Columns\TextColumn::make('luas')
                 ->label('Luas (M2)'),
+                
             ])
             ->filters([
                 //
