@@ -84,8 +84,8 @@ class SurveyResource extends Resource
                         
                                 // Non-admin users can only view their own component
                                 // return 
-                                $teamname = Auth::user()->team->name;
-                                $query->where('surveyor', $teamname)
+                                $teamname = Auth::user()->name;
+                                $query->where('kecamatan', $teamname)
                                 ->where('user_id', 0)
                                 ;}
                             )
