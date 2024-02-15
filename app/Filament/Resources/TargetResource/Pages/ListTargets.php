@@ -31,8 +31,8 @@ class ListTargets extends ListRecords
                     }
                     // Non-admin users can only view their own component
                     // return 
-                        $teamname = Auth::user()->team->name;
-                        $query->where('surveyor', $teamname);
+                        $teamname = Auth::user()->name;
+                        $query->where('opd', $teamname);
                     }),
             'Belum' => Tab::make('Belum')
                 ->modifyQueryUsing(function (Builder $query) {
@@ -41,8 +41,8 @@ class ListTargets extends ListRecords
                     }
                     // Non-admin users can only view their own component
                     // return 
-                        $teamname = Auth::user()->team->name;
-                        $query->where('surveyor', $teamname)->where('user_id', 0);
+                        $teamname = Auth::user()->name;
+                        $query->where('opd', $teamname)->where('user_id', 0);
                     }),
             'Selesai' => Tab::make('Selesai')
                 ->modifyQueryUsing(function (Builder $query) {
@@ -51,8 +51,8 @@ class ListTargets extends ListRecords
                 }
                 // Non-admin users can only view their own component
                 // return 
-                    $teamname = Auth::user()->team->name;
-                    $query->where('surveyor', $teamname)->where('user_id','!=', 0);
+                    $teamname = Auth::user()->name;
+                    $query->where('opd', $teamname)->where('user_id','!=', 0);
                 }),
         ];
     }
