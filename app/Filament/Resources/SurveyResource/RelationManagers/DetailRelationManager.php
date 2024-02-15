@@ -56,7 +56,7 @@ class DetailRelationManager extends RelationManager
             ->recordTitleAttribute('penggunaan')
             ->columns([
                 Tables\Columns\TextColumn::make('no_register')
-                ->state(function (Survey $record): float {
+                ->state(function (Survey $record) {
                     $register = Target::where('survey_id', $record->id)->value('register');
         
                     // Define a mapping between rows and letters to append
