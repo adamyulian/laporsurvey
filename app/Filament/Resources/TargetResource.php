@@ -167,7 +167,7 @@ class TargetResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Action::make('sigis')
                     ->label('Peta SIGIS')
-                    ->iconButton()
+                    ->button()
                     ->link('https://sigis.surabaya.go.id/popup/simbada/show-reg/.$record->register'),
             ])
             ->bulkActions([
