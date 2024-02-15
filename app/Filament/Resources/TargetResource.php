@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\TargetExporter;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Target;
@@ -9,10 +10,12 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Section;
 use Filament\Support\Enums\FontWeight;
 use Filament\Infolists\Components\Group;
+use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -23,7 +26,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use App\Filament\Resources\TargetResource\RelationManagers;
 use Filament\Infolists\Components\Section as InfolistSection;
-use Filament\Tables\Actions\Action;
 
 class TargetResource extends Resource
 {
@@ -186,6 +188,12 @@ class TargetResource extends Resource
             ])
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(TargetExporter::class)
+                    ->label('Download Data')
+                    ->color('info')
             ]);
     }
     
