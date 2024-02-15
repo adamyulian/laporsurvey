@@ -494,10 +494,10 @@ class SurveyResource extends Resource
                             ->label('Nomor Register'),
                         TextEntry::make('target.kecamatan')
                             ->columnSpan(2)
-                            ->label('Penggunaan'),
+                            ->label('Kecamatan'),
                         TextEntry::make('target.kelurahan')
                             ->columnSpan(2)
-                            ->label('Penggunaan'),
+                            ->label('Kelurahan'),
                         TextEntry::make('target.tahun_perolehan')
                             ->columnSpan(2)
                             ->label('Tahun Perolehan'),  
