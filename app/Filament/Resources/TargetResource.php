@@ -177,7 +177,7 @@ class TargetResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
                 Action::make('sigis')
                     ->icon('heroicon-m-map-pin')
                     ->iconPosition(IconPosition::After)
@@ -235,8 +235,9 @@ class TargetResource extends Resource
                         TextEntry::make('alamat')
                             ->columnSpan(2)
                             ->label('Alamat'),
-                        ImageEntry::make('sigis')
-                            ->label('Gambar SIGIS')
+                        TextEntry::make('opd')
+                            ->columnSpan(2)
+                            ->label('OPD Pengguna Barang'),
                     ]),
                 ])->columnSpan(4),
                 Group::make([
