@@ -16,8 +16,8 @@ class ListTargets extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make()
-            ->label('Buat Target Baru'),
+            // Actions\CreateAction::make()
+            // ->label('Buat Target Baru'),
         ];
     }
 
