@@ -26,18 +26,15 @@ class Detail extends Model
             $survey = Survey::findOrFail($model->survey_id);
             $targetRegister = $survey->target->register;
     
-            // Get the count of existing child records related to the parent survey
-            $existingChildCount = $model->survey->detail()->count();
-    
             // Get the last used alphabet for this survey
-            $lastUsedAlphabet = $survey->detail()->orderBy('id', 'desc')->value('id_penggunaan');
-            $lastAlphabet = substr($lastUsedAlphabet, -1);
+            $lastUsedAlphabet = $survey->children()->max('id_penggunaan');
+            $lastAlphabet = $lastUsedAlphabet ? substr($lastUsedAlphabet, -1) : 'a';
     
             // Find the next available alphabet in sequence
-            $alphabet = range('a', 'z');
+            $alphabet = range('A', 'Z');
             $startIndex = array_search($lastAlphabet, $alphabet) + 1;
             $availableAlphabets = array_slice($alphabet, $startIndex);
-            $childIndex = $existingChildCount % count($availableAlphabets);
+            $childIndex = $model->survey->children()->count() % count($availableAlphabets);
             $childId = $availableAlphabets[$childIndex];
     
             // Concatenate the parent register and child ID to generate the final ID
