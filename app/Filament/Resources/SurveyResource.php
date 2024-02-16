@@ -251,42 +251,39 @@ class SurveyResource extends Resource
                 formsection::make('Form Survey')
                     ->columns(6)
                     ->schema([
-                        // Radio::make('status')
-                        //     ->required()
-                        //     ->columnSpan(6)
-                        //     ->label('Apakah Aset sedang digunakan/dimanfaatkan?')
-                        //     ->boolean()
-                        //     ->inline()
-                        //     ->inlineLabel(false)
-                        //     ->live(),
-                        // Forms\Components\Select::make('guna')
-                        //     ->native(false)
-                        //     ->multiple()
-                        //     ->options([
-                        //         'Rumah Ibadah' => 'Rumah Ibadah',
-                        //         'Bisnis/Komersial' => 'Bisnis/Komersial',
-                        //         'Fasilitas Umum' => 'Fasilitas Umum',
-                        //         'Kantor' => 'Kantor',
-                        //         'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
-                        //         'Taman' => 'Taman',
-                        //         'Rumah Tinggal' => 'Rumah Tinggal',
-                        //         'Sekolah' => 'Sekolah',
-                        //         'Balai RT/RW' => 'Balai RT/RW',
-                        //         'Gedung Serbaguna' => 'Gedung Serbaguna',
-                        //         'Tanah Kosong' => 'Tanah Kosong',
-                        //         'Jalan' => 'Jalan',
-                        //         'Sawah/Kebun' => 'Sawah/Kebun',
-                        //         'Tambak' => 'Tambak',
-                        //         'Lainnya' => 'Lainnya'
-                        //     ])
-                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
-                        //     ->columnSpan(3)
-                        //     ->label('Nama Penggunaan/Pemanfaatan'),
-                        // Forms\Components\Textarea::make('detail')
-                        //     ->label('Detail Penggunaan/Pemanfaatan')
-                        //     ->hidden(fn (Get $get) => $get('status') !== '1')
-                        //     ->columnSpan(3)
-                        //     ->maxLength(255),
+                        Radio::make('status')
+                            ->required()
+                            ->columnSpan(6)
+                            ->label('Apakah Aset sedang digunakan/dimanfaatkan?')
+                            ->boolean()
+                            ->inline()
+                            ->inlineLabel(false),
+                        Forms\Components\Select::make('guna')
+                            ->native(false)
+                            ->multiple()
+                            ->options([
+                                'Rumah Ibadah' => 'Rumah Ibadah',
+                                'Bisnis/Komersial' => 'Bisnis/Komersial',
+                                'Fasilitas Umum' => 'Fasilitas Umum',
+                                'Kantor' => 'Kantor',
+                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
+                                'Taman' => 'Taman',
+                                'Rumah Tinggal' => 'Rumah Tinggal',
+                                'Sekolah' => 'Sekolah',
+                                'Balai RT/RW' => 'Balai RT/RW',
+                                'Gedung Serbaguna' => 'Gedung Serbaguna',
+                                'Tanah Kosong' => 'Tanah Kosong',
+                                'Jalan' => 'Jalan',
+                                'Sawah/Kebun' => 'Sawah/Kebun',
+                                'Tambak' => 'Tambak',
+                                'Lainnya' => 'Lainnya'
+                            ])
+                            ->columnSpan(3)
+                            ->label('Nama Penggunaan/Pemanfaatan'),
+                        Forms\Components\Textarea::make('detail')
+                            ->label('Detail Penggunaan/Pemanfaatan')
+                            ->columnSpan(3)
+                            ->maxLength(255),
                         // Forms\Components\FileUpload::make('foto')
                         //     ->image()
                         //     ->multiple(10)
