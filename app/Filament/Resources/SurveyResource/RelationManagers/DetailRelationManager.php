@@ -72,6 +72,7 @@ class DetailRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->heading('Detail Penggunaan')
             ->recordTitleAttribute('penggunaan')
             ->columns([
                 // Tables\Columns\TextColumn::make('survey.target.register'),
