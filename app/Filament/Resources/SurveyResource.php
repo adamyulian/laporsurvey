@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Exports\SurveyExporter;
 use Closure;
 use Filament\Forms;
 use App\Models\Team;
@@ -19,14 +18,17 @@ use App\Rules\AttendanceRadius;
 use App\Helpers\LocationHelpers;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
 use Filament\Forms\Components\Radio;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Toggle;
 use Filament\Support\Enums\FontWeight;
 use Illuminate\Database\Eloquent\Model;
+use App\Filament\Exports\SurveyExporter;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\Group;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables\Actions\ExportAction;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -412,15 +414,15 @@ class SurveyResource extends Resource
                 // Tables\Columns\TextColumn::make('no_hp_pic')
                 //     ->label('No PIC')
                 //     ->searchable(),
-                Tables\Columns\TextColumn::make('hubungan_hukum')
-                    ->label('Hub. Hukum')
-                    ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'belum' => 'danger',
-                        'sudah_habis' => 'warning',
-                        'ada' => 'success',})
-                    ->searchable()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('hubungan_hukum')
+                //     ->label('Hub. Hukum')
+                //     ->badge()
+                //     ->color(fn (string $state): string => match ($state) {
+                //         'belum' => 'danger',
+                //         'sudah_habis' => 'warning',
+                //         'ada' => 'success',})
+                //     ->searchable()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('surveyor.nama')
                     ->listWithLineBreaks()
                     ->limitList(3)
@@ -455,6 +457,14 @@ class SurveyResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Action::make('sigis')
+                    ->icon('heroicon-m-map-pin')
+                    ->iconPosition(IconPosition::After)
+                    ->label('Peta SIGIS')
+                    ->button()
+                    ->url(fn ($record) =>
+                        'https://sigis.surabaya.go.id/popup/simbada/show-reg/' . $record->target->register
+                    ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
