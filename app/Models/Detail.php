@@ -21,19 +21,28 @@ class Detail extends Model
     ];
 
     protected static function booted() {
-        $alphabet = range('A', 'Z');
-        static::creating(function ($model) use ($alphabet) {
+        static::creating(function ($model) {
             // Retrieve the parent survey and target information
             $survey = Survey::findOrFail($model->survey_id);
             $targetRegister = $survey->target->register;
-
-            // Increment the child ID based on the count of existing child records
+    
+            // Get the count of existing child records related to the parent survey
             $existingChildCount = $model->survey->detail()->count();
-            $childIndex = $existingChildCount % count($alphabet);
-            $childId = $alphabet[$childIndex];
-
+    
+            // Get the used alphabets for this survey
+            $usedAlphabets = $survey->detail()->pluck('id_penggunaan')->map(function ($id) {
+                return substr($id, -1);
+            })->toArray();
+    
+            // Find the next available alphabet that hasn't been used
+            $alphabet = range('a', 'z');
+            $availableAlphabet = array_values(array_diff($alphabet, $usedAlphabets));
+            $childIndex = $existingChildCount % count($availableAlphabet);
+            $childId = $availableAlphabet[$childIndex];
+    
             // Concatenate the parent register and child ID to generate the final ID
             $model->id_penggunaan = $targetRegister . '.' . $childId;
+    
             $survey = Survey::where('id', $model->survey_id)->first();
             if ($survey->details === null) {
                 $survey->update(['surveyor_id' => '1']);
