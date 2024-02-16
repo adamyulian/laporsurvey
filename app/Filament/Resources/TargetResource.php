@@ -176,9 +176,9 @@ class TargetResource extends Resource
                 Action::make('sigis')
                     ->label('Peta SIGIS')
                     ->button()
-                    ->link(function (Target $record) {
+                    ->url(function (Target $record) {
                         // Concatenate the record's register value into the link
-                        return 'https://sigis.surabaya.go.id/popup/simbada/show-reg/12345678-1932-132680-1-2023.4-1';
+                        'https://sigis.surabaya.go.id/popup/simbada/show-reg/' . $record->register;
                     }),
             ])
             ->bulkActions([
