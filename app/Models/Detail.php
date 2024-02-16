@@ -29,16 +29,16 @@ class Detail extends Model
             // Get the count of existing child records related to the parent survey
             $existingChildCount = $model->survey->detail()->count();
     
-            // Get the used alphabets for this survey
-            $usedAlphabets = $survey->detail()->pluck('id_penggunaan')->map(function ($id) {
-                return substr($id, -1);
-            })->toArray();
+            // Get the last used alphabet for this survey
+            $lastUsedAlphabet = $survey->detail()->orderBy('id', 'desc')->value('id_penggunaan');
+            $lastAlphabet = substr($lastUsedAlphabet, -1);
     
-            // Find the next available alphabet that hasn't been used
+            // Find the next available alphabet in sequence
             $alphabet = range('a', 'z');
-            $availableAlphabet = array_values(array_diff($alphabet, $usedAlphabets));
-            $childIndex = $existingChildCount % count($availableAlphabet);
-            $childId = $availableAlphabet[$childIndex];
+            $startIndex = array_search($lastAlphabet, $alphabet) + 1;
+            $availableAlphabets = array_slice($alphabet, $startIndex);
+            $childIndex = $existingChildCount % count($availableAlphabets);
+            $childId = $availableAlphabets[$childIndex];
     
             // Concatenate the parent register and child ID to generate the final ID
             $model->id_penggunaan = $targetRegister . '.' . $childId;
