@@ -60,7 +60,7 @@ class SurveyResource extends Resource
 
     protected static ?string $navigationLabel = 'Survey';
 
-    protected static ?string $navigationGroup = 'Survey Kondisi Aset';
+    protected static ?string $navigationGroup = 'Kondisi Aset Tanah';
 
     public static function form(Form $form): Form
     {
