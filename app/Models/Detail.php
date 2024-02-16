@@ -21,8 +21,19 @@ class Detail extends Model
     ];
 
     protected static function booted() {
-        static::creating(function($model) {
+        $alphabet = range('a', 'z');
+        static::creating(function ($model) use ($alphabet) {
+            // Retrieve the parent survey and target information
+            $survey = Survey::findOrFail($model->survey_id);
+            $targetRegister = $survey->target->register;
 
+            // Increment the child ID based on the count of existing child records
+            $existingChildCount = $model->survey->detail()->count();
+            $childIndex = $existingChildCount % count($alphabet);
+            $childId = $alphabet[$childIndex];
+
+            // Concatenate the parent register and child ID to generate the final ID
+            $model->id_penggunaan = $targetRegister . '.' . $childId;
             $survey = Survey::where('id', $model->survey_id)->first();
             if ($survey->details === null) {
                 $survey->update(['surveyor_id' => '1']);
