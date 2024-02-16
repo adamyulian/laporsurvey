@@ -492,6 +492,9 @@ class SurveyResource extends Resource
                         TextEntry::make('target.register')
                             ->columnSpan(2)
                             ->label('Nomor Register'),
+                        TextEntry::make('target.opd')
+                            ->columnSpan(2)
+                            ->label('OPD Pengguna Barang'),
                         TextEntry::make('target.kecamatan')
                             ->columnSpan(2)
                             ->label('Kecamatan'),
@@ -554,9 +557,6 @@ class SurveyResource extends Resource
                             ImageEntry::make('foto4')
                             ->columnSpan(2)    
                             ->label('Foto Bagian Dalam'),
-                            TextEntry::make('target.opd')
-                                ->columnSpan(2)
-                                ->label('OPD'),
                             // TextEntry::make('nama_pic')
                             //     ->columnSpan(2)
                             //     ->label('Nama Penanggung Jawab'),
