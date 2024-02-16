@@ -121,8 +121,8 @@ class TargetResource extends Resource
                     $query->where('kecamatan', $teamname);
                 })
             ->columns([
-                Tables\Columns\TextColumn::make('register')
-                    ->description(fn (Target $record): string => $record->nama)
+                Tables\Columns\TextColumn::make('nama')
+                    ->description(fn (Target $record): string => $record->register)
                     ->limit(25)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('luas')
@@ -140,7 +140,9 @@ class TargetResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('opd')
                     ->label('OPD')
-                    ->searchable(),
+                    ->limit(15)
+                    ->searchable()
+                    ->wrap(),
                 // Tables\Columns\TextColumn::make('surveyor')
                 //     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
