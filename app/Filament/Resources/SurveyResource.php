@@ -533,31 +533,31 @@ class SurveyResource extends Resource
                     Section::make('Hasil Survey')
                         ->columns(4)
                         ->schema([
-                            // IconEntry::make('status')
-                            //     ->columnSpan(4)
-                            //     ->label('Aset dalam Penggunaan/Pemanfaatan')
-                            //     ->inlineLabel()
-                            //     ->boolean()
-                            //     ->trueIcon('heroicon-o-check-badge')
-                            //     ->falseIcon('heroicon-o-x-mark'),
-                            // TextEntry::make('guna')
-                            //     ->columnSpan(2)
-                            //     ->label('Nama Penggunaan/Pemanfaatan'),
-                            // TextEntry::make('detail')
-                            //     ->columnSpan(2)
-                            //     ->label('Detail Penggunaan/Pemanfaatan'),
-                            // ImageEntry::make('foto')
-                            //     ->columnSpan(4)
-                            //     ->limit(5)
-                            //     ->limitedRemainingText()
-                            //     ->label('Foto Bukti Penggunaan/Pemanfaatan')
-                            //     ->size(150),
-                            // ImageEntry::make('foto1')
-                            //     ->columnSpan(2)
-                            //     ->label('Foto Jalan Akses'),
-                            // ImageEntry::make('foto2')
-                            //     ->columnSpan(2)
-                            //     ->label('Foto Bangunan dan Jalan'),
+                            IconEntry::make('status')
+                                ->columnSpan(4)
+                                ->label('Aset dalam Penggunaan/Pemanfaatan')
+                                ->inlineLabel()
+                                ->boolean()
+                                ->trueIcon('heroicon-o-check-badge')
+                                ->falseIcon('heroicon-o-x-mark'),
+                            TextEntry::make('guna')
+                                ->columnSpan(2)
+                                ->label('Nama Penggunaan/Pemanfaatan'),
+                            TextEntry::make('detail')
+                                ->columnSpan(2)
+                                ->label('Detail Penggunaan/Pemanfaatan'),
+                            ImageEntry::make('foto')
+                                ->columnSpan(4)
+                                ->limit(5)
+                                ->limitedRemainingText()
+                                ->label('Foto Bukti Penggunaan/Pemanfaatan')
+                                ->size(150),
+                            ImageEntry::make('foto1')
+                                ->columnSpan(2)
+                                ->label('Foto Jalan Akses'),
+                            ImageEntry::make('foto2')
+                                ->columnSpan(2)
+                                ->label('Foto Bangunan dan Jalan'),
                             ImageEntry::make('foto3')
                             ->columnSpan(2)
                                 ->label('Foto Bagian Luar'),
