@@ -123,7 +123,9 @@ class TargetResource extends Resource
                 })
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
-                    ->description(fn (Target $record): string => $record->register)
+                    ->limit(25)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('register')
                     ->limit(25)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('luas')
