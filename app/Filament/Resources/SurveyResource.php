@@ -495,15 +495,15 @@ class SurveyResource extends Resource
                         TextEntry::make('target.opd')
                             ->columnSpan(2)
                             ->label('OPD Pengguna Barang'),
+                        TextEntry::make('target.tahun_perolehan')
+                            ->columnSpan(2)
+                            ->label('Tahun Perolehan'), 
                         TextEntry::make('target.kecamatan')
                             ->columnSpan(2)
                             ->label('Kecamatan'),
                         TextEntry::make('target.kelurahan')
                             ->columnSpan(2)
-                            ->label('Kelurahan'),
-                        TextEntry::make('target.tahun_perolehan')
-                            ->columnSpan(2)
-                            ->label('Tahun Perolehan'),  
+                            ->label('Kelurahan'), 
                         TextEntry::make('target.luas')
                             ->columnSpan(2)
                             ->label('Luas Tanah/Bangunan'),
