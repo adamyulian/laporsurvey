@@ -27,14 +27,14 @@ class Detail extends Model
             $targetRegister = $survey->target->register;
     
             // Get the last used alphabet for this survey
-            $lastUsedAlphabet = $survey->children()->max('id_penggunaan');
+            $lastUsedAlphabet = $survey->detail()->max('id_penggunaan');
             $lastAlphabet = $lastUsedAlphabet ? substr($lastUsedAlphabet, -1) : 'a';
     
             // Find the next available alphabet in sequence
             $alphabet = range('A', 'Z');
             $startIndex = array_search($lastAlphabet, $alphabet) + 1;
             $availableAlphabets = array_slice($alphabet, $startIndex);
-            $childIndex = $model->survey->children()->count() % count($availableAlphabets);
+            $childIndex = $model->survey->detail()->count() % count($availableAlphabets);
             $childId = $availableAlphabets[$childIndex];
     
             // Concatenate the parent register and child ID to generate the final ID
