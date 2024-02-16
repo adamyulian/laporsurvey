@@ -10,6 +10,8 @@ class ListDetails extends ListRecords
 {
     protected static string $resource = DetailResource::class;
 
+    protected static ?string $recordTitleAttribute = 'Detail Penggunaan';
+
     protected function getHeaderActions(): array
     {
         return [
