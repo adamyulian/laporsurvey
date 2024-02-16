@@ -21,7 +21,7 @@ class Detail extends Model
     ];
 
     protected static function booted() {
-        $alphabet = range('a', 'z');
+        $alphabet = range('A', 'Z');
         static::creating(function ($model) use ($alphabet) {
             // Retrieve the parent survey and target information
             $survey = Survey::findOrFail($model->survey_id);
