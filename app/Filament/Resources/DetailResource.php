@@ -22,6 +22,10 @@ class DetailResource extends Resource
 
     protected static ?string $navigationGroup = 'Kondisi Aset Tanah';
 
+    protected static ?string $navigationLabel = 'Detail Penggunaan';
+
+    protected static ?string $recordTitleAttribute = 'Detail Penggunaan';
+
     public static function form(Form $form): Form
     {
         return $form
