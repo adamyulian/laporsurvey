@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Cheesegrits\FilamentGoogleMaps\Columns\MapColumn;
 use App\Filament\Resources\TargetResource\RelationManagers;
 use Filament\Infolists\Components\Section as InfolistSection;
+use Filament\Support\Enums\IconPosition;
 
 class TargetResource extends Resource
 {
@@ -176,6 +177,8 @@ class TargetResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Action::make('sigis')
+                    ->icon('heroicon-m-map-pin')
+                    ->iconPosition(IconPosition::After)
                     ->label('Peta SIGIS')
                     ->button()
                     ->url(fn ($record) =>
