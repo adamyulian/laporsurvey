@@ -17,6 +17,12 @@ class DetailExporter extends Exporter
             ExportColumn::make('id')
                 ->label('ID'),
             ExportColumn::make('survey.target.register'),
+            ExportColumn::make('survey.target.kecamatan')
+                ->label('wil_kecamatan'),
+            ExportColumn::make('survey.target.kelurahan')
+                ->label('wil_kelurahan'),
+            ExportColumn::make('survey.target.opd')
+                ->label('opd_pengguna'),
             ExportColumn::make('id_penggunaan'),
             ExportColumn::make('penggunaan'),
             ExportColumn::make('luas'),
