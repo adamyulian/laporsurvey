@@ -450,10 +450,10 @@ class SurveyResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('team_id')
-                        ->label('Group')
-                        ->native(false)
-                        ->options(fn (): array => Team::query()->pluck('name', 'id')->all())
+                // SelectFilter::make('kelurahan')
+                //         ->label('Kelurahan')
+                //         ->native(false)
+                //         ->options(fn (): array => Team::query()->pluck('name', 'id')->all())
                 ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

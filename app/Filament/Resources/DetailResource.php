@@ -9,6 +9,8 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
+use App\Filament\Exports\DetailExporter;
+use Filament\Tables\Actions\ExportAction;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\DetailResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -32,22 +34,22 @@ class DetailResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('survey_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('penggunaan')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('luas')
-                    ->numeric(),
-                Forms\Components\TextInput::make('detail')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('kondisi')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('foto_penggunaan')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('hub_hukum')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('id_penggunaan')
-                    ->maxLength(255),
+                // Forms\Components\TextInput::make('survey_id')
+                //     ->numeric(),
+                // Forms\Components\TextInput::make('penggunaan')
+                //     ->maxLength(255),
+                // Forms\Components\TextInput::make('luas')
+                //     ->numeric(),
+                // Forms\Components\TextInput::make('detail')
+                //     ->maxLength(255),
+                // Forms\Components\TextInput::make('kondisi')
+                //     ->maxLength(255),
+                // Forms\Components\File::make('foto_penggunaan')
+                //     ->maxLength(255),
+                // Forms\Components\TextInput::make('hub_hukum')
+                //     ->maxLength(255),
+                // Forms\Components\TextInput::make('id_penggunaan')
+                //     ->maxLength(255),
             ]);
     }
 
@@ -69,17 +71,21 @@ class DetailResource extends Resource
             ->defaultGroup('survey.target.register')
             ->columns([
                 Tables\Columns\TextColumn::make('id_penggunaan')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('penggunaan')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('luas')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('detail')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kondisi')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('foto_penggunaan')
+                Tables\Columns\ImageColumn::make('foto_penggunaan')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('hub_hukum')
                     ->searchable(),
@@ -96,13 +102,19 @@ class DetailResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\ViewAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(DetailExporter::class)
+                    ->label('Download Data')
+                    ->color('info')
             ]);
     }
 
