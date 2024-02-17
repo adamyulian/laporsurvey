@@ -8,6 +8,7 @@ use App\Models\Detail;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Tables\Grouping\Group;
 use Illuminate\Support\Facades\Auth;
 use App\Filament\Exports\DetailExporter;
 use Filament\Tables\Actions\ExportAction;
@@ -68,9 +69,14 @@ class DetailResource extends Resource
                     $query->where('user_id', $teamId);
                 })
             ->defaultSort(column:'created_at', direction:'desc')
-            ->defaultGroup('survey.target.register')
+            ->groups([
+                Group::make('survey.target.register')
+                    ->titlePrefixedWithLabel(false)
+                    ->label('register'),
+            ])
             ->columns([
                 Tables\Columns\TextColumn::make('id_penggunaan')
+                    ->label('ID Penggunaan')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('penggunaan')
