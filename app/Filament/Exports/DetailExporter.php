@@ -23,7 +23,8 @@ class DetailExporter extends Exporter
                 ->label('wil_kelurahan'),
             ExportColumn::make('survey.target.opd')
                 ->label('opd_pengguna'),
-            ExportColumn::make('id_penggunaan'),
+            ExportColumn::make('id_penggunaan')
+                ->label('register_penggunaan'),
             ExportColumn::make('penggunaan'),
             ExportColumn::make('luas'),
             ExportColumn::make('detail'),
