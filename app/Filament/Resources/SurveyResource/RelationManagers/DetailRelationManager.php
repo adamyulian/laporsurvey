@@ -78,33 +78,6 @@ class DetailRelationManager extends RelationManager
                 // Tables\Columns\TextColumn::make('survey.target.register'),
                 Tables\Columns\TextColumn::make('id_penggunaan')
                     ->label('Register Penggunaan'),
-                // ->state(function (Survey $survey) {
-                //     $register = Target::where('survey_id', $survey->id)->value('register');
-        
-                //     // Define a mapping between rows and letters to append
-                //     $appendLetters = ['a', 'b', 'c', 'd', 'e'];
-
-                //     // Calculate the index based on the row count
-                //     $rowIndex = $this->getIndex(); // Assuming you're using Livewire or similar
-                //     $appendIndex = $rowIndex % count($appendLetters);
-
-                //     // Append the letter to the register value
-                //     return $register . ' ' . $appendLetters[$appendIndex];
-                // }),
-                // Tables\Columns\TextColumn::make('survey.target.register')
-                // ->state(function (Survey $survey) {
-                //     $register = Target::where('survey_id', $survey->id)->value('register');
-        
-                //     // Define a mapping between rows and letters to append
-                //     $appendLetters = ['a', 'b', 'c', 'd', 'e'];
-
-                //     // Calculate the index based on the row count
-                //     $rowIndex = $this->getIndex(); // Assuming you're using Livewire or similar
-                //     $appendIndex = $rowIndex % count($appendLetters);
-
-                //     // Append the letter to the register value
-                //     return $register . ' ' . $appendLetters[$appendIndex];
-                // }),
                 Tables\Columns\TextColumn::make('penggunaan'),
                 Tables\Columns\TextColumn::make('detail'),
                 Tables\Columns\TextColumn::make('luas')
