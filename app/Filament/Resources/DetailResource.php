@@ -65,8 +65,11 @@ class DetailResource extends Resource
         
                 // Non-admin users can only view their own component
                 //return 
-                    $teamId = Auth::user()->id;
-                    $query->where('survey.user.id', $teamId);
+                    $userId = Auth::user()->id;
+                    // $query->where('survey.user.id', $teamId);
+                    $details = Detail::whereHas('survey', function ($query) use ($userId) {
+                        $query->where('user_id', $userId);
+                    })->get();
                 })
             ->defaultSort(column:'created_at', direction:'desc')
             ->groups([
