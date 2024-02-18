@@ -35,21 +35,7 @@ class DetailResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('survey.register')
-                    ->relationship(
-                    name: 'survey', 
-                    titleAttribute: 'register',
-                    modifyQueryUsing: function (Builder $query) {
-                        if (Auth::user()->role === 'admin') {
-                            return $query;
-                        }
-                
-                        // Non-admin users can only view their own component
-                        // return 
-                        $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('user_id', 0)
-                        ;}
-                    )
+                Forms\Components\TextInput::make('survey.target.register')
                     ->readOnly(),
                 Forms\Components\Select::make('penggunaan')
                             ->native(false)
