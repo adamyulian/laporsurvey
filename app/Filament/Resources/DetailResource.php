@@ -22,6 +22,8 @@ class DetailResource extends Resource
 {
     protected static ?string $model = Detail::class;
 
+    
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Kondisi Aset Tanah';
