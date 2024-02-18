@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Detail;
+use App\Models\Survey;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -35,7 +36,25 @@ class DetailResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Placeholder::make('survey_id'),
+                Forms\Components\Select::make('survey_id')
+                        ->required()
+                        ->columnSpan(4)
+                        ->preload()
+                        ->relationship(
+                            name: 'Survey', 
+                            titleAttribute: 'nama',
+                            modifyQueryUsing: function (Builder $query) {
+                                if (Auth::user()->role === 'admin') {
+                                    return $query;
+                                }
+                        
+                                // Non-admin users can only view their own component
+                                // return 
+                                $teamname = Auth::user()->name;
+                                $query->where('kecamatan', $teamname)->where('user_id', 0)
+                                ;}
+                            )
+                        ->getOptionLabelFromRecordUsing(fn (Survey $record) => "{$record->target->register} {$record->target->nama} {$record->target->alamat}"),
                 Forms\Components\Select::make('penggunaan')
                             ->native(false)
                             ->options([
