@@ -35,8 +35,7 @@ class DetailResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('survey.target.register')
-                    ->readOnly(),
+                Forms\Components\Placeholder::make('survey.target.register'),
                 Forms\Components\Select::make('penggunaan')
                             ->native(false)
                             ->options([
