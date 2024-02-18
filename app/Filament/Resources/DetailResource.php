@@ -35,7 +35,7 @@ class DetailResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Placeholder::make('survey.target.register'),
+                Forms\Components\Placeholder::make('survey_id'),
                 Forms\Components\Select::make('penggunaan')
                             ->native(false)
                             ->options([
