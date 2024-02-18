@@ -50,8 +50,8 @@ class DetailResource extends Resource
                         
                                 // Non-admin users can only view their own component
                                 // return 
-                                $teamname = Auth::user()->name;
-                                $query->where('kecamatan', $teamname)->where('user_id', 0)
+                                $userId = Auth::user()->id;
+                                $query->where('user_id', $userId)
                                 ;}
                             )
                         ->getOptionLabelFromRecordUsing(fn (Survey $record) => "{$record->target->register} {$record->target->nama} {$record->target->alamat}"),
