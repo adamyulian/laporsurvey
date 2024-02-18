@@ -37,20 +37,55 @@ class DetailResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('survey.register')
                     ->readOnly(),
-                Forms\Components\TextInput::make('penggunaan')
-                    ->maxLength(255),
+                Forms\Components\Select::make('penggunaan')
+                            ->native(false)
+                            ->options([
+                                'Rumah Ibadah' => 'Rumah Ibadah',
+                                'Bisnis/Komersial' => 'Bisnis/Komersial',
+                                'Fasilitas Umum' => 'Fasilitas Umum',
+                                'Kantor' => 'Kantor',
+                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
+                                'Taman' => 'Taman',
+                                'Rumah Tinggal' => 'Rumah Tinggal',
+                                'Sekolah' => 'Sekolah',
+                                'Balai RT/RW' => 'Balai RT/RW',
+                                'Gedung Serbaguna' => 'Gedung Serbaguna',
+                                'Tanah Kosong' => 'Tanah Kosong',
+                                'Bangunan Kosong' => 'Bangunan Kosong',
+                                'Jalan' => 'Jalan',
+                                'Sawah/Kebun' => 'Sawah/Kebun',
+                                'Tambak' => 'Tambak',
+                            ])
+                            ->label('Nama Penggunaan/Pemanfaatan'),
+                Forms\Components\Textarea::make('detail')
+                            ->label('Detail Penggunaan')
+                            ->placeholder('Jika digunakan sebagai Rumah Ibadah rincikan namanya, Contoh : Masjid Ulil Albaab')
+                            ->required(),
                 Forms\Components\TextInput::make('luas')
-                    ->numeric(),
-                Forms\Components\TextInput::make('detail')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('kondisi')
-                    ->maxLength(255),
+                    ->required()
+                    ->numeric()
+                    ->suffix('M2'),
+                Forms\Components\Select::make('kondisi')
+                    ->required()
+                    ->native(false)
+                            ->options([
+                                'Tidak Terawat' => 'Tidak Terawat',
+                                'Terawat' => 'Terawat',
+                            ]),
+                Forms\Components\Select::make('hub_hukum')
+                            ->required()
+                            ->native(false)
+                                    ->options([
+                                        'Ada' => 'Ada',
+                                        'Tidak Ada' => 'Tidak Ada',
+                                        'Digunakan Pemkot Sendiri' => 'Digunakan Pemkot Sendiri',
+                                    ]),
                 Forms\Components\FileUpload::make('foto_penggunaan')
+                            ->required()
+                            ->image(),
+
+                Forms\Components\TextInput::make('id_penggunaan')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('hub_hukum')
-                    ->maxLength(255),
-                // Forms\Components\TextInput::make('id_penggunaan')
-                //     ->maxLength(255),
             ]);
     }
 
