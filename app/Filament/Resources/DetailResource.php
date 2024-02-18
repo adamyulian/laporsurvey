@@ -37,6 +37,7 @@ class DetailResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('survey_id')
+                        ->native(false)
                         ->required()
                         ->preload()
                         ->relationship(
