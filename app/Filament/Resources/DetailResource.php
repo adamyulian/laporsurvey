@@ -38,7 +38,6 @@ class DetailResource extends Resource
             ->schema([
                 Forms\Components\Select::make('survey_id')
                         ->required()
-                        ->columnSpan(4)
                         ->preload()
                         ->relationship(
                             name: 'Survey', 
