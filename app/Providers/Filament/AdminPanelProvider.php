@@ -41,11 +41,6 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])
-            ->navigationItems([
-                NavigationItem::make('detail')
-                ->visible(fn(): bool => auth()->user()->role === 'admin')
-                ->label('Detail Penggunaan'),
-            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
