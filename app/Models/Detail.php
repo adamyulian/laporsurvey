@@ -17,7 +17,8 @@ class Detail extends Model
         'luas',
         'kondisi',
         'foto_penggunaan',
-        'hub_hukum'
+        'hub_hukum',
+        'id_penggunaan'
     ];
 
     protected static function booted() {
