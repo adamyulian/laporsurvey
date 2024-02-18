@@ -35,20 +35,20 @@ class DetailResource extends Resource
     {
         return $form
             ->schema([
-                // Forms\Components\TextInput::make('survey_id')
-                //     ->numeric(),
-                // Forms\Components\TextInput::make('penggunaan')
-                //     ->maxLength(255),
-                // Forms\Components\TextInput::make('luas')
-                //     ->numeric(),
-                // Forms\Components\TextInput::make('detail')
-                //     ->maxLength(255),
-                // Forms\Components\TextInput::make('kondisi')
-                //     ->maxLength(255),
-                // Forms\Components\File::make('foto_penggunaan')
-                //     ->maxLength(255),
-                // Forms\Components\TextInput::make('hub_hukum')
-                //     ->maxLength(255),
+                Forms\Components\TextInput::make('survey.register')
+                    ->readOnly(),
+                Forms\Components\TextInput::make('penggunaan')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('luas')
+                    ->numeric(),
+                Forms\Components\TextInput::make('detail')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('kondisi')
+                    ->maxLength(255),
+                Forms\Components\FileUpload::make('foto_penggunaan')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('hub_hukum')
+                    ->maxLength(255),
                 // Forms\Components\TextInput::make('id_penggunaan')
                 //     ->maxLength(255),
             ]);
