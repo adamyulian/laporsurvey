@@ -67,7 +67,7 @@ class DetailResource extends Resource
                 //return 
                     $userId = Auth::user()->id;
                     // $query->where('survey.user.id', $teamId);
-                    $details = Detail::whereHas('survey', function ($query) use ($userId) {
+                    $query->whereHas('survey', function ($query) use ($userId) {
                         $query->where('user_id', $userId);
                     })->get();
                 })
