@@ -50,7 +50,7 @@ class Detail extends Model
             $function = $model->penggunaan;
     
             // Count the occurrences of the current function
-            $functionCount = $survey->details()->where('penggunaan', $function)->count();
+            $functionCount = $survey->detail()->where('penggunaan', $function)->count();
     
             // Get the corresponding alphabet for the function
             $alphabet = $functionAlphabets[$function];
