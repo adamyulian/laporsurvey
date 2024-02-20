@@ -64,7 +64,45 @@ class Detail extends Model
                 $survey->update(['surveyor_id' => '1']);
             }
         });
+        static::updating(function ($model) {
+            $original = $model->getOriginal();
+            if ($original['penggunaan'] !== $model->penggunaan) {
+                 // Retrieve the parent survey and target information
+            $survey = Survey::findOrFail($model->survey_id);
+            $targetRegister = $survey->target->register;
     
+            // Mapping of 'function' options to alphabets
+            $functionAlphabets = [
+                'Rumah Ibadah' => 'A',
+                'Bisnis/Komersial' => 'B',
+                'Fasilitas Umum' => 'C',
+                'Kantor' => 'D',
+                'Ruang Terbuka Hijau' => 'E',
+                'Taman' => 'F',
+                'Rumah Tinggal' => 'G',
+                'Sekolah' => 'H',
+                'Balai RT/RW' => 'I',
+                'Gedung Serbaguna' => 'J',
+                'Tanah Kosong' => 'K',
+                'Bangunan Kosong' => 'L',
+                'Jalan' => 'M',
+                'Sawah/Kebun' => 'N',
+                'Tambak' => 'O',
+            ];
+    
+            // Get the 'function' of the current model
+            $function = $model->penggunaan;
+    
+            // Count the occurrences of the current function
+            $functionCount = $survey->detail()->where('penggunaan', $function)->count();
+    
+            // Get the corresponding alphabet for the function
+            $alphabet = $functionAlphabets[$function];
+    
+            // Generate the final ID with alphabet and count
+            $model->id_penggunaan = $targetRegister . '.' . $alphabet . ($functionCount + 1);
+            }
+        });
 
         static::deleting(function ($model) {
             $survey = Survey::where('id', $model->survey_id)->first();
