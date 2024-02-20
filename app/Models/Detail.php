@@ -27,25 +27,44 @@ class Detail extends Model
             $survey = Survey::findOrFail($model->survey_id);
             $targetRegister = $survey->target->register;
     
-            // Get the last used alphabet for this survey
-            $lastUsedAlphabet = $survey->detail()->max('id_penggunaan');
-            $lastAlphabet = $lastUsedAlphabet ? substr($lastUsedAlphabet, -1) : 'a';
+            // Mapping of 'function' options to alphabets
+            $functionAlphabets = [
+                'Rumah Ibadah' => 'A',
+                'Bisnis/Komersial' => 'B',
+                'Fasilitas Umum' => 'C',
+                'Kantor' => 'D',
+                'Ruang Terbuka Hijau' => 'E',
+                'Taman' => 'F',
+                'Rumah Tinggal' => 'G',
+                'Sekolah' => 'H',
+                'Balai RT/RW' => 'I',
+                'Gedung Serbaguna' => 'J',
+                'Tanah Kosong' => 'K',
+                'Bangunan Kosong' => 'L',
+                'Jalan' => 'M',
+                'Sawah/Kebun' => 'N',
+                'Tambak' => 'O',
+            ];
     
-            // Find the next available alphabet in sequence
-            $alphabet = range('A', 'Z');
-            $startIndex = array_search($lastAlphabet, $alphabet) + 1;
-            $availableAlphabets = array_slice($alphabet, $startIndex);
-            $childIndex = $model->survey->detail()->count() % count($availableAlphabets);
-            $childId = $availableAlphabets[$childIndex];
+            // Get the 'function' of the current model
+            $function = $model->penggunaan;
     
-            // Concatenate the parent register and child ID to generate the final ID
-            $model->id_penggunaan = $targetRegister . '.' . $childId;
+            // Count the occurrences of the current function
+            $functionCount = $survey->details()->where('penggunaan', $function)->count();
     
-            $survey = Survey::where('id', $model->survey_id)->first();
-            if ($survey->details === null) {
+            // Get the corresponding alphabet for the function
+            $alphabet = $functionAlphabets[$function];
+    
+            // Generate the final ID with alphabet and count
+            $model->id_penggunaan = $targetRegister . '.' . $alphabet . ($functionCount + 1);
+    
+            // Update surveyor_id if details is null
+            $survey = Survey::find($model->survey_id);
+            if ($survey && $survey->details === null) {
                 $survey->update(['surveyor_id' => '1']);
             }
-        });    
+        });
+    
 
         static::deleting(function ($model) {
             $survey = Survey::where('id', $model->survey_id)->first();
