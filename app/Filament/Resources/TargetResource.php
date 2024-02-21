@@ -179,7 +179,7 @@ class TargetResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                // Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 Action::make('sigis')
                     ->icon('heroicon-m-map-pin')
                     ->iconPosition(IconPosition::After)
