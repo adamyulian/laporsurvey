@@ -407,6 +407,10 @@ class SurveyResource extends Resource
                     ->label('Digunakan sebagai')
                     ->searchable()
                     ->wrap(),
+                Tables\Columns\TextColumn::make('detail')
+                    ->label('Detail')
+                    ->searchable()
+                    ->wrap(),
                 // Tables\Columns\ImageColumn::make('foto')
                 //     ->searchable(),
                 // Tables\Columns\TextColumn::make('nama_pic')
