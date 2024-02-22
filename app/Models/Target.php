@@ -111,4 +111,7 @@ class Target extends Model
     {
         return $this->belongsTo(related:Team::class);
     }
+    public function Survey(){
+        return $this->hasMany(related:Team::class);
+    }
 }
