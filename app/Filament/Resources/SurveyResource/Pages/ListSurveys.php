@@ -36,22 +36,22 @@ class ListSurveys extends ListRecords
             'Tanah' => Tab::make('Semua Tanah')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('kode_barang', 'LIKE', '%1.3.1.%');
+                        return $query->where('target.kode_barang', 'LIKE', '%1.3.1.%');
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('kode_barang', 'LIKE', '%1.3.1.%');;
+                        $query->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.1.%');;
                     }),
             'Bangunan' => Tab::make('Semua Bangunan')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('kode_barang', 'LIKE', '%1.3.3.%');
+                        return $query->where('target.kode_barang', 'LIKE', '%1.3.3.%');
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('kode_barang', 'LIKE', '%1.3.3.%');;
+                        $query->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.3.%');;
                     }),
         ];
     }
