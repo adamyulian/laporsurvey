@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\SurveyResource;
+use App\Models\Survey;
 use Filament\Resources\Pages\ListRecords\Tab;
 
 class ListSurveys extends ListRecords
@@ -24,7 +25,7 @@ class ListSurveys extends ListRecords
     {
         return [
             'Semua' => Tab::make('Semua')
-                ->modifyQueryUsing(function (Builder $query) {
+                ->modifyQueryUsing(function (Survey $query) {
                     if (Auth::user()->role === 'admin') {
                         return $query;
                     }
@@ -34,9 +35,9 @@ class ListSurveys extends ListRecords
                         $query->where('kecamatan', $teamname);
                     }),
             'Tanah' => Tab::make('Semua Tanah')
-                ->modifyQueryUsing(function (Builder $query) {
+                ->modifyQueryUsing(function (Survey $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('target.kode_barang', 'LIKE', '%1.3.1.%');
+                        return $query->where('target', 'LIKE', '%1.3.1.%');
                     }
                     // Non-admin users can only view their own component
                     // return 
@@ -44,7 +45,7 @@ class ListSurveys extends ListRecords
                         $query->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.1.%');;
                     }),
             'Bangunan' => Tab::make('Semua Bangunan')
-                ->modifyQueryUsing(function (Builder $query) {
+                ->modifyQueryUsing(function (Survey $query) {
                     if (Auth::user()->role === 'admin') {
                         return $query->where('target.kode_barang', 'LIKE', '%1.3.3.%');
                     }
