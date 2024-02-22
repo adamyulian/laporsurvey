@@ -25,34 +25,34 @@ class ListSurveys extends ListRecords
     {
         return [
             'Semua' => Tab::make('Semua')
-                ->modifyQueryUsing(function (Survey $query) {
+                ->modifysurveyUsing(function (Survey $survey) {
                     if (Auth::user()->role === 'admin') {
-                        return $query;
+                        return $survey;
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname);
+                        $survey->where('kecamatan', $teamname);
                     }),
             'Tanah' => Tab::make('Semua Tanah')
-                ->modifyQueryUsing(function (Survey $query) {
+                ->modifysurveyUsing(function (Survey $survey) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('target', 'LIKE', '%1.3.1.%');
+                        return $survey->where('target', 'LIKE', '%1.3.1.%');
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.1.%');;
+                        $survey->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.1.%');;
                     }),
             'Bangunan' => Tab::make('Semua Bangunan')
-                ->modifyQueryUsing(function (Survey $query) {
+                ->modifysurveyUsing(function (Survey $survey) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('target.kode_barang', 'LIKE', '%1.3.3.%');
+                        return $survey->where('target.kode_barang', 'LIKE', '%1.3.3.%');
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.3.%');;
+                        $survey->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.3.%');;
                     }),
         ];
     }
