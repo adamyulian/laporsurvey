@@ -25,7 +25,7 @@ class ListSurveys extends ListRecords
     {
         return [
             'Semua' => Tab::make('Semua')
-                ->modifysurveyUsing(function (Survey $survey) {
+                ->modifyqueryUsing(function (Survey $survey) {
                     if (Auth::user()->role === 'admin') {
                         return $survey;
                     }
@@ -35,7 +35,7 @@ class ListSurveys extends ListRecords
                         $survey->where('kecamatan', $teamname);
                     }),
             'Tanah' => Tab::make('Semua Tanah')
-                ->modifysurveyUsing(function (Survey $survey) {
+                ->modifyqueryUsing(function (Survey $survey) {
                     if (Auth::user()->role === 'admin') {
                         return $survey->where('target', 'LIKE', '%1.3.1.%');
                     }
@@ -45,7 +45,7 @@ class ListSurveys extends ListRecords
                         $survey->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.1.%');;
                     }),
             'Bangunan' => Tab::make('Semua Bangunan')
-                ->modifysurveyUsing(function (Survey $survey) {
+                ->modifyqueryUsing(function (Survey $survey) {
                     if (Auth::user()->role === 'admin') {
                         return $survey->where('target.kode_barang', 'LIKE', '%1.3.3.%');
                     }
