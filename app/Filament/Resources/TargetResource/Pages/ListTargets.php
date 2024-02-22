@@ -54,26 +54,26 @@ class ListTargets extends ListRecords
                         $teamname = Auth::user()->name;
                         $query->where('kecamatan', $teamname)->where('kode_barang', 'LIKE', '%1.3.3.%');;
                     }),
-            'Belum' => Tab::make('Belum')
-                ->modifyQueryUsing(function (Builder $query) {
-                    if (Auth::user()->role === 'admin') {
-                        return $query->where('user_id', 0);
-                    }
-                    // Non-admin users can only view their own component
-                    // return 
-                        $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('user_id', 0);
-                    }),
-            'Selesai' => Tab::make('Selesai')
-                ->modifyQueryUsing(function (Builder $query) {
-                if (Auth::user()->role === 'admin') {
-                    return $query->where('user_id','!=', 0);
-                }
-                // Non-admin users can only view their own component
-                // return 
-                    $teamname = Auth::user()->name;
-                    $query->where('kecamatan', $teamname)->where('user_id','!=', 0);
-                }),
+            // 'Belum' => Tab::make('Belum')
+            //     ->modifyQueryUsing(function (Builder $query) {
+            //         if (Auth::user()->role === 'admin') {
+            //             return $query->where('user_id', 0);
+            //         }
+            //         // Non-admin users can only view their own component
+            //         // return 
+            //             $teamname = Auth::user()->name;
+            //             $query->where('kecamatan', $teamname)->where('user_id', 0);
+            //         }),
+            // 'Selesai' => Tab::make('Selesai')
+            //     ->modifyQueryUsing(function (Builder $query) {
+            //     if (Auth::user()->role === 'admin') {
+            //         return $query->where('user_id','!=', 0);
+            //     }
+            //     // Non-admin users can only view their own component
+            //     // return 
+            //         $teamname = Auth::user()->name;
+            //         $query->where('kecamatan', $teamname)->where('user_id','!=', 0);
+            //     }),
         ];
     }
 }
