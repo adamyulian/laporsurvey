@@ -36,10 +36,7 @@ class ListSurveys extends ListRecords
             'Tanah' => Tab::make('Semua Tanah')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->join('targets', 'surveys.target_id', '=', 'targets.id')
-                        ->where('targets.kode_barang', 'LIKE', '%1.3.1.%')
-                        ->orderBy('surveys.created_at', 'DESC')
-                        ->orderBy('targets.created_at', 'DESC');
+                        return $query;
                     }
                     // Non-admin users can only view their own component
                     // return 
