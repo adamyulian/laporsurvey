@@ -266,21 +266,22 @@ class SurveyResource extends Resource
                             ->native(false)
                             ->multiple()
                             ->options([
-                                'Rumah Ibadah' => 'Rumah Ibadah',
+                                'Balai RT/RW' => 'Balai RT/RW',
+                                'Bangunan Kosong' => 'Bangunan Kosong',
                                 'Bisnis/Komersial' => 'Bisnis/Komersial',
                                 'Fasilitas Umum' => 'Fasilitas Umum',
-                                'Kantor' => 'Kantor',
-                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
-                                'Taman' => 'Taman',
-                                'Rumah Tinggal' => 'Rumah Tinggal',
-                                'Sekolah' => 'Sekolah',
-                                'Balai RT/RW' => 'Balai RT/RW',
                                 'Gedung Serbaguna' => 'Gedung Serbaguna',
-                                'Tanah Kosong' => 'Tanah Kosong',
                                 'Jalan' => 'Jalan',
+                                'Kantor' => 'Kantor',
+                                'Makam' => 'Makam',
+                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
+                                'Rumah Ibadah' => 'Rumah Ibadah',
+                                'Rumah Tinggal' => 'Rumah Tinggal',
                                 'Sawah/Kebun' => 'Sawah/Kebun',
+                                'Sekolah' => 'Sekolah',
+                                'Taman' => 'Taman',
                                 'Tambak' => 'Tambak',
-                                'Lainnya' => 'Lainnya'
+                                'Tanah Kosong' => 'Tanah Kosong',
                             ])
                             ->columnSpan(3)
                             ->label('Nama Penggunaan/Pemanfaatan'),
