@@ -36,7 +36,7 @@ class ListSurveys extends ListRecords
             'Tanah' => Tab::make('Semua Tanah')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return dd($query->where('target.kode_barang', 'LIKE', '%1.3.1.%'));
+                        return dd($query->withoutGlobalScopes()->where('target.kode_barang', 'LIKE', '%1.3.1.%'));
                     }
                     // Non-admin users can only view their own component
                     // return 
