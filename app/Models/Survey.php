@@ -167,7 +167,7 @@ class Survey extends Model
         });
     }
 
-    public function Target()
+    public function target()
     {
         return $this->belongsTo(related:Target::class);
     }
