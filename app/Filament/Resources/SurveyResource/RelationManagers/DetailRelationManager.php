@@ -23,21 +23,23 @@ class DetailRelationManager extends RelationManager
                 Forms\Components\Select::make('penggunaan')
                             ->native(false)
                             ->options([
-                                'Rumah Ibadah' => 'Rumah Ibadah',
+                                'Balai RT/RW' => 'Balai RT/RW',
+                                'Bangunan Kosong' => 'Bangunan Kosong',
                                 'Bisnis/Komersial' => 'Bisnis/Komersial',
                                 'Fasilitas Umum' => 'Fasilitas Umum',
-                                'Kantor' => 'Kantor',
-                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
-                                'Taman' => 'Taman',
-                                'Rumah Tinggal' => 'Rumah Tinggal',
-                                'Sekolah' => 'Sekolah',
-                                'Balai RT/RW' => 'Balai RT/RW',
                                 'Gedung Serbaguna' => 'Gedung Serbaguna',
-                                'Tanah Kosong' => 'Tanah Kosong',
-                                'Bangunan Kosong' => 'Bangunan Kosong',
                                 'Jalan' => 'Jalan',
+                                'Kantor' => 'Kantor',
+                                'Makam' => 'Makam',
+                                'Ruang Terbuka Hijau' => 'Ruang Terbuka Hijau',
+                                'Rumah Ibadah' => 'Rumah Ibadah',
+                                'Rumah Tinggal' => 'Rumah Tinggal',
                                 'Sawah/Kebun' => 'Sawah/Kebun',
+                                'Sekolah' => 'Sekolah',
+                                'Taman' => 'Taman',
                                 'Tambak' => 'Tambak',
+                                'Tanah Kosong' => 'Tanah Kosong',
+
                             ])
                             ->label('Nama Penggunaan/Pemanfaatan'),
                 Forms\Components\Textarea::make('detail')
