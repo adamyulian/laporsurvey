@@ -36,7 +36,7 @@ class ListSurveys extends ListRecords
             'Tanah' => Tab::make('Semua Tanah')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('targets.kode_barang', 'LIKE', '%1.3.1.%');
+                        return $query->whereRaw('target.kode_barang LIKE ?', ['%1.3.1.%']);
                     }
                     // Non-admin users can only view their own component
                     // return 
@@ -46,7 +46,7 @@ class ListSurveys extends ListRecords
             'Bangunan' => Tab::make('Semua Bangunan')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('targets.kode_barang', 'LIKE', '%1.3.3.%');
+                        return $query->where('target.kode_barang', 'LIKE', '%1.3.3.%');
                     }
                     // Non-admin users can only view their own component
                     // return 
