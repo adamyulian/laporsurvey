@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\SurveyResource;
-use App\Models\Survey;
 use Filament\Resources\Pages\ListRecords\Tab;
 
 class ListSurveys extends ListRecords
@@ -25,36 +24,34 @@ class ListSurveys extends ListRecords
     {
         return [
             'Semua' => Tab::make('Semua')
-                ->modifyqueryUsing(function (Survey $survey) {
+                ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $survey;
+                        return $query;
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $survey->where('kecamatan', $teamname);
+                        $query->where('kecamatan', $teamname);
                     }),
             'Tanah' => Tab::make('Semua Tanah')
-                ->modifyqueryUsing(function (Survey $survey) {
+                ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $survey  
-                                // ->where('kode_barang', 'LIKE', '%1.3.1.%')        
-                                ->where('user_id', 'LIKE', '%1%');
+                        return $query;
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $survey->where('kecamatan', $teamname)->where('survey.target.kode_barang', 'LIKE', '%1.3.1.%');;
+                        dd($query->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.1.%'));;
                     }),
             'Bangunan' => Tab::make('Semua Bangunan')
-                ->modifyqueryUsing(function (Survey $survey) {
+                ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $survey->where('target.kode_barang', 'LIKE', '%1.3.3.%');
+                        return $query;
                     }
                     // Non-admin users can only view their own component
                     // return 
                         $teamname = Auth::user()->name;
-                        $survey->where('kecamatan', $teamname)->where('target.kode_barang', 'LIKE', '%1.3.3.%');;
+                        $query->where('kecamatan', $teamname)->where('kode_barang', 'LIKE', '%1.3.3.%');;
                     }),
         ];
     }
