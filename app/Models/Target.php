@@ -113,6 +113,6 @@ class Target extends Model
     }
     public function Survey()
     {
-        return $this->hasMany(related:Target::class);
+        return $this->hasMany(related:Survey::class);
     }
 }
