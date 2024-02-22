@@ -111,7 +111,7 @@ class Target extends Model
     {
         return $this->belongsTo(related:Team::class);
     }
-    public function surveys()
+    public function Survey()
     {
         return $this->hasMany(related:Target::class);
     }
