@@ -39,7 +39,6 @@ class DetailRelationManager extends RelationManager
                                 'Taman' => 'Taman',
                                 'Tambak' => 'Tambak',
                                 'Tanah Kosong' => 'Tanah Kosong',
-
                             ])
                             ->label('Nama Penggunaan/Pemanfaatan'),
                 Forms\Components\Textarea::make('detail')
