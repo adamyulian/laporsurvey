@@ -39,7 +39,7 @@ class ListSurveys extends ListRecords
                     if (Auth::user()->role === 'admin') {
                         return $survey  
                                 // ->where('kode_barang', 'LIKE', '%1.3.1.%')        
-                                ->where('user.nama', 'LIKE', '%Tanah Tambak%');
+                                ->where('user_id', 'LIKE', '%1%');
                     }
                     // Non-admin users can only view their own component
                     // return 
