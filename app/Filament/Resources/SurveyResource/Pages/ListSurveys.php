@@ -38,7 +38,8 @@ class ListSurveys extends ListRecords
                     if (Auth::user()->role === 'admin') {
                         return $query->join('targets', 'surveys.target_id', '=', 'targets.id')
                         ->where('targets.kode_barang', 'LIKE', '%1.3.1.%')
-                        ->orderBy('surveys.created_at', 'DESC');
+                        ->orderBy('surveys.created_at', 'DESC')
+                        ->orderBy('targets.created_at', 'DESC');
                     }
                     // Non-admin users can only view their own component
                     // return 
