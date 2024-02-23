@@ -169,7 +169,7 @@ class Survey extends Model
 
     public function Target()
     {
-        return $this->belongsToMany(related:Target::class);
+        return $this->belongsTo(related:Target::class);
     }
     public function User()
     {
