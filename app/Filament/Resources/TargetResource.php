@@ -52,6 +52,14 @@ class TargetResource extends Resource
                         ->maxLength(255),
                     Forms\Components\TextInput::make('luas')
                         ->suffix('M2'),
+                    Forms\Components\Select::make('identifikasi')
+                        ->native(false)
+                        ->options([
+                                    'BAIK' => 'BAIK',
+                                    'TIDAK BAIK' => 'TIDAK BAIK',
+                                    'SUDAH DIMANFAATKAN' => 'SUDAH DIMANFAATKAN',
+                                    'TANAH KOSONG' => 'TANAH KOSONG',
+                        ]),
                     Forms\Components\TextInput::make('penggunaan')
                         // ->native(false)
                         // ->multiple()
