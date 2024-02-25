@@ -390,6 +390,12 @@ class SurveyResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->wrap(),
+                Tables\Columns\TextColumn::make('target.identifikasi')
+                    ->description(fn (Survey $record): string => $record->target->nama)
+                    ->limit(25)
+                    ->sortable()
+                    ->searchable()
+                    ->wrap(),
                 // Tables\Columns\TextColumn::make('user.name')
                 //     ->sortable(),
                 Tables\Columns\IconColumn::make('status')
