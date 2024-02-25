@@ -134,7 +134,6 @@ class TargetResource extends Resource
                     ->suffix(' M2')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('identifikasi')
-                    ->suffix(' M2')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kecamatan')
                     ->limit(15)
