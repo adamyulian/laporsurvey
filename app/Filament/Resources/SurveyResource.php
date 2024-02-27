@@ -464,7 +464,7 @@ class SurveyResource extends Resource
                 SelectFilter::make('target.kode_barang')
                         ->label('Kode Barang')
                         ->native(false)
-                        ->options(fn (): array => Target::query()->pluck('kode_barang')->all())
+                        ->options(fn (): array => Target::query()->pluck('kode_barang','id')->all())
                 ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
