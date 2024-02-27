@@ -150,10 +150,13 @@ class Survey extends Model
         static::creating(function($model) {
             $model->user_id = Auth::user()->id;
             // $model->team_id = Auth::user()->team->id;
-            $cekRegister = Target::where('id', $model->target_id)->first();
-            $cekRegister->update([
-                'user_id' => $model->user_id
-            ]);
+            $cekRegister = Target::where('id', $model->target_id)->first(); 
+            if ($cekRegister) {
+                $model->jenisaset = $cekRegister->kode_barang;
+                $cekRegister->update([
+                    'user_id' => $model->user_id
+                ]);
+            };
         });
         static::deleting(function ($model) {
             // Assuming there is a 'target_id' attribute in the model
