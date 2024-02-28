@@ -151,7 +151,7 @@ class Survey extends Model
     protected static function booted() {
         static::creating(function($model) {
             $model->user_id = Auth::user()->id;
-            $model->jumlahdetail = 0;
+            $model->jumlahdetail = Detail::where('id', $model->survey_id)->count();
             // $model->team_id = Auth::user()->team->id;
             $cekRegister = Target::where('id', $model->target_id)->first(); 
             if ($cekRegister) {
