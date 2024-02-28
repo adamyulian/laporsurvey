@@ -76,6 +76,7 @@ class DetailResource extends Resource
                                 'Jalan' => 'Jalan',
                                 'Sawah/Kebun' => 'Sawah/Kebun',
                                 'Tambak' => 'Tambak',
+                                'Makam' => 'Makam'
                             ])
                             ->label('Nama Penggunaan/Pemanfaatan'),
                 Forms\Components\Textarea::make('detail')

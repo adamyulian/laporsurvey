@@ -44,6 +44,7 @@ class Detail extends Model
                 'Jalan' => 'M',
                 'Sawah/Kebun' => 'N',
                 'Tambak' => 'O',
+                'Makam' => 'P'
             ];
     
             // Get the 'function' of the current model
