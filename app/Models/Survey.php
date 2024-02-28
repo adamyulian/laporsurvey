@@ -60,7 +60,9 @@ class Survey extends Model
             'foto3',
             'address',
             'foto4',
-            'surveyor_id'
+            'surveyor_id',
+            'jenisaset',
+            'jumlahdetail'
             
     ];
     protected $appends = [
@@ -149,6 +151,7 @@ class Survey extends Model
     protected static function booted() {
         static::creating(function($model) {
             $model->user_id = Auth::user()->id;
+            $model->jumlahdetail = 0;
             // $model->team_id = Auth::user()->team->id;
             $cekRegister = Target::where('id', $model->target_id)->first(); 
             if ($cekRegister) {

@@ -61,10 +61,16 @@ class Detail extends Model
             // Update surveyor_id if details is null
             $survey = Survey::find($model->survey_id);
             if ($survey && $survey->details === null) {
-                $survey->update(['surveyor_id' => '1']);
+                $survey->update(['surveyor_id' => '1',
+                                'jumlahdetail' => Detail::where('id', $model->survey_id)->count()]);
             }
         });
         static::updating(function ($model) {
+            $survey = Survey::find($model->survey_id);
+            if ($survey && $survey->details === null) {
+                $survey->update(['surveyor_id' => '1',
+                                'jumlahdetail' => Detail::where('id', $model->survey_id)->count()]);
+            }
             $original = $model->getOriginal();
             if ($original['penggunaan'] !== $model->penggunaan) {
                  // Retrieve the parent survey and target information
@@ -103,6 +109,7 @@ class Detail extends Model
             // Generate the final ID with alphabet and count
             $model->id_penggunaan = $targetRegister . '.' . $alphabet . ($functionCount + 1);
             }
+            
         });
 
         static::deleting(function ($model) {
