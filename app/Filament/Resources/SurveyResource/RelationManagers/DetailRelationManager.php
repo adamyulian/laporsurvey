@@ -70,6 +70,7 @@ class DetailRelationManager extends RelationManager
                             ->visibility('public')
                             ->openable()
                             ->downloadable()
+                            ->fetchFileInformation(false)
             ]);
     }
 
