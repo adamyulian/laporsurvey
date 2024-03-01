@@ -23,6 +23,14 @@ class Detail extends Model
 
     protected static function booted() {
         static::creating(function ($model) {
+
+            $cekSurvey = Survey::where('id', $model->survey_id)->first(); 
+            if ($cekSurvey) {
+                $jumlahdetail = Detail::where('id', $model->survey_id)->count();
+                $cekSurvey->update([
+                    'jumlahdetail' => $jumlahdetail
+                ]);
+            };
             // Retrieve the parent survey and target information
             $survey = Survey::findOrFail($model->survey_id);
             $targetRegister = $survey->target->register;
