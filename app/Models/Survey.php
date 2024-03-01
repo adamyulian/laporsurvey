@@ -161,6 +161,18 @@ class Survey extends Model
                 ]);
             };
         });
+        static::updating(function($model) {
+            $model->user_id = Auth::user()->id;
+            $model->jumlahdetail = Detail::where('id', $model->survey_id)->count();
+            // $model->team_id = Auth::user()->team->id;
+            $cekRegister = Target::where('id', $model->target_id)->first(); 
+            if ($cekRegister) {
+                $model->jenisaset = $cekRegister->kode_barang;
+                $cekRegister->update([
+                    'user_id' => $model->user_id
+                ]);
+            };
+        });
         static::deleting(function ($model) {
             // Assuming there is a 'target_id' attribute in the model
             $target = Target::where('id', $model->target_id)->first();
