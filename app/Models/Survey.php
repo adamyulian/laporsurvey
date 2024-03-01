@@ -168,9 +168,6 @@ class Survey extends Model
             $cekRegister = Target::where('id', $model->target_id)->first(); 
             if ($cekRegister) {
                 $model->jenisaset = $cekRegister->kode_barang;
-                $cekRegister->update([
-                    'user_id' => $model->user_id
-                ]);
             };
         });
         static::deleting(function ($model) {
