@@ -67,7 +67,9 @@ class DetailRelationManager extends RelationManager
                 Forms\Components\FileUpload::make('foto_penggunaan')
                             ->required()
                             ->image()
-                            ->getUploadedFiles()
+                            ->visibility('public')
+                            ->openable()
+                            ->downloadable()
             ]);
     }
 
