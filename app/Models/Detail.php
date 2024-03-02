@@ -31,23 +31,6 @@ class Detail extends Model
                 ]);
             };
 
-            Detail::created(function ($detail) {
-                $survey = $detail->survey;
-                if ($survey) {
-                    $survey->update([
-                        'jumlahdetail' => Detail::where('survey_id', $survey->id)->count() // Recalculate the count of details
-                    ]);
-                }
-            });
-            
-            Detail::deleted(function ($detail) {
-                $survey = $detail->survey;
-                if ($survey) {
-                    $survey->update([
-                        'jumlahdetail' => Detail::where('survey_id', $survey->id)->count() // Recalculate the count of details after deletion
-                    ]);
-                }
-            });
             // Retrieve the parent survey and target information
             $survey = Survey::findOrFail($model->survey_id);
             $targetRegister = $survey->target->register;
@@ -141,12 +124,12 @@ class Detail extends Model
 
         static::deleting(function ($model) {
 
-            // $survey = Survey::find($model->survey_id);
-            // if ($survey && $survey->details === null) {
-            //     $survey->update([
-            //         'jumlahdetail' => Detail::where('survey_id', $survey->id)->count() -1
-            //     ]);
-            // }
+            $survey = Survey::find($model->survey_id);
+            if ($survey && $survey->details === null) {
+                $survey->update([
+                    'jumlahdetail' => Detail::where('survey_id', $survey->id)->count() - 1
+                ]);
+            }
             
             $survey = Survey::where('id', $model->survey_id)->first();
 
