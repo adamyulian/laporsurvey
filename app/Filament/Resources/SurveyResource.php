@@ -409,6 +409,7 @@ class SurveyResource extends Resource
                     })
                     ->label('Jumlah Detail')
                     ->alignCenter()
+                    ->sortable()
                     ->badge(),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
