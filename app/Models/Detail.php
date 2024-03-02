@@ -124,6 +124,15 @@ class Detail extends Model
         });
 
         static::deleting(function ($model) {
+
+            $survey = Survey::find($model->survey_id);
+            if ($survey && $survey->details === null) {
+                $jumlahdetail = $survey->detail()->count();
+                $survey->update([
+                    'jumlahdetail' => $jumlahdetail
+                ]);
+            }
+            
             $survey = Survey::where('id', $model->survey_id)->first();
 
             if ($survey && $survey->details !== null && $survey->details->count() > 0) {
