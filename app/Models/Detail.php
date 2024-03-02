@@ -23,8 +23,8 @@ class Detail extends Model
 
     protected static function booted() {
         static::creating(function ($model) {
-
-            $cekSurvey = Survey::find($model->survey_id); 
+            $cekSurvey = Survey::where('id', $model->survey_id)->first(); 
+            // $cekSurvey = Survey::find($model->survey_id); 
             if ($cekSurvey) {
                 $jumlahdetail = $cekSurvey->Detail()->count();
                 $cekSurvey->update([
