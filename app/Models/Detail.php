@@ -27,7 +27,7 @@ class Detail extends Model
             // $cekSurvey = Survey::find($model->survey_id); 
             if ($cekSurvey) {
                 $cekSurvey->update([
-                    'jumlahdetail' => dd(Detail::where('survey_id', $cekSurvey->id)->count())
+                    'jumlahdetail' => Detail::where('survey_id', $cekSurvey->id)->count()
                 ]);
             };
             // Retrieve the parent survey and target information
@@ -70,7 +70,7 @@ class Detail extends Model
             $survey = Survey::find($model->survey_id);
             if ($survey && $survey->details === null) {
                 $survey->update(['surveyor_id' => '1',
-                                'jumlahdetail' => Detail::where('id', $model->survey_id)->count()]);
+                                'jumlahdetail' => Detail::where('survey_id', $survey->id)->count()]);
             }
         });
         static::updating(function ($model) {
@@ -78,7 +78,7 @@ class Detail extends Model
             if ($survey && $survey->details === null) {
                 $jumlahdetail = $survey->Detail()->count();
                 $survey->update([
-                    'jumlahdetail' => $jumlahdetail
+                    'jumlahdetail' => Detail::where('survey_id', $survey->id)->count()
                 ]);
             }
             $original = $model->getOriginal();
@@ -126,9 +126,8 @@ class Detail extends Model
 
             $survey = Survey::find($model->survey_id);
             if ($survey && $survey->details === null) {
-                $jumlahdetail = $survey->Detail()->count();
                 $survey->update([
-                    'jumlahdetail' => $jumlahdetail
+                    'jumlahdetail' => Detail::where('survey_id', $survey->id)->count()
                 ]);
             }
             
