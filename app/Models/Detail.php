@@ -26,7 +26,7 @@ class Detail extends Model
             $cekSurvey = Survey::where('id', $model->survey_id)->first(); 
             // $cekSurvey = Survey::find($model->survey_id); 
             if ($cekSurvey) {
-                $jumlahdetail = $cekSurvey->Detail()->count();
+                $jumlahdetail = Detail::where('survey_id', $cekSurvey->id)->count();
                 $cekSurvey->update([
                     'jumlahdetail' => $jumlahdetail
                 ]);
