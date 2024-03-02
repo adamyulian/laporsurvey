@@ -148,10 +148,16 @@ class Survey extends Model
         return 'location';
     }
     
+    public function updateJumlahdetail()
+    {
+        $this->jumlahdetail = $this->details()->count();
+        $this->save();
+    }
+
     protected static function booted() {
         static::creating(function($model) {
             $model->user_id = Auth::user()->id;
-            $model->jumlahdetail = Detail::where('id', $model->survey_id)->count();
+            $model->updateJumlahdetail;
             // $model->team_id = Auth::user()->team->id;
             $cekRegister = Target::where('id', $model->target_id)->first(); 
             if ($cekRegister) {
@@ -163,7 +169,7 @@ class Survey extends Model
         });
         static::updating(function($model) {
             $model->user_id = Auth::user()->id;
-            $model->jumlahdetail = Detail::where('id', $model->survey_id)->count();
+            $model->updateJumlahdetail;
             // $model->team_id = Auth::user()->team->id;
             $cekRegister = Target::where('id', $model->target_id)->first(); 
             if ($cekRegister) {
