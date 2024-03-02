@@ -26,7 +26,7 @@ class Detail extends Model
 
             $cekSurvey = Survey::find($model->survey_id); 
             if ($cekSurvey) {
-                dd($jumlahdetail = $cekSurvey->Detail()->count());
+                $jumlahdetail = $cekSurvey->Detail()->count();
                 $cekSurvey->update([
                     'jumlahdetail' => $jumlahdetail
                 ]);
@@ -59,7 +59,7 @@ class Detail extends Model
             $function = $model->penggunaan;
     
             // Count the occurrences of the current function
-            $functionCount = $survey->detail()->where('penggunaan', $function)->count();
+            $functionCount = $survey->Detail()->where('penggunaan', $function)->count();
     
             // Get the corresponding alphabet for the function
             $alphabet = $functionAlphabets[$function];
@@ -77,7 +77,7 @@ class Detail extends Model
         static::updating(function ($model) {
             $survey = Survey::find($model->survey_id);
             if ($survey && $survey->details === null) {
-                $jumlahdetail = $survey->detail()->count();
+                $jumlahdetail = $survey->Detail()->count();
                 $survey->update([
                     'jumlahdetail' => $jumlahdetail
                 ]);
@@ -112,7 +112,7 @@ class Detail extends Model
             $function = $model->penggunaan;
     
             // Count the occurrences of the current function
-            $functionCount = $survey->detail()->where('penggunaan', $function)->count();
+            $functionCount = $survey->Detail()->where('penggunaan', $function)->count();
     
             // Get the corresponding alphabet for the function
             $alphabet = $functionAlphabets[$function];
@@ -127,7 +127,7 @@ class Detail extends Model
 
             $survey = Survey::find($model->survey_id);
             if ($survey && $survey->details === null) {
-                $jumlahdetail = $survey->detail()->count();
+                $jumlahdetail = $survey->Detail()->count();
                 $survey->update([
                     'jumlahdetail' => $jumlahdetail
                 ]);
