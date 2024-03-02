@@ -77,8 +77,10 @@ class Detail extends Model
         static::updating(function ($model) {
             $survey = Survey::find($model->survey_id);
             if ($survey && $survey->details === null) {
-                $survey->update(['surveyor_id' => '1',
-                                'jumlahdetail' => Detail::where('id', $model->survey_id)->count()]);
+                $jumlahdetail = $survey->details()->count();
+                $survey->update([
+                    'jumlahdetail' => $jumlahdetail
+                ]);
             }
             $original = $model->getOriginal();
             if ($original['penggunaan'] !== $model->penggunaan) {
