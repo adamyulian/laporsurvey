@@ -48,7 +48,7 @@ class ListSurveys extends ListRecords
              'Belum Tanah' => Tab::make('Semua Tanah yang Belum Rinci')
                 ->modifyQueryUsing(function (Builder $query) {
                     if (Auth::user()->role === 'admin') {
-                        return $query->where('jenisaset', 'LIKE', '%1.3.1.%')->where('jenisaset', 'LIKE', '%1.3.1.%')->where('jumlahdetail','=','0')
+                        return $query->where('jenisaset', 'LIKE', '%1.3.1.%')->where('jumlahdetail','=','0')->orWhere('jumlahdetail','=',0)
                         // ->where('kode_barang', 'LIKE', '%1.3.1.%')
                         ;
                     }
