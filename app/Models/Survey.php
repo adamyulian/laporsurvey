@@ -150,7 +150,7 @@ class Survey extends Model
     
     public function updateJumlahdetail()
     {
-        $this->jumlahdetail = $this->details()->count();
+        $this->jumlahdetail = $this->detail()->count();
         $this->save();
     }
 
