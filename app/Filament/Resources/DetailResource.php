@@ -40,7 +40,6 @@ class DetailResource extends Resource
             ->schema([
                 Forms\Components\Select::make('survey_id')
                         ->native(false)
-                        ->readOnlyOn('edit')
                         ->required()
                         ->preload()
                         ->relationship(
