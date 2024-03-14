@@ -61,16 +61,32 @@ class ListSurveys extends ListRecords
                         $teamname = Auth::user()->name;
                         $query->where('kecamatan', $teamname)->where('jenisaset', 'LIKE', '%1.3.1.%');;
                     }),
-            'Bangunan' => Tab::make('Semua Bangunan')
-                ->modifyQueryUsing(function (Builder $query) {
-                    if (Auth::user()->role === 'admin') {
-                        return $query->where('jenisaset', 'LIKE', '%1.3.3.%');
-                    }
-                    // Non-admin users can only view their own component
-                    // return 
-                        $teamname = Auth::user()->name;
-                        $query->where('kecamatan', $teamname)->where('jenisaset', 'LIKE', '%1.3.3.%');;
-                    }),
+            'Sudah Tanah' => Tab::make('Semua Tanah yang Sudah Rinci')
+                    ->modifyQueryUsing(function (Builder $query) {
+                        if (Auth::user()->role === 'admin') {
+                            return $query->where('jenisaset', 'LIKE', '%1.3.1.%')
+                            ->where(function ($query) {
+                                $query->where('jumlahdetail', '<>', '0')
+                                      ->orWhere('jumlahdetail', '<>', 0);
+                            })
+                            // ->where('kode_barang', 'LIKE', '%1.3.1.%')
+                            ;
+                        }
+                        // Non-admin users can only view their own component
+                        // return 
+                            $teamname = Auth::user()->name;
+                            $query->where('kecamatan', $teamname)->where('jenisaset', 'LIKE', '%1.3.1.%');;
+                        }),
+            // 'Bangunan' => Tab::make('Semua Bangunan')
+            //     ->modifyQueryUsing(function (Builder $query) {
+            //         if (Auth::user()->role === 'admin') {
+            //             return $query->where('jenisaset', 'LIKE', '%1.3.3.%');
+            //         }
+            //         // Non-admin users can only view their own component
+            //         // return 
+            //             $teamname = Auth::user()->name;
+            //             $query->where('kecamatan', $teamname)->where('jenisaset', 'LIKE', '%1.3.3.%');;
+            //         }),
         ];
     }
 }
