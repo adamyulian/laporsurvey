@@ -154,58 +154,58 @@ class SurveyResource extends Resource
                             ->collapsible()
                             ->collapsed(true)
                             ->schema([
-                                Map::make('location_target')
-                                    ->columnSpan(2)
-                                    ->draggable(false) // Disable dragging to move the marker
-                                    ->clickable(false) // Disable clicking to move the marker
-                                    ->autocomplete('target_loc') // field on form to use as Places geocompletion field
-                                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
-                                    ->defaultZoom(15) // Set the initial zoom level to 500
-                                    ->reactive()
-                                    ->live()
-                                    ->lazy(),
+                                // Map::make('location_target')
+                                //     ->columnSpan(2)
+                                //     ->draggable(false) // Disable dragging to move the marker
+                                //     ->clickable(false) // Disable clicking to move the marker
+                                //     ->autocomplete('target_loc') // field on form to use as Places geocompletion field
+                                //     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
+                                //     ->defaultZoom(15) // Set the initial zoom level to 500
+                                //     ->reactive()
+                                //     ->live()
+                                //     ->lazy(),
                                   
-                                Map::make('location')
-                                    ->columnSpan(2)
-                                    // ->rules([
+                                // Map::make('location')
+                                //     ->columnSpan(2)
+                                //     // ->rules([
                                         
-                                    //     fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
-                                    //             // The allowed location (latitude and longitude).
-                                    //             $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
-                                    //             // dd($allowedLocation);
+                                //     //     fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                                //     //             // The allowed location (latitude and longitude).
+                                //     //             $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
+                                //     //             // dd($allowedLocation);
                                     
-                                    //             // The radius in meters.
-                                    //             $radius = 100;
+                                //     //             // The radius in meters.
+                                //     //             $radius = 100;
                                     
-                                    //             // Convert the value (user's location) to an array [latitude, longitude].
-                                    //             // $userLocation = explode(',', $value);
-                                    //             $userLocation = [$get('lat'), $get('lng')];
+                                //     //             // Convert the value (user's location) to an array [latitude, longitude].
+                                //     //             // $userLocation = explode(',', $value);
+                                //     //             $userLocation = [$get('lat'), $get('lng')];
                                     
-                                    //             // Calculate the distance between user and allowed location.
-                                    //             $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
+                                //     //             // Calculate the distance between user and allowed location.
+                                //     //             $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
 
                                                                                   
-                                    //             // Check if the user is within the specified radius.
-                                    //             if ($distance > $radius) {
-                                    //                 $fail("The selected location is not within the allowed radius.");
-                                    //             }
+                                //     //             // Check if the user is within the specified radius.
+                                //     //             if ($distance > $radius) {
+                                //     //                 $fail("The selected location is not within the allowed radius.");
+                                //     //             }
                                             
-                                    //     }])
-                                    ->label('Your Location')
-                                    ->geolocate() // adds a button to request device location and set map marker accordingly
-                                    ->geolocateOnLoad(true, 'always')// Enable geolocation on load for every form
-                                    ->draggable(false) // Disable dragging to move the marker
-                                    ->clickable(false) // Disable clicking to move the marker
-                                    ->defaultZoom(15) // Set the initial zoom level to 500
-                                    ->autocomplete('address') // field on form to use as Places geocompletion field
-                                    ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
-                                    ->reactive()
-                                    ->live()
-                                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
-                                        $set('lat', $state['lat']);
-                                        $set('lng', $state['lng']);}),
-                                        Forms\Components\TextInput::make('latitude'),
-                                        Forms\Components\TextInput::make('longitude'),
+                                //     //     }])
+                                //     ->label('Your Location')
+                                //     ->geolocate() // adds a button to request device location and set map marker accordingly
+                                //     ->geolocateOnLoad(true, 'always')// Enable geolocation on load for every form
+                                //     ->draggable(false) // Disable dragging to move the marker
+                                //     ->clickable(false) // Disable clicking to move the marker
+                                //     ->defaultZoom(15) // Set the initial zoom level to 500
+                                //     ->autocomplete('address') // field on form to use as Places geocompletion field
+                                //     ->autocompleteReverse(true) // reverse geocode marker location to autocomplete field
+                                //     ->reactive()
+                                //     ->live()
+                                //     ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                                //         $set('lat', $state['lat']);
+                                //         $set('lng', $state['lng']);}),
+                                //         Forms\Components\TextInput::make('latitude'),
+                                //         Forms\Components\TextInput::make('longitude'),
                                 TextInput::make('lat')
                                     ->label('Latitude')
                                     ->readOnly()
