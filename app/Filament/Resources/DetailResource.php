@@ -8,6 +8,7 @@ use App\Models\Detail;
 use App\Models\Survey;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Databangunan;
 use Filament\Resources\Resource;
 use Filament\Tables\Grouping\Group;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,6 @@ use App\Filament\Resources\DetailResource\RelationManagers;
 class DetailResource extends Resource
 {
     protected static ?string $model = Detail::class;
-
-    
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -43,15 +42,15 @@ class DetailResource extends Resource
                         ->required()
                         ->preload()
                         ->relationship(
-                            name: 'Survey', 
+                            name: 'Survey',
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
                                 if (Auth::user()->role === 'admin') {
                                     return $query;
                                 }
-                        
+
                                 // Non-admin users can only view their own component
-                                // return 
+                                // return
                                 $userId = Auth::user()->id;
                                 $query->where('user_id', $userId)
                                 ;}
@@ -106,7 +105,26 @@ class DetailResource extends Resource
                             ->image(),
 
                 Forms\Components\TextInput::make('id_penggunaan')
-                    ->maxLength(255),
+                            ->maxLength(255),
+                Forms\Components\Select::make('regbangunan')
+                            ->native(false)
+                            ->required()
+                            ->preload()
+                            ->relationship(
+                                name: 'Databangunan',
+                                titleAttribute: 'nama',
+                                modifyQueryUsing: function (Builder $query) use ($survey) {
+                                    if (Auth::user()->role === 'admin') {
+                                        return $query->where('register_bangunan', $survey->target->register);
+                                    }
+
+                                    // Non-admin users can only view their own component
+                                    // return
+                                    $userId = Auth::user()->id;
+                                    $query->where('user_id', $userId)
+                                    ;}
+                                )
+                            ->getOptionLabelFromRecordUsing(fn (Databangunan $record) => "{$record->register_bangunan} {$record->nama_bangunan} {$record->alamat_bangunan}"),
             ]);
     }
 
@@ -118,9 +136,9 @@ class DetailResource extends Resource
                 if (Auth::user()->role === 'admin') {
                     return $query;
                 }
-        
+
                 // Non-admin users can only view their own component
-                //return 
+                //return
                     $userId = Auth::user()->id;
                     // $query->where('survey.user.id', $teamId);
                     $query->whereHas('survey', function ($query) use ($userId) {
