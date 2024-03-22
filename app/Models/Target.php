@@ -20,15 +20,15 @@ class Target extends Model
            'surveyor',
            'user_id',
            'lat',
-           'lng', 
+           'lng',
            'location_target',
            'sigis'
         ];
-    
+
         protected $appends = [
             'location_target',
         ];
-    
+
         /**
          * ADD THE FOLLOWING METHODS TO YOUR Target MODEL
          *
@@ -40,7 +40,7 @@ class Target extends Model
          *
          * You may of course strip all comments, if you don't feel verbose.
          */
-    
+
         /**
         * Returns the 'lat' and 'lng' attributes as the computed 'location_target' attribute,
         * as a standard Google Maps style Point array with 'lat' and 'lng' attributes.
@@ -51,7 +51,7 @@ class Target extends Model
         *
         * @return array
         */
-    
+
         public function getLocationTargetAttribute(): array
         {
             return [
@@ -59,7 +59,7 @@ class Target extends Model
                 "lng" => (float)$this->lng,
             ];
         }
-    
+
         /**
         * Takes a Google style Point array of 'lat' and 'lng' values and assigns them to the
         * 'lat' and 'lng' attributes on this model.
@@ -80,7 +80,7 @@ class Target extends Model
                 unset($this->attributes['location_target']);
             }
         }
-    
+
         /**
          * Get the lat and lng attribute/field names used on this table
          *
@@ -95,7 +95,7 @@ class Target extends Model
                 'lng' => 'lng',
             ];
         }
-    
+
        /**
         * Get the name of the computed location attribute
         *

@@ -6,10 +6,12 @@ use Filament\Forms;
 use Filament\Tables;
 use App\Models\Detail;
 use App\Models\Survey;
+use Filament\Forms\Get;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\Databangunan;
 use Filament\Resources\Resource;
+use Illuminate\Support\Collection;
 use Filament\Tables\Grouping\Group;
 use Illuminate\Support\Facades\Auth;
 use App\Filament\Exports\DetailExporter;
@@ -105,26 +107,33 @@ class DetailResource extends Resource
                             ->image(),
 
                 Forms\Components\TextInput::make('id_penggunaan')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->live(),
                 Forms\Components\Select::make('regbangunan')
                             ->native(false)
                             ->required()
                             ->preload()
-                            ->relationship(
-                                name: 'Databangunan',
-                                titleAttribute: 'nama',
-                                modifyQueryUsing: function (Builder $query) use ($survey) {
-                                    if (Auth::user()->role === 'admin') {
-                                        return $query->where('register_bangunan', $survey->target->register);
-                                    }
+                            ->options(fn (Get $get): Collection => Databangunan::query()
+                                    ->where('register_tanah', explode('.', $get('id_penggunaan'))[0])
+                                    ->pluck('full_bangunan','register_bangunan'))
+                            // ->relationship(
+                            //     name: 'Databangunan',
+                            //     titleAttribute: 'nama',
+                            //     modifyQueryUsing: function (Builder $query) {
+                            //         if (Auth::user()->role === 'admin') {
+                            //             return function ($get) {
+                            //                 $register = Survey::find($get('survey_id'))->get();
+                            //                 $query->where('register_tanah', $register );
+                            //             };
+                            //         }
 
-                                    // Non-admin users can only view their own component
-                                    // return
-                                    $userId = Auth::user()->id;
-                                    $query->where('user_id', $userId)
-                                    ;}
-                                )
-                            ->getOptionLabelFromRecordUsing(fn (Databangunan $record) => "{$record->register_bangunan} {$record->nama_bangunan} {$record->alamat_bangunan}"),
+                            //         // Non-admin users can only view their own component
+                            //         // return
+                            //         $userId = Auth::user()->id;
+                            //         $query->where('user_id', $userId)
+                            //         ;}
+                            //     )
+                            // ->getOptionLabelFromRecordUsing(fn (Databangunan $record) => "{$record->register_bangunan} {$record->nama_bangunan} {$record->alamat_bangunan}"),
             ]);
     }
 

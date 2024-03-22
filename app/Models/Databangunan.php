@@ -22,4 +22,14 @@ class Databangunan extends Model
         'nilai',
         'keterangan'
     ];
+
+    public function Detail()
+    {
+        return $this->belongsTo(related:Detail::class);
+    }
+
+    public function getFullBangunanAttribute()
+{
+    return $this->register_bangunan . ' ' . $this->nama_bangunan;
+}
 }
