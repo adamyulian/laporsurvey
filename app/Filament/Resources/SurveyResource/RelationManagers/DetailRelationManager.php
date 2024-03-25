@@ -89,7 +89,7 @@ class DetailRelationManager extends RelationManager
                 ->label('Luas (M2)'),
                 Tables\Columns\TextColumn::make('kondisi'),
                 Tables\Columns\ImageColumn::make('foto_penggunaan'),
-                Tables\Columns\ImageColumn::make('regbangunan')
+                Tables\Columns\TextColumn::make('regbangunan')
                 ->label('Register Bang'),
 
             ])
