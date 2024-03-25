@@ -115,7 +115,7 @@ class DetailResource extends Resource
                             ->preload()
                             ->options(fn (Get $get): Collection => Databangunan::query()
                                     ->where('register_tanah', explode('.', $get('id_penggunaan'))[0])
-                                    ->pluck('full_bangunan','register_bangunan'))
+                                    ->pluck('nama_bangunan','register_bangunan'))
                             // ->relationship(
                             //     name: 'Databangunan',
                             //     titleAttribute: 'nama',
