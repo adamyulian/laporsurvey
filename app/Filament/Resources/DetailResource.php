@@ -172,6 +172,7 @@ class DetailResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('detail')
+                    ->wrap()
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kondisi')

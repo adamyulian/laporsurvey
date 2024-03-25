@@ -79,15 +79,15 @@ class SurveyResource extends Resource
                         ->label('Silakan memilih Register/Target Survey')
                         ->preload()
                         ->relationship(
-                            name: 'Target', 
+                            name: 'Target',
                             titleAttribute: 'nama',
                             modifyQueryUsing: function (Builder $query) {
                                 if (Auth::user()->role === 'admin') {
                                     return $query;
                                 }
-                        
+
                                 // Non-admin users can only view their own component
-                                // return 
+                                // return
                                 $teamname = Auth::user()->name;
                                 $query->where('kecamatan', $teamname)->where('user_id', 0)
                                 ;}
@@ -109,7 +109,7 @@ class SurveyResource extends Resource
                             $set('sigis', Target::find($state)->sigis);
                             $set('latitude',Target::find($state)->lat);
                             $set('longitude',Target::find($state)->lng);
-                            $set('location_target', 
+                            $set('location_target',
                             [
                                 'lat' => floatval(Target::find($state)->lat),
                                 'lng' => floatval(Target::find($state)->lng)
@@ -164,32 +164,32 @@ class SurveyResource extends Resource
                                 //     ->reactive()
                                 //     ->live()
                                 //     ->lazy(),
-                                  
+
                                 // Map::make('location')
                                 //     ->columnSpan(2)
                                 //     // ->rules([
-                                        
+
                                 //     //     fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
                                 //     //             // The allowed location (latitude and longitude).
                                 //     //             $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
                                 //     //             // dd($allowedLocation);
-                                    
+
                                 //     //             // The radius in meters.
                                 //     //             $radius = 100;
-                                    
+
                                 //     //             // Convert the value (user's location) to an array [latitude, longitude].
                                 //     //             // $userLocation = explode(',', $value);
                                 //     //             $userLocation = [$get('lat'), $get('lng')];
-                                    
+
                                 //     //             // Calculate the distance between user and allowed location.
                                 //     //             $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
 
-                                                                                  
+
                                 //     //             // Check if the user is within the specified radius.
                                 //     //             if ($distance > $radius) {
                                 //     //                 $fail("The selected location is not within the allowed radius.");
                                 //     //             }
-                                            
+
                                 //     //     }])
                                 //     ->label('Your Location')
                                 //     ->geolocate() // adds a button to request device location and set map marker accordingly
@@ -234,14 +234,14 @@ class SurveyResource extends Resource
                                                 }
                                                 $allowedLocation = [Target::find($get('target_id'))->lat, Target::find($get('target_id'))->lng];
                                                 // dd($allowedLocation);
-                                    
+
                                                 // The radius in meters.
                                                 $radius = 100;
-                                    
+
                                                 // Convert the value (user's location) to an array [latitude, longitude].
                                                 // $userLocation = explode(',', $value);
                                                 $userLocation = [$get('lat'), $get('lng')];
-                                    
+
                                                 // Calculate the distance between user and allowed location.
                                                 $distance = LocationHelpers::haversineDistance($userLocation, $allowedLocation);
 
@@ -251,7 +251,7 @@ class SurveyResource extends Resource
                                 ])
                                 ->collapsible()
                                 ->columns(4),
-                                
+
                 formsection::make('Form Survey')
                     ->columns(6)
                     ->schema([
@@ -345,7 +345,7 @@ class SurveyResource extends Resource
                         //     ->native(false),
                         // Forms\Components\FileUpload::make('dokumen_hub_hukum')
                         //     ->hidden(fn (Get $get) => !in_array($get('hubungan_hukum'), ['sudah_habis', 'ada']))
-                        //     ->columnSpan(3), 
+                        //     ->columnSpan(3),
                         // Forms\Components\Select::make('surveyor')
                         // ->relationship(
                         //     name: 'surveyor',
@@ -376,9 +376,9 @@ class SurveyResource extends Resource
                 if (Auth::user()->role === 'admin') {
                     return $query;
                 }
-        
+
                 // Non-admin users can only view their own component
-                //return 
+                //return
                     $teamId = Auth::user()->id;
                     $query->where('user_id', $teamId);
                 })
@@ -409,7 +409,6 @@ class SurveyResource extends Resource
                     })
                     ->label('Jumlah Detail')
                     ->alignCenter()
-                    ->sortable()
                     ->badge(),
                 Tables\Columns\TextColumn::make('guna')
                     ->label('Digunakan sebagai')
@@ -495,7 +494,7 @@ class SurveyResource extends Resource
                     ->color('info')
             ]);
     }
-    
+
     public static function infolist(Infolist $infolist): Infolist
 
     {
@@ -518,13 +517,13 @@ class SurveyResource extends Resource
                             ->label('OPD Pengguna Barang'),
                         TextEntry::make('target.tahun_perolehan')
                             ->columnSpan(2)
-                            ->label('Tahun Perolehan'), 
+                            ->label('Tahun Perolehan'),
                         TextEntry::make('target.kecamatan')
                             ->columnSpan(2)
                             ->label('Kecamatan'),
                         TextEntry::make('target.kelurahan')
                             ->columnSpan(2)
-                            ->label('Kelurahan'), 
+                            ->label('Kelurahan'),
                         TextEntry::make('target.luas')
                             ->columnSpan(2)
                             ->label('Luas Tanah/Bangunan'),
@@ -576,7 +575,7 @@ class SurveyResource extends Resource
                             ->columnSpan(2)
                                 ->label('Foto Bagian Luar'),
                             ImageEntry::make('foto4')
-                            ->columnSpan(2)    
+                            ->columnSpan(2)
                             ->label('Foto Bagian Dalam'),
                             // TextEntry::make('nama_pic')
                             //     ->columnSpan(2)
@@ -595,7 +594,7 @@ class SurveyResource extends Resource
                             // ImageEntry::make('dokumen_hub_hukum')
                             //     ->columnSpan(2)
                             //     ->label('Dokumen Hub. Hukum'),
-                            
+
                         ])
                 ])->columnSpan(4),
                 Group::make([
@@ -621,7 +620,7 @@ class SurveyResource extends Resource
             DetailRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -630,5 +629,5 @@ class SurveyResource extends Resource
             'view' => Pages\ViewSurvey::route('/{record}'),
             'edit' => Pages\EditSurvey::route('/{record}/edit'),
         ];
-    }    
+    }
 }
